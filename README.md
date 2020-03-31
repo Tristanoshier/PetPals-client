@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-#PetPals client (Tristan, Taylor, and Adam)
+# PetPals client (Tristan, Taylor, and Adam)
 
 In the project directory, you can run:
 
