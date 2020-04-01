@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Button, Label, Input } from 'reactstrap';
-
 export default function LoginDisplay() {
     return (
         <Form inline>

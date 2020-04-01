@@ -5,7 +5,6 @@ interface Props {
     updateToken: (newToken: string) => void
 }
 
-
 interface State {
     username: string,
     password: string,
