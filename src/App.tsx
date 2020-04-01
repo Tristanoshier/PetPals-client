@@ -4,11 +4,9 @@ import Auth from './components/auth/Auth';
 import Home from './components/site/Home';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-interface TokenState {
-  sessionToken: string
-}
 
-export default class App extends React.Component<TokenState> {
+
+export default class App extends React.Component {
   state = {
     sessionToken: ""
   }

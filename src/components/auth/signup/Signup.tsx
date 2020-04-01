@@ -32,7 +32,7 @@ export default class Signup extends React.Component<Props, State> {
                     passwordRequired: true
                 })
             } else {
-                fetch(`http://localhost:3000/user/signup`, {
+                fetch(`http://localhost:3001/user/signup`, {
                     method: 'POST',
                     body: JSON.stringify({ username: this.state.username, password: this.state.password }),
                     headers: new Headers({
