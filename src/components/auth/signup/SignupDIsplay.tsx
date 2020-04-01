@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+
+import React, {useState} from 'react'
+
 //Material UI imports
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -52,4 +54,47 @@ export default function SignupDisplay() {
             </div>
         </div>
     );
+  createStyles({
+    margin: {
+      margin: theme.spacing(1),
+    },
+  }),
+);
+
+export default function SignupDisplay() {
+  const classes = useStyles();
+  return (
+    <div>
+      <FormControl className={classes.margin}>
+        <InputLabel htmlFor="input-with-icon-adornment">With a start adornment</InputLabel>
+        <Input
+          id="input-with-icon-adornment"
+          startAdornment={
+            <InputAdornment position="start">
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+      <TextField
+        className={classes.margin}
+        id="input-with-icon-textfield"
+        label="TextField"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+            </InputAdornment>
+          ),
+        }}
+      />
+      <div className={classes.margin}>
+        <Grid container spacing={1} alignItems="flex-end">
+          <Grid item>
+          </Grid>
+          <Grid item>
+            <TextField id="input-with-icon-grid" label="With a grid" />
+          </Grid>
+        </Grid>
+      </div>
+    </div>
+  );
 }
