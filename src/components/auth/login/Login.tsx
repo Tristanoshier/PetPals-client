@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginDisplay from './LoginDisplay';
 import { Container } from 'reactstrap';
+
 interface Props {
     isLogin: boolean,
     updateToken: (newToken: string) => void
