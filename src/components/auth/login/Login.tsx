@@ -13,9 +13,6 @@ interface State {
     usernameNotExist: boolean
 }
 export default class Login extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-    }
 
     state = {
         username: "",
@@ -50,10 +47,13 @@ export default class Login extends React.Component<Props, State> {
                 this.props.updateToken(data.sessionToken);
             })
     }
+  
+   
     render() {
         return (
             <Container>
                 <h1>Login</h1>
+                {console.log(this.state.isLogin)}
                 <LoginDisplay
                     username={this.state.username}
                     password={this.state.password}

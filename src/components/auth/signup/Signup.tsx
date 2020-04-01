@@ -14,9 +14,6 @@ interface State {
 }
 
 export default class Signup extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-    }
     state = {
         username: "",
         password: "",
@@ -49,6 +46,7 @@ export default class Signup extends React.Component<Props, State> {
     render() {
         return (
             <div>
+                <h1>Signup</h1>
                 <SignupDisplay
                     username={this.state.username}
                     password={this.state.password}
