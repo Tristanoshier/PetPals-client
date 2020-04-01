@@ -6,14 +6,12 @@ interface Props {
     isLogin: boolean,
     updateToken: (newToken: string) => void
 }
-
 interface State {
     username: string,
     password: string,
     incorrectPassword: boolean,
     usernameNotExist: boolean
 }
-
 export default class Login extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -24,7 +22,6 @@ export default class Login extends React.Component<Props, State> {
         incorrectPassword: false,
         usernameNotExist: false
     }
-
     handleSubmit = (event: any) => {
         event.preventDefault();
         fetch(`http://localhost:3001/user/login`, {
@@ -50,7 +47,6 @@ export default class Login extends React.Component<Props, State> {
                 this.props.updateToken(data.sessionToken);
             })
     }
-
     render() {
         return (
             <Container>
@@ -63,7 +59,6 @@ export default class Login extends React.Component<Props, State> {
                     onChange={this.handleSubmit}
                 />
             </Container>
-          
         )
     }
 }
