@@ -8,14 +8,10 @@ interface Props {
 }
 
 export default class Auth extends React.Component<Props> {
-    constructor(props: Props){
-        super(props);
+    state = {
+        isLogin: false
     }
 
-    state = {
-        isLogin: true
-    }
-    
     render(){
         return (
             <Container>

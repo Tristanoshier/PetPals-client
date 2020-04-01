@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, FormGroup, Button, Label, Input, ButtonGroup, } from 'reactstrap';
-import { notDeepEqual } from 'assert';
 
 interface Props {
     username: string,
@@ -12,9 +11,7 @@ interface Props {
 }
 
 export default class SignupDisplay extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props)
-    }
+
     state = {
         username: this.props.username,
         password: this.props.password,
@@ -24,15 +21,15 @@ export default class SignupDisplay extends React.Component<Props> {
     }
     render() {
         return (
-            <Form inline>
+            <Form onChange={this.props.onChange}>
                 <FormGroup>
-                    <Label for="unsername" hidden>Username</Label>
+                    <Label for="username" hidden>Username</Label>
                     <Input onChange={e => this.setState({ username: e.target.value })} name="username" id="username" placeholder="Username" />
                 </FormGroup>
                 <br />
                 <FormGroup>
                     <Label for="password" hidden>Password</Label>
-                    <Input onChange={e => this.setState({ username: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
+                    <Input onChange={e => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
                 </FormGroup>
                 <br />
                 <ButtonGroup>
@@ -40,9 +37,9 @@ export default class SignupDisplay extends React.Component<Props> {
                     <Button color="primary" onClick={() => this.setState({ adoptionRecruiter: true })}>Yes</Button>
                     <Button color="secondary" onClick={() => this.setState({ adoptionRecruiter: false })}>No</Button>
                 </ButtonGroup>
-                <Button onChange={this.props.onChange}>Submit</Button>
+                <Button type="submit">Signup</Button>
                 <p className="auth-switch" onClick={() => this.setState({ isLogin: !this.state.isLogin })}>
-                    {this.props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
+                    {this.state.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
                 </p>
             </Form>
         )
