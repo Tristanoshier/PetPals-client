@@ -5,7 +5,8 @@ interface Props {
     password: string,
     incorrectPassword: boolean,
     usernameNotExist: boolean,
-    onChange: (event: any) => void
+    onChange: (event: any) => void,
+    isLogin: boolean
 }
 export default class LoginDisplay extends React.Component<Props>{
     constructor(props: Props) {
@@ -15,7 +16,8 @@ export default class LoginDisplay extends React.Component<Props>{
         username: this.props.username,
         password: this.props.password,
         incorrectPassword: this.props.incorrectPassword,
-        usernameNotExist: this.props.usernameNotExist
+        usernameNotExist: this.props.usernameNotExist,
+        isLogin: this.props.isLogin
     }
     render() {
         return (
@@ -31,6 +33,9 @@ export default class LoginDisplay extends React.Component<Props>{
                 </FormGroup>
                 <br />
                 <Button onChange={this.props.onChange}>Submit</Button>
+                <p className="auth-switch" onClick={() => this.setState({isLogin: !this.state.isLogin})}>
+                    {this.props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
+                </p>
             </Form>
         )
     }

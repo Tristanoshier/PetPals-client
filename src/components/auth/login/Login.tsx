@@ -16,12 +16,15 @@ export default class Login extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
     }
+
     state = {
         username: "",
         password: "",
         incorrectPassword: false,
-        usernameNotExist: false
+        usernameNotExist: false,
+        isLogin: this.props.isLogin
     }
+
     handleSubmit = (event: any) => {
         event.preventDefault();
         fetch(`http://localhost:3001/user/login`, {
@@ -57,6 +60,7 @@ export default class Login extends React.Component<Props, State> {
                     incorrectPassword={this.state.incorrectPassword}
                     usernameNotExist={this.state.usernameNotExist}
                     onChange={this.handleSubmit}
+                    isLogin={this.state.isLogin}
                 />
             </Container>
         )
