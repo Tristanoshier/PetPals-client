@@ -13,7 +13,7 @@ interface State {
 }
 
 export default class Login extends React.Component<Props, State> {
-    constructor(props: Props){
+    constructor(props: Props) {
         super(props);
     }
     state = {
@@ -22,7 +22,7 @@ export default class Login extends React.Component<Props, State> {
         incorrectPassword: false,
         usernameNotExist: false
     }
-    componentDidMount(){
+    componentDidMount() {
         let handleSubmit = (event: any) => {
             event.preventDefault();
             fetch(`http://localhost:3001/user/login`, {
@@ -48,10 +48,10 @@ export default class Login extends React.Component<Props, State> {
                     this.props.updateToken(data.sessionToken);
                 })
         }
-    }       
+    }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <h1>Login</h1>
             </div>
