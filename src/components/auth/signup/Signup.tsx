@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import SignupDisplay from './SignupDIsplay';
-=======
 import SignupDisplay from './SignupDIsplay'
->>>>>>> 9a4441bf0cc502f92e816f1be70db4bfc2c1afb4
 
 type Props = {
     isLogin: boolean,
@@ -19,16 +15,16 @@ type State = {
 }
 
 export default class Signup extends React.Component<Props, State> {
-    constructor(props: Props) {
+    constructor(props: Props){
         super(props);
         this.state = {
             username: "",
             password: "",
             passwordRequired: false,
             adoptionRecruiter: false,
-        }
+        } 
     }
-
+   
 
     handleSubmit = (event: any) => {
         event.preventDefault();
@@ -62,13 +58,13 @@ export default class Signup extends React.Component<Props, State> {
         })
     }
 
-    onAdoptionChangeTrue() {
+    onAdoptionChangeTrue(){
         this.setState({
             adoptionRecruiter: true
         })
     }
 
-    onAdoptionChangeFalse() {
+    onAdoptionChangeFalse(){
         this.setState({
             adoptionRecruiter: false
         })
