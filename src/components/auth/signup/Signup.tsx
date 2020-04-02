@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupDisplay from './SignupDisplay';
+import SignupDisplay from './SignupDIsplay'
 
 type Props = {
     isLogin: boolean,
