@@ -29,5 +29,5 @@ function LoginDisplay(props: Props) {
         </Form>
     )
 }
-export default LoginDisplay
+export default LoginDisplay;
 

@@ -6,6 +6,7 @@ type Props = {
     updateToken: (newToken: string) => void,
     isLoginHandler: () => void
 }
+
 type State = {
     username: string,
     password: string,

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Form, FormGroup, Button, Label, Input, ButtonGroup, } from 'reactstrap';
+import React from "react";
+import { Form, FormGroup, Button, Label, Input, ButtonGroup } from "reactstrap";
 
 type Props = {
     passwordRequired: boolean,
