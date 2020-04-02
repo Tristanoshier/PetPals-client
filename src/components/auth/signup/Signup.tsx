@@ -1,36 +1,33 @@
 import React from 'react';
 import SignupDisplay from './SignupDIsplay'
-
 type Props = {
     isLogin: boolean,
     updateToken: (newToken: string) => void,
     isLoginHandler: () => void
 }
-
 type State = {
     username: string,
     password: string,
     passwordRequired: boolean,
     adoptionRecruiter: boolean,
 }
-
 export default class Signup extends React.Component<Props, State> {
-    constructor(props: Props){
+    constructor(props: Props) {
         super(props);
         this.state = {
             username: "",
             password: "",
             passwordRequired: false,
             adoptionRecruiter: false,
-        } 
+        }
     }
-   
+
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        if(this.state.password.length < 5){
+        if (this.state.password.length < 5) {
             alert('password must be at least 5 characters')
-        }else{
+        } else {
             fetch(`http://localhost:3001/user/signup`, {
                 method: 'POST',
                 body: JSON.stringify({ username: this.state.username, password: this.state.password, adoptionRecruiter: this.state.adoptionRecruiter }),
@@ -43,10 +40,9 @@ export default class Signup extends React.Component<Props, State> {
                     console.log(data.sessionToken)
                     this.props.updateToken(data.sessionToken)
                 })
-            }
-        
-    }
+        }
 
+    }
     onUsernameChange(e: any) {
         this.setState({
             username: e.target.value
@@ -58,18 +54,17 @@ export default class Signup extends React.Component<Props, State> {
         })
     }
 
-    onAdoptionChangeTrue(){
+    onAdoptionChangeTrue() {
         this.setState({
             adoptionRecruiter: true
         })
     }
 
-    onAdoptionChangeFalse(){
+    onAdoptionChangeFalse() {
         this.setState({
             adoptionRecruiter: false
         })
     }
-
     render() {
         return (
             <div>
