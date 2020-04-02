@@ -1,34 +1,40 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavItem, NavLink, Button} from 'reactstrap';
 import {
     Route,
     Link,
     Switch
-  } from 'react-router-dom' 
+  } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import Search from './Search';
+import Profile from './Profile';
 
-const Navbar = (props: any) => {
+type Props ={
+  onClick : () => void
+}
+
+function Navbar(props: Props) {
   return (
     <div>
-            <Nav>
-        <NavItem>
-          <NavLink href="#"><Link to="/dashboard">Dashboard</Link></NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#"><Link to="/search">Search</Link> </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#"><Link to="/profile">Profile</Link></NavLink>
-        </NavItem>
+        <Nav>
+          <NavItem>
+            <NavLink href="#"><Link to="/dashboard">Dashboard</Link></NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#"><Link to="/search">Search</Link> </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#"><Link to="/profile">Profile</Link></NavLink>
+          </NavItem>
+          <NavItem>
+            <Button onClick={props.onClick}>Log out</Button>
+          </NavItem>
       </Nav>
-        {/* <NavItem>
-          <NavLink disabled href="#">Disabled Link</NavLink>
-        </NavItem> */}
-
       <hr />
       <Switch>
-          <Route exact path="/dashboard"></Route>
-          <Route exact path="/search"></Route>
-          <Route exact path="/profile"></Route>
+          <Route exact path="/dashboard"><Dashboard /></Route>
+          <Route exact path="/search"><Search /></Route>
+          <Route exact path="/profile"><Profile /></Route>
           <Route></Route>
       </Switch>
     </div>
