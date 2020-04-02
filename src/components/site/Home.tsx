@@ -11,8 +11,7 @@ export default class Home extends React.Component<Props> {
     render(){
         return (
             <div>
-                <Button className="logout-btn" onClick={this.props.clickLogout}>Log out</Button>
-                <Navbar />
+                <Navbar onClick={this.props.clickLogout}/>
             </div>
         )
     }
