@@ -1,10 +1,18 @@
 import React from 'react';
 import SignupDisplay from './SignupDIsplay'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
 type Props = {
     isLogin: boolean,
     updateToken: (newToken: string) => void,
     isLoginHandler: () => void
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
 type State = {
     username: string,
     password: string,
@@ -12,15 +20,26 @@ type State = {
     adoptionRecruiter: boolean,
 }
 export default class Signup extends React.Component<Props, State> {
+<<<<<<< HEAD
     constructor(props: Props) {
+=======
+    constructor(props: Props){
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
         super(props);
         this.state = {
             username: "",
             password: "",
             passwordRequired: false,
             adoptionRecruiter: false,
+<<<<<<< HEAD
         }
     }
+=======
+        } 
+    }
+   
+
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
     handleSubmit = (event: any) => {
         event.preventDefault();
         if (this.state.password.length < 5) {
@@ -41,6 +60,10 @@ export default class Signup extends React.Component<Props, State> {
                 })
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
     onUsernameChange(e: any) {
         this.setState({
             username: e.target.value
@@ -51,16 +74,30 @@ export default class Signup extends React.Component<Props, State> {
             password: e.target.value
         })
     }
+<<<<<<< HEAD
     onAdoptionChangeTrue() {
+=======
+
+    onAdoptionChangeTrue(){
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
         this.setState({
             adoptionRecruiter: true
         })
     }
+<<<<<<< HEAD
     onAdoptionChangeFalse() {
+=======
+
+    onAdoptionChangeFalse(){
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
         this.setState({
             adoptionRecruiter: false
         })
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b2fa9b23fffa9bf86c01a1ed7c56712aebc35a1
     render() {
         return (
             <div>
