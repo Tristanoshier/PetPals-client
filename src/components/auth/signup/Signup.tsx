@@ -1,13 +1,12 @@
 import React from 'react';
-import SignupDisplay from './SignupDisplay';
+import SignupDisplay from './SignupDIsplay';
 
-type Props = {
+interface Props {
     isLogin: boolean,
-    updateToken: (newToken: string) => void,
-    isLoginHandler: () => void
+    updateToken: (newToken: string) => void
 }
 
-type State = {
+interface State {
     username: string,
     password: string,
     passwordRequired: boolean,
@@ -15,16 +14,13 @@ type State = {
 }
 
 export default class Signup extends React.Component<Props, State> {
-    constructor(props: Props){
-        super(props);
-        this.state = {
-            username: "",
-            password: "",
-            passwordRequired: false,
-            adoptionRecruiter: false,
-        } 
+    state = {
+        username: "",
+        password: "",
+        passwordRequired: false,
+        adoptionRecruiter: false,
+        isLogin: this.props.isLogin
     }
-   
 
     handleSubmit = (event: any) => {
         event.preventDefault();
@@ -47,42 +43,17 @@ export default class Signup extends React.Component<Props, State> {
         }
     }
 
-    onUsernameChange(e: any) {
-        this.setState({
-            username: e.target.value
-        })
-    }
-    onPasswordChange(e: any) {
-        this.setState({
-            password: e.target.value
-        })
-    }
-
-    onAdoptionChangeTrue(){
-        this.setState({
-            adoptionRecruiter: true
-        })
-    }
-
-    onAdoptionChangeFalse(){
-        this.setState({
-            adoptionRecruiter: false
-        })
-    }
-
     render() {
         return (
             <div>
                 <h1>Signup</h1>
                 <SignupDisplay
+                    username={this.state.username}
+                    password={this.state.password}
                     passwordRequired={this.state.passwordRequired}
+                    adoptionRecruiter={this.state.adoptionRecruiter}
                     onChange={this.handleSubmit}
-                    isLogin={this.props.isLogin}
-                    isLoginHandler={this.props.isLoginHandler}
-                    onUsernameChange={this.onUsernameChange.bind(this)}
-                    onPasswordChange={this.onPasswordChange.bind(this)}
-                    onAdoptionChangeTrue={this.onAdoptionChangeTrue.bind(this)}
-                    onAdoptionChangeFalse={this.onAdoptionChangeFalse.bind(this)}
+                    isLogin={this.state.isLogin}
                 />
             </div>
         )
