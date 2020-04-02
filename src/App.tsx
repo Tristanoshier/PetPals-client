@@ -18,7 +18,7 @@ export default class App extends React.Component {
       })
     }
   }
-
+  
   updateToken(newToken: string){
     localStorage.setItem('token', newToken);
     this.setState({

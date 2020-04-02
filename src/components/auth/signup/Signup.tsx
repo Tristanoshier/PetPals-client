@@ -35,14 +35,14 @@ export default class Signup extends React.Component<Props, State> {
         } else {
             fetch(`http://localhost:3001/user/signup`, {
                 method: 'POST',
-                body: JSON.stringify({ username: this.state.username, password: this.state.password }),
+                body: JSON.stringify({ username: this.state.username, password: this.state.password}),
                 headers: new Headers({
                     'Content-Type': 'application/json'
                 })
             })
                 .then(response => response.json())
                 .then(data => {
-                    this.props.updateToken(data.sessionToken)
+                    return this.props.updateToken(data.sessionToken)
                 })
         }
     }
