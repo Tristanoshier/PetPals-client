@@ -3,7 +3,7 @@ import { Form, FormGroup, Button, Label, Input, ButtonGroup, } from 'reactstrap'
 
 type Props = {
     passwordRequired: boolean,
-    onChange: (event: any) => void,
+    onSubmit: (event: any) => void,
     isLogin: boolean,
     isLoginHandler: (e: any) => void,
     onUsernameChange: (e: any) => void,
@@ -14,9 +14,9 @@ type Props = {
 
 function SignupDisplay(props: Props) {
     return (
-        <Form onChange={props.onChange}>
+        <Form onSubmit={props.onSubmit}>
             <FormGroup>
-                <Label for="unsername" hidden>Username</Label>
+                <Label for="username" hidden>Username</Label>
                 <Input onChange={e => props.onUsernameChange(e)} name="username" id="username" placeholder="Username" />
             </FormGroup>
             <br />
