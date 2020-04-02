@@ -20,7 +20,6 @@ export default class Auth extends React.Component<Props, State> {
             isLogin: !this.state.isLogin
         })
     }
-
     render(){
         return (
             <Container>
