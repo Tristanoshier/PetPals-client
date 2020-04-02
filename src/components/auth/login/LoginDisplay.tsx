@@ -4,14 +4,14 @@ type Props = {
     incorrectPassword: boolean,
     usernameNotExist: boolean,
     isLogin: boolean,
-    onChange: (event: any) => void,
+    onSubmit: (event: any) => void,
     isLoginHandler: () => void,
     onUsernameChange: (e: any) => void,
     onPasswordChange: (e: any) => void
 }
 function LoginDisplay(props: Props) {
     return (
-        <Form onChange={props.onChange}>
+        <Form onSubmit={props.onSubmit}>
             <FormGroup>
                 <Label for="username" hidden>Username</Label>
                 <Input onChange={e => props.onUsernameChange(e)} name="username" placeholder="Username" />
@@ -23,7 +23,6 @@ function LoginDisplay(props: Props) {
             </FormGroup>
             <br />
             <Button type="submit">Login</Button>
-            {console.log(props.isLogin)}
             <p className="auth-switch" onClick={props.isLoginHandler}>
                 {props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
             </p>

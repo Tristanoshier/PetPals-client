@@ -28,23 +28,23 @@ export default class Signup extends React.Component<Props, State> {
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        if (this.state.password.length < 5) {
-            this.setState({
-                passwordRequired: true
-            })
-        } else {
+        if(this.state.password.length < 5){
+            alert('password must be at least 5 characters')
+        }else{
             fetch(`http://localhost:3001/user/signup`, {
                 method: 'POST',
-                body: JSON.stringify({ username: this.state.username, password: this.state.password }),
+                body: JSON.stringify({ username: this.state.username, password: this.state.password, adoptionRecruiter: this.state.adoptionRecruiter }),
                 headers: new Headers({
                     'Content-Type': 'application/json'
                 })
             })
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data.sessionToken)
                     this.props.updateToken(data.sessionToken)
                 })
-        }
+            }
+        
     }
 
     onUsernameChange(e: any) {
@@ -76,7 +76,7 @@ export default class Signup extends React.Component<Props, State> {
                 <h1>Signup</h1>
                 <SignupDisplay
                     passwordRequired={this.state.passwordRequired}
-                    onChange={this.handleSubmit}
+                    onSubmit={this.handleSubmit.bind(this)}
                     isLogin={this.props.isLogin}
                     isLoginHandler={this.props.isLoginHandler}
                     onUsernameChange={this.onUsernameChange.bind(this)}
