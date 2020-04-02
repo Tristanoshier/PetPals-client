@@ -38,10 +38,10 @@ export default class App extends React.Component {
     return(this.state.sessionToken === localStorage.getItem('token') && this.state.sessionToken !== 'undefined' ? 
     <div>
         <Router>
-          <Home clickLogout={this.clearToken} token={this.state.sessionToken}  />
+          <Home clickLogout={this.clearToken.bind(this)} token={this.state.sessionToken}  />
         </Router>
     </div>
-    : <Auth updateToken={this.updateToken} />)
+    : <Auth updateToken={this.updateToken.bind(this)} />)
   }
 
   render(){

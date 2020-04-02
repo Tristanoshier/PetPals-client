@@ -1,47 +1,42 @@
 import React from 'react'
 import { Form, FormGroup, Button, Label, Input, ButtonGroup, } from 'reactstrap';
 
-interface Props {
-    username: string,
-    password: string,
+type Props = {
     passwordRequired: boolean,
-    adoptionRecruiter: boolean,
     onChange: (event: any) => void,
-    isLogin: boolean
+    isLogin: boolean,
+    isLoginHandler: (e: any) => void,
+    onUsernameChange: (e: any) => void,
+    onPasswordChange: (e: any) => void,
+    onAdoptionChangeTrue: () => void,
+    onAdoptionChangeFalse: () => void
 }
 
-export default class SignupDisplay extends React.Component<Props> {
-
-    state = {
-        username: this.props.username,
-        password: this.props.password,
-        passwordRequired: this.props.passwordRequired,
-        adoptionRecruiter: this.props.adoptionRecruiter,
-        isLogin: this.props.isLogin
-    }
-    render() {
+function SignupDisplay(props: Props) {
         return (
-            <Form onChange={this.props.onChange}>
+            <Form onChange={props.onChange}>
                 <FormGroup>
-                    <Label for="username" hidden>Username</Label>
-                    <Input onChange={e => this.setState({ username: e.target.value })} name="username" id="username" placeholder="Username" />
+                    <Label for="unsername" hidden>Username</Label>
+                    <Input onChange={e => props.onUsernameChange(e)} name="username" id="username" placeholder="Username" />
                 </FormGroup>
                 <br />
                 <FormGroup>
                     <Label for="password" hidden>Password</Label>
-                    <Input onChange={e => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
+                    <Input onChange={e => props.onPasswordChange(e)} type="password" name="password" id="password" placeholder="Password" />
                 </FormGroup>
                 <br />
                 <ButtonGroup>
                     <Label>Are you an adoption recruiter?</Label>
-                    <Button color="primary" onClick={() => this.setState({ adoptionRecruiter: true })}>Yes</Button>
-                    <Button color="secondary" onClick={() => this.setState({ adoptionRecruiter: false })}>No</Button>
+                    <Button color="primary" onClick={() => props.onAdoptionChangeTrue()}>Yes</Button>
+                    <Button color="secondary" onClick={() => props.onAdoptionChangeFalse()}>No</Button>
                 </ButtonGroup>
+                <br />
                 <Button type="submit">Signup</Button>
-                <p className="auth-switch" onClick={() => this.setState({ isLogin: !this.state.isLogin })}>
-                    {this.state.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
+                <p className="auth-switch" onClick={props.isLoginHandler}>
+                    {props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
                 </p>
             </Form>
         )
-    }
 }
+
+export default SignupDisplay;
