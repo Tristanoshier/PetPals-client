@@ -1,28 +1,25 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import Login from './login/Login';
-import Signup from './signup/Signup'
-
-interface Props {
-    updateToken: (newToken: string) => void
+import Login from './Login/Login';
+type State = {
+    isLogin: boolean
 }
-
-export default class Auth extends React.Component<Props> {
-    constructor(props: Props){
-        super(props);
+export default class Auth extends React.Component<{}, State> {
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            isLogin: false
+        }
     }
-
-    state = {
-        isLogin: true
+    isLoginHandler() {
+        this.setState({
+            isLogin: !this.state.isLogin
+        })
     }
-    
-    render(){
+    render() {
         return (
             <Container>
-                {this.state.isLogin ?
-                <Login isLogin={this.state.isLogin} updateToken={this.props.updateToken} /> : 
-                <Signup isLogin={this.state.isLogin} updateToken={this.props.updateToken} />
-                }
+                <Login isLogin={this.state.isLogin} isLoginHandler={this.isLoginHandler.bind(this)} />
             </Container>
         )
     }

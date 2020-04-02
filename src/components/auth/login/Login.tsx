@@ -1,12 +1,12 @@
 import React from 'react';
 import LoginDisplay from './LoginDisplay';
 import { Container } from 'reactstrap';
-
-interface Props {
+type Props = {
     isLogin: boolean,
-    updateToken: (newToken: string) => void
+    updateToken?: (newToken: string) => void,
+    isLoginHandler: () => void
 }
-interface State {
+type State = {
     username: string,
     password: string,
     incorrectPassword: boolean,
@@ -14,17 +14,14 @@ interface State {
 }
 export default class Login extends React.Component<Props, State> {
     constructor(props: Props) {
-        super(props);
+        super(props)
+        this.state = {
+            username: "",
+            password: "",
+            incorrectPassword: false,
+            usernameNotExist: false,
+        }
     }
-
-    state = {
-        username: "",
-        password: "",
-        incorrectPassword: false,
-        usernameNotExist: false,
-        isLogin: this.props.isLogin
-    }
-
     handleSubmit = (event: any) => {
         event.preventDefault();
         fetch(`http://localhost:3001/user/login`, {
@@ -47,20 +44,32 @@ export default class Login extends React.Component<Props, State> {
                         usernameNotExist: true
                     })
                 }
-                this.props.updateToken(data.sessionToken);
+                // this.props.updateToken(data.sessionToken);
             })
+    }
+    onUsernameChange(e: any) {
+        this.setState({
+            username: e.target.value
+        })
+    }
+    onPasswordChange(e: any) {
+        this.setState({
+            password: e.target.value
+        })
     }
     render() {
         return (
             <Container>
                 <h1>Login</h1>
+                {console.log(this.props.isLogin)}
                 <LoginDisplay
-                    username={this.state.username}
-                    password={this.state.password}
                     incorrectPassword={this.state.incorrectPassword}
                     usernameNotExist={this.state.usernameNotExist}
                     onChange={this.handleSubmit}
-                    isLogin={this.state.isLogin}
+                    isLogin={this.props.isLogin}
+                    isLoginHandler={this.props.isLoginHandler}
+                    onUsernameChange={this.onUsernameChange.bind(this)}
+                    onPasswordChange={this.onPasswordChange.bind(this)}
                 />
             </Container>
         )

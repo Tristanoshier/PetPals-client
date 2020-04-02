@@ -1,5 +1,6 @@
 import React from 'react';
-import SignupDisplay from './SignupDIsplay';
+import SignupDisplay from './SignupDisplay';
+import { Container } from 'reactstrap';
 
 interface Props {
     isLogin: boolean,
@@ -49,6 +50,7 @@ export default class Signup extends React.Component<Props, State> {
     render() {
         return (
             <div>
+                <h1>Signup</h1>
                 <SignupDisplay
                     username={this.state.username}
                     password={this.state.password}

@@ -42,7 +42,7 @@ export default class SignupDisplay extends React.Component<Props> {
                 </ButtonGroup>
                 <Button onChange={this.props.onChange}>Submit</Button>
                 <p className="auth-switch" onClick={() => this.setState({ isLogin: !this.state.isLogin })}>
-                    {this.props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
+                    {this.state.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
                 </p>
             </Form>
         )
