@@ -5,17 +5,17 @@ import Home from './components/site/Home';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 
-
 export default class App extends React.Component {
-  state = {
-    sessionToken: ""
-  }
-
+    state = {
+      sessionToken: ""
+    }
+  
   componentWillMount() {
     if(localStorage.getItem('token')){
       this.setState({
         sessionToken: localStorage.getItem('token')
       })
+      console.log(this.state.sessionToken)
     }
   }
   
@@ -35,7 +35,7 @@ export default class App extends React.Component {
   }
 
   protectedViews = () => {
-    return(this.state.sessionToken === localStorage.getItem('token') && this.state.sessionToken !== 'undefined' ? 
+    return(this.state.sessionToken === localStorage.getItem('token') ? 
     <div>
         <Router>
           <Home clickLogout={this.clearToken.bind(this)} token={this.state.sessionToken}  />

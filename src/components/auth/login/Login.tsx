@@ -62,11 +62,10 @@ export default class Login extends React.Component<Props, State> {
         return (
             <Container>
                 <h1>Login</h1>
-                {console.log(this.props.isLogin)}
                 <LoginDisplay
                     incorrectPassword={this.state.incorrectPassword}
                     usernameNotExist={this.state.usernameNotExist}
-                    onChange={this.handleSubmit}
+                    onSubmit={this.handleSubmit.bind(this)}
                     isLogin={this.props.isLogin}
                     isLoginHandler={this.props.isLoginHandler}
                     onUsernameChange={this.onUsernameChange.bind(this)}
