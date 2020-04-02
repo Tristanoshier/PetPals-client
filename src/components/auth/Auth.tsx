@@ -1,14 +1,18 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import Login from './Login/Login';
+import Login from './login/Login';
+import Signup from './signup/Signup';
 type State = {
     isLogin: boolean
 }
-export default class Auth extends React.Component<{}, State> {
-    constructor(props: any) {
+type Props = {
+    updateToken: (newToken: string) => void
+}
+export default class Auth extends React.Component<Props, State> {
+    constructor(props: any){
         super(props)
         this.state = {
-            isLogin: false
+            isLogin: true
         }
     }
     isLoginHandler() {
@@ -16,10 +20,14 @@ export default class Auth extends React.Component<{}, State> {
             isLogin: !this.state.isLogin
         })
     }
-    render() {
+
+    render(){
         return (
             <Container>
-                <Login isLogin={this.state.isLogin} isLoginHandler={this.isLoginHandler.bind(this)} />
+                {this.state.isLogin ?
+                    <Login isLogin={this.state.isLogin} isLoginHandler={this.isLoginHandler.bind(this)} updateToken={this.props.updateToken}/> :
+                    <Signup isLogin={this.state.isLogin} isLoginHandler={this.isLoginHandler.bind(this)} updateToken={this.props.updateToken} />
+                }
             </Container>
         )
     }

@@ -3,7 +3,7 @@ import LoginDisplay from './LoginDisplay';
 import { Container } from 'reactstrap';
 type Props = {
     isLogin: boolean,
-    updateToken?: (newToken: string) => void,
+    updateToken: (newToken: string) => void,
     isLoginHandler: () => void
 }
 type State = {
@@ -13,7 +13,7 @@ type State = {
     usernameNotExist: boolean
 }
 export default class Login extends React.Component<Props, State> {
-    constructor(props: Props) {
+    constructor(props: Props){
         super(props)
         this.state = {
             username: "",
@@ -44,7 +44,7 @@ export default class Login extends React.Component<Props, State> {
                         usernameNotExist: true
                     })
                 }
-                // this.props.updateToken(data.sessionToken);
+                this.props.updateToken(data.sessionToken);
             })
     }
     onUsernameChange(e: any) {
