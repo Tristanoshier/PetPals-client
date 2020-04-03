@@ -4,6 +4,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import Search from "./search/Search";
 import Profile from "./profile/Profile";
+
 type Props = {
   onClick: () => void;
 };
@@ -19,7 +20,7 @@ function Navbar(props: Props) {
         <NavItem>
           <NavLink href="#">
             <Link to="/search">Search</Link>{" "}
-          </NavLink>
+          </NavLink>  
         </NavItem>
         <NavItem>
           <NavLink href="#">
