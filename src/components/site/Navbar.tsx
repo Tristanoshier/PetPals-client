@@ -5,9 +5,9 @@ import {
     Link,
     Switch
   } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import Search from './Search';
-import Profile from './Profile';
+import Dashboard from './dashboard/Dashboard';
+import Search from './search/Search';
+import Profile from './profile/Profile';
 
 type Props ={
   onClick : () => void
