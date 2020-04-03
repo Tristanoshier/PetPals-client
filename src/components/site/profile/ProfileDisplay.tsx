@@ -7,10 +7,12 @@ export default class ProfileDisplay extends React.Component{
 
         //GET PROFILE
     }
+
+    
     render(){
         return (
             <div>
-                
+
             </div>
         )
     }
