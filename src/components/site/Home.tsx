@@ -7,11 +7,12 @@ type Props = {
   token: string;
 };
 export default class Home extends React.Component<Props> {
-  render() {
-    return (
-      <div>
-        <Navbar onClick={this.props.clickLogout} />
-      </div>
-    );
-  }
+    render(){
+        return (
+            <div>
+                <Navbar onClick={this.props.clickLogout}/>
+            </div>
+        )
+    }
 }
+
