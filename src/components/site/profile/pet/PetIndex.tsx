@@ -32,4 +32,3 @@ export default class PetIndex extends React.Component {
       )
   }
 }
-
