@@ -1,17 +1,13 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
-import { render } from '@testing-library/react';
-import { string } from 'prop-types';
-import PostCreate from './PostCreate';
-import PostEdit from './PostEdit'
-import PostCards from './PostCards';
+
 
 type Props = {
     token: string;
 }
 
 type State = {
-    postCollection: Object,
+    postCollection: string[],
     description: string,
     postUrl: string,
     descriptionEdit: string,
@@ -20,7 +16,7 @@ type State = {
 
 export default class PostIndex extends React.Component<Props, State> {
     constructor(props: Props) {
-        super(props)
+        super(props);
         this.state = {
             postCollection: [],
             description: "",
@@ -29,10 +25,9 @@ export default class PostIndex extends React.Component<Props, State> {
             postUrlEdit: ""
         }
     }
-    handleSubmit = (event: any) => {
-        event.preventDefault();
-        fetch(`http://localhost:3001/post/create`, {
-            method: 'POST',
+    fetchPosts = () => {
+        fetch(`http://localhost:3001/post/find`, {
+            method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
@@ -40,16 +35,17 @@ export default class PostIndex extends React.Component<Props, State> {
         })
             .then((res) => res.json())
             .then((postData) => {
-                this.props.postData.postCollection
+                console.log(postData)
             })
+    }
+    
+    componentWillMount(){
+        this.fetchPosts()
     }
 
     render() {
         return (
             <div>
-                <PostCreate token={this.props.token} />
-                <PostCards token={this.props.token} />
-                <PostEdit token={this.props.token} />
             </div>
         )
     }

@@ -36,7 +36,7 @@ export default class Navbar extends React.Component<Props> {
       <hr />
       <Switch>
         <Route exact path="/dashboard">
-          <Dashboard />
+          <Dashboard token={this.props.token}/>
         </Route>
         <Route exact path="/search">
           <Search />
