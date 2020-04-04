@@ -10,7 +10,7 @@ export default class Home extends React.Component<Props> {
     render(){
         return (
             <div>
-                <Navbar onClick={this.props.clickLogout}/>
+                <Navbar onClick={this.props.clickLogout} token={this.props.token}/>
             </div>
         )
     }
