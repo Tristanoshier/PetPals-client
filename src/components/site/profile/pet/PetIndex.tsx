@@ -24,12 +24,18 @@ export default class PetIndex extends React.Component {
         console.log(json);
       });
   }
-  render() {
-      return(
-          <div>
-              
-          </div>
-      )
-  }
 }
 
+export default class PetIndex extends React.Component {
+    constructor(props: any) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <div>
+                
+            </div>
+        )
+    }
+}
