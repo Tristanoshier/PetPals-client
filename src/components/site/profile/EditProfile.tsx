@@ -13,53 +13,53 @@ type State = {
 }
 
 export default class EditProfile extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            selectedFile: null
-        }
-    }
+    // constructor(props: Props) {
+    //     super(props);
+    //     this.state = {
+    //         selectedFile: null
+    //     }
+    // }
 
-     handleProfileUpdateSubmit = (event : any) => {
-        event.preventDefault()
-        fetch('', {
-            method: 'PUT',
-            body: JSON.stringify({adoptionRecruiter: }),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': props.token
-            })
-        }).then(res => res.json())
-          .then(data => {
-                if (this.state.selectedFile) {
-                    this.uploadPhoto()
-                }
-                this.showFooter()
-            }).catch(err => console.log(err))
-    }
+    //  handleProfileUpdateSubmit = (event : any) => {
+    //     event.preventDefault()
+    //     fetch('', {
+    //         method: 'PUT',
+    //         body: JSON.stringify({adoptionRecruiter: }),
+    //         headers: new Headers({
+    //             'Content-Type': 'application/json',
+    //             'Authorization': props.token
+    //         })
+    //     }).then(res => res.json())
+    //       .then(data => {
+    //             if (this.state.selectedFile) {
+    //                 this.uploadPhoto()
+    //             }
+    //             this.showFooter()
+    //         }).catch(err => console.log(err))
+    // }
 
-    uploadPhoto = () => {
-        const url = 'https://mc-fetch.herokuapp.com/profile/update-profile-photo'
-        const postData = new FormData()
-        postData.append('image', file)
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'authorization': localStorage.getItem('token')
-            }, body: postData
-        })
-            .then(res => res.json())
-            .catch(err => console.log(err))
-    }
+    // uploadPhoto = () => {
+    //     const url = 'https://mc-fetch.herokuapp.com/profile/update-profile-photo'
+    //     const postData = new FormData()
+    //     postData.append('image', file)
+    //     fetch(url, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'authorization': localStorage.getItem('token')
+    //         }, body: postData
+    //     })
+    //         .then(res => res.json())
+    //         .catch(err => console.log(err))
+    // }
 
-    showFooter = () => {
-        setFooter(!footer)
-        setTimeout(function () {
-            localStorage.removeItem('new-prof-pic')
-            setFooter(false)
-            window.history.back()
-        }, 3000)
-    }
+    // showFooter = () => {
+    //     setFooter(!footer)
+    //     setTimeout(function () {
+    //         localStorage.removeItem('new-prof-pic')
+    //         setFooter(false)
+    //         window.history.back()
+    //     }, 3000)
+    // }
 
 
     // singleFileChangedHandler = (event: any) => {
@@ -119,11 +119,11 @@ export default class EditProfile extends React.Component<Props, State> {
                         <p className="text-muted" style={{ marginLeft: '12px' }}>Upload Size: 250px x 250px ( Max 2MB )</p>
                     </div>
                     <div className="card-body">
-                        <p className="card-text">Please upload an image for your profile</p>
+                        {/* <p className="card-text">Please upload an image for your profile</p>
                         <input type="file" onChange={this.singleFileChangedHandler} />
                         <div className="mt-5">
                             <button className="btn btn-info" onClick={this.singleFileUploadHandler}>Upload!</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Container>
