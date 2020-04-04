@@ -1,7 +1,6 @@
 import React from "react";
 import PetCards from "./PetCards";
 // import PetCreate from "./PetCreate";
-
 export default class PetIndex extends React.Component {
   constructor(props: any) {
     super(props);
@@ -19,9 +18,13 @@ export default class PetIndex extends React.Component {
       headers: new Headers({
         "Content-Type": "application/json"
       })
-    }).then(response => response.json())
+    })
+      .then(response => response.json())
       .then(json => {
         console.log(json);
       });
+  }
+  render() {
+    return <div></div>;
   }
 }
