@@ -47,7 +47,7 @@ onPostUrl(e: any) {
 render() {
     return (
         <div>
-            <PostIndex
+            <Post
                 passwordRequired={this.state.passwordRequired}
                 onSubmit={this.handleSubmit.bind(this)}
                 onUsernameChange={this.onUsernameChange.bind(this)}

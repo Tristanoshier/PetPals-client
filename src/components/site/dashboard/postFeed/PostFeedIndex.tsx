@@ -1,10 +1,6 @@
-
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap';
-import { render } from '@testing-library/react';
-import { string } from 'prop-types';
 import PostCreate from './PostCreate';
-import PostEdit from './PostEdit'
+import PostEdit from './PostEdit';
 import PostCards from './PostCards';
 
 type Props = {
@@ -12,7 +8,7 @@ type Props = {
 }
 
 type State = {
-    postCollection: [],
+    postCollection: string[],
     description: string,
     postUrl: string,
     descriptionEdit: string,
@@ -30,10 +26,9 @@ export default class PostIndex extends React.Component<Props, State> {
             postUrlEdit: ""
         }
     }
-    handleSubmit = (event: any) => {
-        event.preventDefault();
-        fetch(`http://localhost:3001/post/create`, {
-            method: 'POST',
+    fetchPosts = () => {
+        fetch(`http://localhost:3001/post/find/feed`, {
+            method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
@@ -41,16 +36,17 @@ export default class PostIndex extends React.Component<Props, State> {
         })
             .then((res) => res.json())
             .then((postData) => {
-                this.props.postData.postCollection
+                console.log(postData)
             })
+    }
+
+    componentDidMount() {
+        this.fetchPosts()
     }
 
     render() {
         return (
             <div>
-                <PostCreate token={this.props.token} />
-                <PostCards token={this.props.token} />
-                <PostEdit token={this.props.token} />
             </div>
         )
     }
