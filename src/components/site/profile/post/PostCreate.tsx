@@ -1,0 +1,70 @@
+import React from 'react';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import { render } from '@testing-library/react';
+
+type Props = {
+    postCreate: any,
+    fetchPosts: () => void,
+    token: string
+}
+
+type State = {
+    description: string,
+    postUrl: string
+}
+
+export default class PostCreate extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            description: "",
+            postUrl: ""
+        }
+    }
+
+    handleSubmit = (event: any) => {
+        if (this.state.description) {
+
+            event.preventDefault();
+            fetch(`http://localhost:3001/post/create`, {
+                method: 'POST',
+                body: JSON.stringify({ description: this.state.description, postUrl: this.state.postUrl }),
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': this.props.token
+                })
+            })
+                .then((res) => res.json())
+                .then(() => {
+                    this.setState({
+                        description: "",
+                        postUrl: ""
+                    })
+                    this.props.fetchPosts();
+                })
+        } else {
+            alert('Must add a caption to post')
+        }
+
+    }
+
+    render() {
+        return (
+            <div>
+                <Container>
+                    <Form onSubmit={this.handleSubmit} autoComplete="off">
+                        <FormGroup>
+                            <Label htmlFor="postUrl">PostUrl:</Label>
+                            <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="description">Caption:</Label>
+                            <Input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
+                        </FormGroup>
+                        <Button type="submit">POST</Button>
+                    </Form>
+                </Container>
+            </div>
+        )
+    }
+}

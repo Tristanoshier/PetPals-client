@@ -1,5 +1,5 @@
 import React from 'react';
-import PostFeedIndex from './postFeed/PostFeedIndex'
+import PostFeedIndex from './postFeed/PostFeedIndex';
 
 type Props = {
     token: string

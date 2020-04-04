@@ -1,7 +1,4 @@
 import React from 'react'
-import PostCreate from './PostCreate';
-import PostEdit from './PostEdit';
-import PostCards from './PostCards';
 
 type Props = {
     token: string;
@@ -26,6 +23,7 @@ export default class PostIndex extends React.Component<Props, State> {
             postUrlEdit: ""
         }
     }
+
     fetchPosts = () => {
         fetch(`http://localhost:3001/post/find/feed`, {
             method: 'GET',
