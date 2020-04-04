@@ -4,8 +4,8 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 type Props = {
     postUpdate: any,
     updateOff: () => void,
-    fetchPosts: () => void,
-    token: string
+    token: string,
+    fetchPosts: () => void
 }
 
 type State = {
@@ -23,7 +23,7 @@ export default class PostEdit extends React.Component<Props, State> {
     }
 
     handlePostUpdate = () => {
-        fetch(`http://localhost3001/post/edit/${this.props.postUpdate.id}`, {
+        fetch(`http://localhost:3001/post/edit/${this.props.postUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({ postUrl: this.state.editPostUrl, description: this.state.editDescription }),
             headers: new Headers({

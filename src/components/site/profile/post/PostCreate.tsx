@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
-import { render } from '@testing-library/react';
 
 type Props = {
     postCreate: any,
@@ -23,9 +22,8 @@ export default class PostCreate extends React.Component<Props, State> {
     }
 
     handleSubmit = (event: any) => {
+        event.preventDefault();
         if (this.state.description) {
-
-            event.preventDefault();
             fetch(`http://localhost:3001/post/create`, {
                 method: 'POST',
                 body: JSON.stringify({ description: this.state.description, postUrl: this.state.postUrl }),
@@ -37,34 +35,31 @@ export default class PostCreate extends React.Component<Props, State> {
                 .then((res) => res.json())
                 .then(() => {
                     this.setState({
-                        description: "",
-                        postUrl: ""
+                        description: '',
+                        postUrl: ''
                     })
                     this.props.fetchPosts();
                 })
         } else {
             alert('Must add a caption to post')
         }
-
     }
 
     render() {
         return (
-            <div>
-                <Container>
-                    <Form onSubmit={this.handleSubmit} autoComplete="off">
-                        <FormGroup>
-                            <Label htmlFor="postUrl">PostUrl:</Label>
-                            <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor="description">Caption:</Label>
-                            <Input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
-                        </FormGroup>
-                        <Button type="submit">POST</Button>
-                    </Form>
-                </Container>
-            </div>
+            <Container>
+                <Form onSubmit={this.handleSubmit} >
+                    <FormGroup>
+                        <Label htmlFor="posturl">PostUrl:</Label>
+                        <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor="description">Caption:</Label>
+                        <Input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
+                    </FormGroup>
+                    <Button type="submit">POST</Button>
+                </Form>
+            </Container>
         )
     }
 }

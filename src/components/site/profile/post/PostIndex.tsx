@@ -1,8 +1,9 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
-import PostCreate from './PostCreate';
+import PostCreate from "./PostCreate";
 import PostCards from './PostCards';
 import PostEdit from './PostEdit';
+
 
 type Props = {
     token: string;
@@ -12,8 +13,8 @@ type State = {
     myPosts: any,
     postUpdate: any,
     postCreate: any,
-    updateActive: boolean,
-    updateOn: boolean
+    updateActive: boolean
+
 }
 
 export default class PostIndex extends React.Component<Props, State> {
@@ -23,8 +24,8 @@ export default class PostIndex extends React.Component<Props, State> {
             myPosts: [],
             postUpdate: {},
             postCreate: {},
-            updateActive: false,
-            updateOn: false
+            updateActive: false
+
         }
     }
     fetchPosts = () => {
@@ -74,41 +75,40 @@ export default class PostIndex extends React.Component<Props, State> {
 
     render() {
         return (
-            <div>
-                <Container>
-                    <Row>
-                        <Col md="12">
-                            <h2>Posts</h2>
-                        </Col>
-                    </Row>
-                    <br />
-                    <Row>
-                        <Col md="12">
-                            <PostCreate
-                                postCreate={this.state.postCreate}
-                                fetchPosts={this.fetchPosts.bind(this)}
-                                token={this.props.token}
-                            />
-                        </Col>
-                        <Col md="12">
-                            <PostCards
-                                myPosts={this.state.myPosts}
-                                editUpdateMyPosts={this.editUpdateMyPosts.bind(this)}
-                                updateOn={this.updateOn.bind(this)}
-                                fetchPosts={this.fetchPosts.bind(this)}
-                                token={this.props.token} />
-                        </Col>
-                        {this.state.updateActive ?
-                            <PostEdit
-                                postUpdate={this.state.postUpdate}
-                                updateOff={this.updateOff.bind(this)}
-                                token={this.props.token}
-                                fetchPosts={this.fetchPosts.bind(this)}
-                            />
-                            : <></>}
-                    </Row>
-                </Container>
-            </div>
+            <Container>
+                <Row>
+                    <Col md="12">
+                        <h2>Posts</h2>
+                    </Col>
+                </Row>
+                <br />
+                <Row>
+                    <Col md="12">
+                        <PostCreate
+                            postCreate={this.state.postCreate}
+                            fetchPosts={this.fetchPosts.bind(this)}
+                            token={this.props.token}
+                        />
+                    </Col>
+                    <Col md="12">
+                        <PostCards
+                            myPosts={this.state.myPosts}
+                            editUpdateMyPosts={this.editUpdateMyPosts.bind(this)}
+                            updateOn={this.updateOn.bind(this)}
+                            fetchPosts={this.fetchPosts.bind(this)}
+                            token={this.props.token}
+                        />
+                    </Col>
+                    {this.state.updateActive ?
+                        <PostEdit
+                            postUpdate={this.state.postUpdate}
+                            updateOff={this.updateOff.bind(this)}
+                            token={this.props.token}
+                            fetchPosts={this.fetchPosts.bind(this)}
+                        />
+                        : <></>}
+                </Row>
+            </Container>
         )
     }
 }

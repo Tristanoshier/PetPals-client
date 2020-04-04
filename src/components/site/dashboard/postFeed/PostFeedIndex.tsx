@@ -38,7 +38,7 @@ export default class PostIndex extends React.Component<Props, State> {
             })
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.fetchPosts()
     }
 
