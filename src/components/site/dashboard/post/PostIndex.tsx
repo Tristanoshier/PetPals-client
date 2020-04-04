@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
 import { render } from '@testing-library/react';
@@ -12,7 +11,7 @@ type Props = {
 }
 
 type State = {
-    postCollection: [],
+    postCollection: Object,
     description: string,
     postUrl: string,
     descriptionEdit: string,
