@@ -7,8 +7,10 @@ import Profile from "./profile/Profile";
 
 type Props = {
   onClick: () => void;
+  token : string
 };
-function Navbar(props: Props) {
+export default class Navbar extends React.Component<Props> {
+  render(){
   return (
     <div>
       <Nav>
@@ -28,7 +30,7 @@ function Navbar(props: Props) {
           </NavLink>
         </NavItem>
         <NavItem>
-          <Button onClick={props.onClick}>Log out</Button>
+          <Button onClick={this.props.onClick}>Log out</Button>
         </NavItem>
       </Nav>
       <hr />
@@ -40,12 +42,11 @@ function Navbar(props: Props) {
           <Search />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <Profile token={this.props.token}/>
         </Route>
         <Route></Route>
       </Switch>
     </div>
   );
+  }
 }
-
-export default Navbar;

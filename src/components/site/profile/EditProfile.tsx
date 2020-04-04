@@ -15,52 +15,50 @@ type State = {
 export default class EditProfile extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        //         this.state = {
-        //             selectedFile: null
-        //         }
-        //     }
+    //     this.state = {
+    //         selectedFile: null
+    //     }
+    // }
+    //  handleProfileUpdateSubmit = (event : any) => {
+    //     event.preventDefault()
+    //     fetch('', {
+    //         method: 'PUT',
+    //         body: JSON.stringify({adoptionRecruiter: }),
+    //         headers: new Headers({
+    //             'Content-Type': 'application/json',
+    //             'Authorization': props.token
+    //         })
+    //     }).then(res => res.json())
+    //       .then(data => {
+    //             if (this.state.selectedFile) {
+    //                 this.uploadPhoto()
+    //             }
+    //             this.showFooter()
+    //         }).catch(err => console.log(err))
+    // }
 
-        //      handleProfileUpdateSubmit = (event : any) => {
-        //         event.preventDefault()
-        //         fetch('', {
-        //             method: 'PUT',
-        //             body: JSON.stringify({adoptionRecruiter: }),
-        //             headers: new Headers({
-        //                 'Content-Type': 'application/json',
-        //                 'Authorization': props.token
-        //             })
-        //         }).then(res => res.json())
-        //           .then(data => {
-        //                 if (this.state.selectedFile) {
-        //                     this.uploadPhoto()
-        //                 }
-        //                 this.showFooter()
-        //             }).catch(err => console.log(err))
-        //     }
+    // uploadPhoto = () => {
+    //     const url = 'https://mc-fetch.herokuapp.com/profile/update-profile-photo'
+    //     const postData = new FormData()
+    //     postData.append('image', file)
+    //     fetch(url, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'authorization': localStorage.getItem('token')
+    //         }, body: postData
+    //     })
+    //         .then(res => res.json())
+    //         .catch(err => console.log(err))
+    // }
 
-        //     uploadPhoto = () => {
-        //         const url = 'https://mc-fetch.herokuapp.com/profile/update-profile-photo'
-        //         const postData = new FormData()
-        //         postData.append('image', file)
-        //         fetch(url, {
-        //             method: 'PUT',
-        //             headers: {
-        //                 'authorization': localStorage.getItem('token')
-        //             }, body: postData
-        //         })
-        //             .then(res => res.json())
-        //             .catch(err => console.log(err))
-        //     }
-
-        //     showFooter = () => {
-        //         setFooter(!footer)
-        //         setTimeout(function () {
-        //             localStorage.removeItem('new-prof-pic')
-        //             setFooter(false)
-        //             window.history.back()
-        //         }, 3000)
-        //     }
-
+    // showFooter = () => {
+    //     setFooter(!footer)
+    //     setTimeout(function () {
+    //         localStorage.removeItem('new-prof-pic')
+    //         setFooter(false)
+    //         window.history.back()
+    //     }, 3000)
+    // 
 
         //     // singleFileChangedHandler = (event: any) => {
         //     //     this.setState({
@@ -107,26 +105,12 @@ export default class EditProfile extends React.Component<Props, State> {
         //     //        alert('Please upload file');
         //     //     }
         //     // };
-
-        //     render() {
-        //         console.log(this.state.selectedFile)
-        //         return (
-        //             <Container>
-        //                 <h1>Profile</h1>
-        //                 <div className="card border-light mb-3 mt-5" style={{ boxShadow: '0 5px 10px 2px rgba(195,192,192,.5)' }}>
-        //                     <div className="card-header">
-        //                         <h3 style={{ color: '#555', marginLeft: '12px' }}>Single Image Upload</h3>
-        //                         <p className="text-muted" style={{ marginLeft: '12px' }}>Upload Size: 250px x 250px ( Max 2MB )</p>
-        //                     </div>
-        //                     <div className="card-body">
-        //                         <p className="card-text">Please upload an image for your profile</p>
-        //                         <input type="file" onChange={this.singleFileChangedHandler} />
-        //                         <div className="mt-5">
-        //                             <button className="btn btn-info" onClick={this.singleFileUploadHandler}>Upload!</button>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             </Container>
-        //         )
+    render() {
+        console.log(this.state.selectedFile)
+        return (
+            <Container>
+                <h1>Profile</h1>
+            </Container>
+        )
     }
 }
