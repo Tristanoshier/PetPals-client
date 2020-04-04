@@ -19,7 +19,7 @@ export default class ProfileDisplay extends React.Component<Props> {
       })
     }).then(res => res.json())
     .then((profile) => {
-      console.log(profile)
+      // console.log(profile)
     }).catch(err => console.log(err))
   }
 
