@@ -1,26 +1,37 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
-export default class ProfileDisplay extends React.Component {
+type Props = {
+  token : string
+}
+
+export default class ProfileDisplay extends React.Component<Props> {
   constructor(props: any) {
     super(props);
   }
+
+  fetchMyProfile(){
+    fetch('http://localhost:3001/user/find', {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type' : 'application/json',
+        'Authorization': this.props.token
+      })
+    }).then(res => res.json())
+    .then((profile) => {
+      console.log(profile)
+    }).catch(err => console.log(err))
+  }
+
+  componentWillMount(){
+    this.fetchMyProfile()
+  }
+
   render() {
     return (
-      <div>
-        <Row>
-          <Col>
-          <img src="https://images.unsplash.com/photo-1585474887977-94eb9b42d426?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"></img>
-          </Col>
-          <Col xs="6">
-            <h1>Welcome back, Taylor!</h1>
-            <h3>Create your pets here</h3>
-            <h3></h3>
-          </Col>
-          {/* <Col>.col</Col>
-          <Col>.col</Col> */}
-        </Row>
-      </div>
+     <Container>
+
+     </Container>
     );
   }
 }

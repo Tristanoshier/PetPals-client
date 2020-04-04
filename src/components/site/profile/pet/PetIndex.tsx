@@ -25,17 +25,3 @@ export default class PetIndex extends React.Component {
       });
   }
 }
-
-export default class PetIndex extends React.Component {
-    constructor(props: any) {
-        super(props);
-    }
-
-    render() {
-        return(
-            <div>
-                
-            </div>
-        )
-    }
-}
