@@ -39,7 +39,7 @@ export default class PostFeedIndex extends React.Component<Props, State> {
             })
     }
     
-    componentDidMount(){
+    componentWillMount(){
         this.fetchPosts()
     }
 
