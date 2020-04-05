@@ -9,7 +9,7 @@ type Props = {
   onClick: () => void;
   token: string
 };
-export default class Navbar extends React.Component<Props> {
+export default class Sitebar extends React.Component<Props> {
   render() {
     return (
       <div>
