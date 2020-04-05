@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Button} from 'reactstrap';
+import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Button } from 'reactstrap';
 
 type Props = {
     myPosts: any,
@@ -11,7 +11,7 @@ type Props = {
 }
 
 export default class PostCards extends React.Component<Props> {
-    constructor(props : Props){
+    constructor(props: Props) {
         super(props);
     }
 
@@ -19,7 +19,7 @@ export default class PostCards extends React.Component<Props> {
         fetch(`http://localhost:3001/post/delete/${post.id}`, {
             method: 'DELETE',
             headers: new Headers({
-                'Content-Type':'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': this.props.token
             })
         }).then(() => this.props.fetchPosts())
@@ -28,16 +28,16 @@ export default class PostCards extends React.Component<Props> {
     postMapper = () => {
         let posts = this.props.myPosts;
 
-        return posts.map((post : any, index : number) => {
+        return posts.map((post: any, index: number) => {
             return (
                 <Card key={index}>
-                      <CardImg top width="100%" src={post.postUrl} alt="Card image cap" />
-                      <CardBody>
-                          <CardSubtitle>{post.description}</CardSubtitle>
-                          <br />
-                          <Button onClick={() =>{this.props.editUpdateMyPosts(post); this.props.updateOn()}}>UPDATE</Button>
-                          <Button onClick={() => {this.postDelete(post)}}>DELETE</Button>
-                      </CardBody>
+                    <CardImg top width="100%" src={post.postUrl} alt="Card image cap" />
+                    <CardBody>
+                        <CardSubtitle>{post.description}</CardSubtitle>
+                        <br />
+                        <Button onClick={() => { this.props.editUpdateMyPosts(post); this.props.updateOn() }}>UPDATE</Button>
+                        <Button onClick={() => { this.postDelete(post) }}>DELETE</Button>
+                    </CardBody>
                 </Card>
             )
         })

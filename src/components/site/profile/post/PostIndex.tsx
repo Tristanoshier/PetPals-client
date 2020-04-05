@@ -11,10 +11,10 @@ type Props = {
 
 type State = {
     myPosts: any,
-    postUpdate : any,
-    postCreate : any,
-    updateActive : boolean
-   
+    postUpdate: any,
+    postCreate: any,
+    updateActive: boolean
+
 }
 
 export default class PostIndex extends React.Component<Props, State> {
@@ -23,9 +23,9 @@ export default class PostIndex extends React.Component<Props, State> {
         this.state = {
             myPosts: [],
             postUpdate: {},
-            postCreate : {},
+            postCreate: {},
             updateActive: false
-          
+
         }
     }
     fetchPosts = () => {
@@ -39,23 +39,23 @@ export default class PostIndex extends React.Component<Props, State> {
             .then((res) => res.json())
             .then((postData) => {
                 this.setState({
-                    myPosts : postData.posts
+                    myPosts: postData.posts
                 })
                 console.log(this.state.myPosts)
             })
     }
-    
-    componentWillMount(){
+
+    componentWillMount() {
         this.fetchPosts()
     }
 
-    editUpdateMyPosts = (post : any) => {
+    editUpdateMyPosts = (post: any) => {
         this.setState({
             postUpdate: post
         })
     }
 
-    editCreateMyPosts = (post : any) => {
+    editCreateMyPosts = (post: any) => {
         this.setState({
             postCreate: post
         })
@@ -63,13 +63,13 @@ export default class PostIndex extends React.Component<Props, State> {
 
     updateOn = () => {
         this.setState({
-            updateActive : true
+            updateActive: true
         })
     }
 
     updateOff = () => {
         this.setState({
-            updateActive : false
+            updateActive: false
         })
     }
 
@@ -84,14 +84,14 @@ export default class PostIndex extends React.Component<Props, State> {
                 <br />
                 <Row>
                     <Col md="12">
-                        <PostCreate 
+                        <PostCreate
                             postCreate={this.state.postCreate}
                             fetchPosts={this.fetchPosts.bind(this)}
                             token={this.props.token}
                         />
                     </Col>
                     <Col md="12">
-                        <PostCards 
+                        <PostCards
                             myPosts={this.state.myPosts}
                             editUpdateMyPosts={this.editUpdateMyPosts.bind(this)}
                             updateOn={this.updateOn.bind(this)}
@@ -99,14 +99,14 @@ export default class PostIndex extends React.Component<Props, State> {
                             token={this.props.token}
                         />
                     </Col>
-                    {this.state.updateActive ? 
+                    {this.state.updateActive ?
                         <PostEdit
                             postUpdate={this.state.postUpdate}
                             updateOff={this.updateOff.bind(this)}
                             token={this.props.token}
                             fetchPosts={this.fetchPosts.bind(this)}
                         />
-                    : <></>}
+                        : <></>}
                 </Row>
             </Container>
         )

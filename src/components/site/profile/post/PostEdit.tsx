@@ -14,7 +14,7 @@ type State = {
 }
 
 export default class PostEdit extends React.Component<Props, State> {
-    constructor(props: Props){
+    constructor(props: Props) {
         super(props);
         this.state = {
             editPostUrl: this.props.postUpdate.postUrl,
@@ -40,7 +40,6 @@ export default class PostEdit extends React.Component<Props, State> {
         this.props.updateOff();
     }
 
-
     render() {
         return (
             <>
@@ -50,11 +49,11 @@ export default class PostEdit extends React.Component<Props, State> {
                         <Form onSubmit={this.handlePostUpdate}>
                             <FormGroup>
                                 <Label htmlFor="postUrl">PostUrl:</Label>
-                                <Input value={this.state.editPostUrl} onChange={e => this.setState({editPostUrl : e.target.value})} />
+                                <Input value={this.state.editPostUrl} onChange={e => this.setState({ editPostUrl: e.target.value })} />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="description">Caption:</Label>
-                                <Input value={this.state.editDescription} onChange={e => this.setState({editDescription : e.target.value})} />
+                                <Input value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} />
                             </FormGroup>
                             <Button type="submit">UPDATE</Button>
                         </Form>

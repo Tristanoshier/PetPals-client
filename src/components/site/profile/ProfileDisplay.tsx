@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 type Props = {
-  token : string
+  token: string
 }
 
 export default class ProfileDisplay extends React.Component<Props> {
@@ -10,28 +10,28 @@ export default class ProfileDisplay extends React.Component<Props> {
     super(props);
   }
 
-  fetchMyProfile(){
+  fetchMyProfile() {
     fetch('http://localhost:3001/user/find', {
       method: 'GET',
       headers: new Headers({
-        'Content-Type' : 'application/json',
+        'Content-Type': 'application/json',
         'Authorization': this.props.token
       })
     }).then(res => res.json())
-    .then((profile) => {
-      // console.log(profile)
-    }).catch(err => console.log(err))
+      .then((profile) => {
+        // console.log(profile)
+      }).catch(err => console.log(err))
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.fetchMyProfile()
   }
 
   render() {
     return (
-     <Container>
+      <Container>
 
-     </Container>
+      </Container>
     );
   }
 }

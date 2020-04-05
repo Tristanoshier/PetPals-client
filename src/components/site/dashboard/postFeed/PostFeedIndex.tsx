@@ -1,6 +1,4 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap';
-
 
 type Props = {
     token: string;
@@ -14,9 +12,9 @@ type State = {
     postUrlEdit: string
 }
 
-export default class PostFeedIndex extends React.Component<Props, State> {
+export default class PostIndex extends React.Component<Props, State> {
     constructor(props: Props) {
-        super(props);
+        super(props)
         this.state = {
             postCollection: [],
             description: "",
@@ -25,6 +23,7 @@ export default class PostFeedIndex extends React.Component<Props, State> {
             postUrlEdit: ""
         }
     }
+
     fetchPosts = () => {
         fetch(`http://localhost:3001/post/find/feed`, {
             method: 'GET',
@@ -38,8 +37,8 @@ export default class PostFeedIndex extends React.Component<Props, State> {
                 console.log(postData)
             })
     }
-    
-    componentWillMount(){
+
+    componentWillMount() {
         this.fetchPosts()
     }
 
