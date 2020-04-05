@@ -88,8 +88,23 @@ export default class PetIndex extends React.Component<Props, State> {
               fetchPets={this.fetchPets.bind(this)}
               token={this.props.token}
             />
-
           </Col>
+          <Col md="12">
+            <PetCards
+              myPets={this.state.myPets}
+              petCreate={this.state.petCreate}
+              editUpdateMyPets={this.fetchPets.bind(this)}
+              fetchPets={this.fetchPets.bind(this)}
+              token={this.props.token}
+            />
+          </Col>
+          {/* <Col md="12">
+            <PetEdit
+              petCreate={this.state.petCreate}
+              fetchPets={this.fetchPets.bind(this)}
+              token={this.props.token}
+            />
+          </Col> */}
         </Row>
       </Container>
     )

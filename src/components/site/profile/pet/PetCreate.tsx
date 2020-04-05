@@ -28,7 +28,7 @@ export default class PetCreate extends React.Component<Props, State> {
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        if (this.state.name && this.state.bio && this.state.adoption && this.state.petPicUrl) {
+        if (this.state.name && this.state.bio && this.state.petPicUrl) {
             fetch(`http://localhost:3001/pet/create`, {
                 method: 'POST',
                 body: JSON.stringify({ name: this.state.name, animal: this.state.animal, bio: this.state.bio, adoption: this.state.adoption, petPicUrl: this.state.petPicUrl }),
@@ -62,22 +62,23 @@ export default class PetCreate extends React.Component<Props, State> {
                         <Input value={this.state.petPicUrl} onChange={e => this.setState({ petPicUrl: e.target.value })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="posturl">PostUrl:</Label>
-                        <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
+                        <Label htmlFor="name">Name:</Label>
+                        <Input value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="posturl">PostUrl:</Label>
-                        <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
+                        <Label htmlFor="animal">Animal:</Label>
+                        <Input value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="posturl">PostUrl:</Label>
-                        <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
+                        <Label htmlFor="bio">Bio:</Label>
+                        <Input value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="description">Caption:</Label>
-                        <Input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
+                        <Label htmlFor="adoption">Adoption:</Label>
+                        <Button color="primary" onClick={() => this.setState(true)}>Yes</Button>
+                        <Button color="secondary" onClick={() => this.setState(false)}>No</Button>
                     </FormGroup>
-                    <Button type="submit">POST</Button>
+                    <Button type="submit">CREATE PET</Button>
                 </Form>
             </Container>
         )
