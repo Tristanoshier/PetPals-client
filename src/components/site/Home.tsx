@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "reactstrap";
-import Navbar from "./Navbar";
+import Sitebar from "./Sitebar";
 
 type Props = {
   clickLogout: () => void;
@@ -10,7 +10,7 @@ export default class Home extends React.Component<Props> {
     render(){
         return (
             <div>
-                <Navbar onClick={this.props.clickLogout} token={this.props.token}/>
+                <Sitebar onClick={this.props.clickLogout} token={this.props.token}/>
             </div>
         )
     }
