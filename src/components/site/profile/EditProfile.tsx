@@ -24,14 +24,14 @@ export default class EditProfile extends React.Component<Props, State>{
             editAdoptionRecruiter: this.props.profileInfo.adoptionRecruiter,
             editBio: this.props.profileInfo.bio,
             editContact: this.props.profileInfo.contact,
-            editProfileImg: this.props.profileInfo.profileImg
+            editProfileImg: this.props.profileInfo.ProfileImg
         }
     }
 
     handleProfileUpdate = () => {
         fetch(`http://localhost:3001/user/update/${this.props.profileInfo.username}`, {
             method: 'PUT',
-            body: JSON.stringify({username: this.state.editUsername, adoptionRecruiter: this.state.editAdoptionRecruiter, bio: this.state.editBio, contact: this.state.editContact, profileImg: this.state.editProfileImg}),
+            body: JSON.stringify({username: this.state.editUsername, adoptionRecruiter: this.state.editAdoptionRecruiter, bio: this.state.editBio, contact: this.state.editContact, ProfileImg: this.state.editProfileImg}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
