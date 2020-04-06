@@ -1,41 +1,44 @@
-<<<<<<< HEAD:src/components/site/dashboard/post/PostIndex.tsx
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import { render } from "@testing-library/react";
-import { string } from "prop-types";
-import PostCreate from "./PostCreate";
-import PostEdit from "./PostEdit";
-import PostCards from "./PostCards";
-=======
-import React from 'react'
+import {
+  Col,
+  Row,
+  Card,
+  CardImg,
+  CardTitle,
+  CardDeck,
+  CardBody,
+  Button,
+  CardSubtitle,
+  Container
+} from "reactstrap";
 
->>>>>>> ab7322d23ed65cf11ae76fda690c98fb3d6e328d:src/components/site/dashboard/postFeed/PostFeedIndex.tsx
 type Props = {
   token: string;
 };
+
 type State = {
-<<<<<<< HEAD:src/components/site/dashboard/post/PostIndex.tsx
-  postCollection: Object;
-  description: string;
-  postUrl: string;
-  descriptionEdit: string;
-  postUrlEdit: string;
+  myFeed: any;
 };
+
+// type State = {
+//     postCollection: string[],
+//     description: string,
+//     postUrl: string,
+//     descriptionEdit: string,
+//     postUrlEdit: string
+// }
+
 export default class PostIndex extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      postCollection: [],
-      description: "",
-      postUrl: "",
-      descriptionEdit: "",
-      postUrlEdit: ""
+      myFeed: []
     };
   }
-  handleSubmit = (event: any) => {
-    event.preventDefault();
-    fetch(`http://localhost:3001/post/create`, {
-      method: "POST",
+
+  fetchPosts = () => {
+    fetch(`http://localhost:3001/post/find/feed`, {
+      method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: this.props.token
@@ -43,61 +46,39 @@ export default class PostIndex extends React.Component<Props, State> {
     })
       .then(res => res.json())
       .then(postData => {
-        this.props.postData.postCollection;
+        console.log(postData);
+        this.setState({
+          myFeed: postData
+        });
       });
   };
+
+  componentWillMount() {
+    this.fetchPosts();
+  }
+
+  feedMapper = () => {
+    let feed = this.state.myFeed;
+
+    return feed.map((feed: any, index: number) => {
+      return (
+        <Card key={index}>
+          <CardImg top width="100%" src={feed.postUrl} alt="Card image cap" />
+          <CardBody>
+            <CardSubtitle>{feed.description}</CardSubtitle>
+          </CardBody>
+        </Card>
+      );
+    });
+  };
+
   render() {
     return (
-      <div>
-        <PostCreate token={this.props.token} />
-        <PostCards token={this.props.token} />
-        <PostEdit token={this.props.token} />
-      </div>
+      <Container>
+        <Row>
+          <Col md="12">{this.feedMapper()}</Col>
+        </Row>
+      </Container>
     );
   }
-=======
-    postCollection: string[],
-    description: string,
-    postUrl: string,
-    descriptionEdit: string,
-    postUrlEdit: string
-}
-
-export default class PostIndex extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            postCollection: [],
-            description: "",
-            postUrl: "",
-            descriptionEdit: "",
-            postUrlEdit: ""
-        }
-    }
-
-    fetchPosts = () => {
-        fetch(`http://localhost:3001/post/find/feed`, {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': this.props.token
-            })
-        })
-            .then((res) => res.json())
-            .then((postData) => {
-                console.log(postData)
-            })
-    }
-
-    componentWillMount() {
-        this.fetchPosts()
-    }
-
-    render() {
-        return (
-            <div>
-            </div>
-        )
-    }
->>>>>>> ab7322d23ed65cf11ae76fda690c98fb3d6e328d:src/components/site/dashboard/postFeed/PostFeedIndex.tsx
 }
