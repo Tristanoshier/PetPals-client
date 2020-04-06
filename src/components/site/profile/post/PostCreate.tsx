@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import AddIcon from '@material-ui/icons/Add';
+import IconButton from '@material-ui/core/IconButton/IconButton'
 
 type Props = {
     postCreate: any,
@@ -57,7 +59,7 @@ export default class PostCreate extends React.Component<Props, State> {
                         <Label htmlFor="description">Caption:</Label>
                         <Input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
                     </FormGroup>
-                    <Button type="submit">POST</Button>
+                    <IconButton type="submit">Add<AddIcon /></IconButton>
                 </Form>
             </Container>
         )

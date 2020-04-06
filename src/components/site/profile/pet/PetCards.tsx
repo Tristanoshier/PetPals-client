@@ -1,5 +1,8 @@
 import React from "react";
 import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, Button, CardSubtitle } from "reactstrap";
+import ClearIcon from '@material-ui/icons/Clear';
+import CreateIcon from '@material-ui/icons/Create';
+import IconButton from '@material-ui/core/IconButton/IconButton';
 
 type Props = {
   myPets: any,
@@ -40,8 +43,8 @@ export default class PetCards extends React.Component<Props> {
                 <CardSubtitle>{pet.animal}</CardSubtitle>
                 <CardSubtitle>{pet.bio}</CardSubtitle>
                 <br />
-                <Button onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}>UPDATE</Button>
-                <Button onClick={() => { this.petDelete(pet) }}>DELETE</Button>
+                <IconButton onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}><CreateIcon /></IconButton>
+                <IconButton onClick={() => { this.petDelete(pet) }}><ClearIcon /></IconButton>
               </CardBody>
             </Col>
           </Row>

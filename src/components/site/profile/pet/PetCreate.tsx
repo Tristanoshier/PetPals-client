@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 //Material UI
 import AddIcon from '@material-ui/icons/Add';
-import IconButton from '@material-ui/core/IconButton/IconButton'
+import IconButton from '@material-ui/core/IconButton/IconButton';
 
 type Props = {
     petCreate: any,
