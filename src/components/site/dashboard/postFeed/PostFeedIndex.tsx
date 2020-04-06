@@ -20,14 +20,6 @@ type State = {
   myFeed: any;
 };
 
-// type State = {
-//     postCollection: string[],
-//     description: string,
-//     postUrl: string,
-//     descriptionEdit: string,
-//     postUrlEdit: string
-// }
-
 export default class PostIndex extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
