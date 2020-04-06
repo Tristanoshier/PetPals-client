@@ -11,7 +11,6 @@ type Props = {
     fetchPets: () => void,
     token: string,
     createOff: () => void,
-    createOn: () => void
 }
 
 type State = {
@@ -55,7 +54,7 @@ export default class PetCreate extends React.Component<Props, State> {
                         petPicUrl: ""
                     })
                     this.props.fetchPets();
-                    this.props.createOff()
+                    this.props.createOff();
                 })
         } else {
             alert('Must add the name, bio, adoption status, and a picture of your pet')
@@ -69,34 +68,34 @@ export default class PetCreate extends React.Component<Props, State> {
     render() {
         return (
             <>
-            <Modal isOpen={true}>
-                <ModalHeader>Create Pet<IconButton onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
-                <ModalBody >
-                <Form onSubmit={this.handleSubmit} >
-                    <FormGroup>
-                        <Label htmlFor="petPicUrl">PetPicUrl:</Label>
-                        <Input value={this.state.petPicUrl} onChange={e => this.setState({ petPicUrl: e.target.value })} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="name">Name:</Label>
-                        <Input value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="animal">Animal:</Label>
-                        <Input value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="posturl">Bio:</Label>
-                        <Input value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="description">Adoption:</Label>
-                        <Button color="primary" onClick={() => this.setState({ adoption: true })}>Yes</Button>
-                        <Button color="secondary" onClick={() => this.setState({ adoption: false })}>No</Button>
-                    </FormGroup>
-                    <IconButton type="submit">Add<AddIcon /></IconButton>
-                </Form>
-                </ModalBody>
+                <Modal isOpen={true}>
+                    <ModalHeader>Create Pet<IconButton onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
+                    <ModalBody >
+                        <Form onSubmit={this.handleSubmit} >
+                            <FormGroup>
+                                <Label htmlFor="petPicUrl">PetPicUrl:</Label>
+                                <Input value={this.state.petPicUrl} onChange={e => this.setState({ petPicUrl: e.target.value })} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="name">Name:</Label>
+                                <Input value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="animal">Animal:</Label>
+                                <Input value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="posturl">Bio:</Label>
+                                <Input value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="description">Adoption:</Label>
+                                <Button color="primary" onClick={() => this.setState({ adoption: true })}>Yes</Button>
+                                <Button color="secondary" onClick={() => this.setState({ adoption: false })}>No</Button>
+                            </FormGroup>
+                            <IconButton type="submit">Add<AddIcon /></IconButton>
+                        </Form>
+                    </ModalBody>
                 </Modal>
             </>
         )

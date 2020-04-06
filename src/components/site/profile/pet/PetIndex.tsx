@@ -100,13 +100,12 @@ export default class PetIndex extends React.Component<Props, State> {
           <Col md="12">
 
             {this.state.petCreateActive ?
-            <PetCreate
-              petCreate={this.state.petCreate}
-              fetchPets={this.fetchPets.bind(this)}
-              token={this.props.token}
-              createOff={this.createOff.bind(this)}
-              createOn={this.createOn.bind(this)}
-            /> : <></>}
+              <PetCreate
+                petCreate={this.state.petCreate}
+                fetchPets={this.fetchPets.bind(this)}
+                token={this.props.token}
+                createOff={this.createOff.bind(this)}
+              /> : <></>}
           </Col>
           <Col md="12">
             <PetCards
