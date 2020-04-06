@@ -1,51 +1,76 @@
-import React from 'react'
+import React from "react";
+import {
+  Col,
+  Row,
+  Card,
+  CardImg,
+  CardTitle,
+  CardDeck,
+  CardBody,
+  Button,
+  CardSubtitle,
+  Container
+} from "reactstrap";
 
 type Props = {
-    token: string;
-}
+  token: string;
+};
 
 type State = {
-    postCollection: string[],
-    description: string,
-    postUrl: string,
-    descriptionEdit: string,
-    postUrlEdit: string
-}
+  myFeed: any;
+};
 
 export default class PostIndex extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            postCollection: [],
-            description: "",
-            postUrl: "",
-            descriptionEdit: "",
-            postUrlEdit: ""
-        }
-    }
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      myFeed: []
+    };
+  }
 
-    fetchPosts = () => {
-        fetch(`http://localhost:3001/post/find/feed`, {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': this.props.token
-            })
-        })
-            .then((res) => res.json())
-            .then((postData) => {
-                console.log(postData)
-            })
-    }
+  fetchPosts = () => {
+    fetch(`http://localhost:3001/post/find/feed`, {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: this.props.token
+      })
+    })
+      .then(res => res.json())
+      .then(postData => {
+        console.log(postData);
+        this.setState({
+          myFeed: postData
+        });
+      });
+  };
 
-    componentDidMount() {
-        this.fetchPosts()
-    }
+  componentWillMount() {
+    this.fetchPosts();
+  }
 
-    render() {
-        return (
-            <div>
-            </div>
-        )
-    }
+  feedMapper = () => {
+    let feed = this.state.myFeed;
+
+    return feed.map((feed: any, index: number) => {
+      return (
+        <Card key={index}>
+          <CardImg top width="100%" src={feed.postUrl} alt="Card image cap" />
+          <CardBody>
+            <CardSubtitle>{feed.description}</CardSubtitle>
+          </CardBody>
+        </Card>
+      );
+    });
+  };
+
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col md="12">{this.feedMapper()}</Col>
+        </Row>
+      </Container>
+    );
+  }
 }
