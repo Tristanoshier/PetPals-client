@@ -4,12 +4,18 @@ import { Route, Link, Switch } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import Search from "./search/Search";
 import Profile from "./profile/Profile";
+import EditProfile from "./profile/EditProfile";
 
 type Props = {
   onClick: () => void;
   token: string
 };
+
 export default class Sitebar extends React.Component<Props> {
+  constructor(props: Props){
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -18,7 +24,7 @@ export default class Sitebar extends React.Component<Props> {
               <Link to="/dashboard">Dashboard</Link>
           </NavItem>
           <NavItem>
-              <Link to="/search">Search</Link>{" "}
+              <Link to="/search">Search</Link>
           </NavItem>
           <NavItem>
               <Link to="/profile">Profile</Link>
@@ -37,8 +43,7 @@ export default class Sitebar extends React.Component<Props> {
           </Route>
           <Route exact path="/profile">
             <Profile token={this.props.token} />
-          </Route>
-          <Route></Route>
+          </Route> 
         </Switch>
       </div>
     );
