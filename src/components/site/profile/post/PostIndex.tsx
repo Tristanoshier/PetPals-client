@@ -78,7 +78,7 @@ export default class PostIndex extends React.Component<Props, State> {
             <Container>
                 <Row>
                     <Col md="12">
-                        <h2>Posts</h2>
+                        {/* {this.create} */}
                     </Col>
                 </Row>
                 <br />
