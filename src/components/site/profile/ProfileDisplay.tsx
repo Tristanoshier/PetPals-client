@@ -66,7 +66,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
         <Card>
           <Row>
               <Col md="4">
-                <CardImg className="card-img" src={this.state.profileInfo.profileImg} alt="pet pic" />
+                <CardImg className="card-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
               </Col>
               <Col md="8">
                 <CardBody>
