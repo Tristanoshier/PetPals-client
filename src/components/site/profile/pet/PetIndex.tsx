@@ -90,15 +90,15 @@ export default class PetIndex extends React.Component<Props, State> {
             />
           </Col>
           <Col md="12">
-              <PetCards 
-                myPets={this.state.myPets}
-                editUpdateMyPets={this.editUpdateMyPets.bind(this)}
-                updateOn={this.updateOn.bind(this)}
-                fetchPets={this.fetchPets.bind(this)}
-                token={this.props.token}
-              />
+            <PetCards
+              myPets={this.state.myPets}
+              editUpdateMyPets={this.editUpdateMyPets.bind(this)}
+              updateOn={this.updateOn.bind(this)}
+              fetchPets={this.fetchPets.bind(this)}
+              token={this.props.token}
+            />
           </Col>
-          {this.state.petUpdateActive ? 
+          {this.state.petUpdateActive ?
             <PetEdit
               petUpdate={this.state.petUpdate}
               updateOff={this.updateOff.bind(this)}

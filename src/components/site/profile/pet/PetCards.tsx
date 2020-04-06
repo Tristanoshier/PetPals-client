@@ -1,27 +1,30 @@
 import React from "react";
-import {Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, Button, CardSubtitle} from "reactstrap";
+import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, Button, CardSubtitle } from "reactstrap";
+import ClearIcon from '@material-ui/icons/Clear';
+import CreateIcon from '@material-ui/icons/Create';
+import IconButton from '@material-ui/core/IconButton/IconButton';
 
 type Props = {
-    myPets: any,
-    editUpdateMyPets: (pet: any) => void,
-    updateOn: () => void,
-    fetchPets: () => void,
-    token: string
+  myPets: any,
+  editUpdateMyPets: (pet: any) => void,
+  updateOn: () => void,
+  fetchPets: () => void,
+  token: string
 }
 
 export default class PetCards extends React.Component<Props> {
-    constructor(props: Props){
-        super(props)
-    }
+  constructor(props: Props) {
+    super(props)
+  }
 
-    petDelete = (pet: any) => {
-      fetch(`http://localhost:3001/pet/delete/${pet.id}`, {
-          method: 'DELETE',
-          headers: new Headers({
-              'Content-Type': 'application/json',
-              'Authorization': this.props.token
-          })
-      }).then(() => this.props.fetchPets())
+  petDelete = (pet: any) => {
+    fetch(`http://localhost:3001/pet/delete/${pet.id}`, {
+      method: 'DELETE',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': this.props.token
+      })
+    }).then(() => this.props.fetchPets())
   }
 
   petMapper = () => {
@@ -40,8 +43,8 @@ export default class PetCards extends React.Component<Props> {
                 <CardSubtitle>{pet.animal}</CardSubtitle>
                 <CardSubtitle>{pet.bio}</CardSubtitle>
                 <br />
-                <Button onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}>UPDATE</Button>
-                <Button onClick={() => { this.petDelete(pet) }}>DELETE</Button>
+                <IconButton onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}><CreateIcon /></IconButton>
+                <IconButton onClick={() => { this.petDelete(pet) }}><ClearIcon /></IconButton>
               </CardBody>
             </Col>
           </Row>
@@ -50,7 +53,7 @@ export default class PetCards extends React.Component<Props> {
     })
   }
 
-  render(){
+  render() {
     return (
       <CardDeck>
         {this.petMapper()}

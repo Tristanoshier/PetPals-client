@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import ClearIcon from '@material-ui/icons/Clear';
+import CreateIcon from '@material-ui/icons/Create';
+import IconButton from '@material-ui/core/IconButton/IconButton';
 
 type Props = {
     postUpdate: any,
@@ -44,7 +47,7 @@ export default class PostEdit extends React.Component<Props, State> {
         return (
             <>
                 <Modal isOpen={true}>
-                    <ModalHeader>Edit Post<Button onClick={this.closeUpdateModal}>X</Button></ModalHeader>
+                    <ModalHeader>Edit Post<IconButton onClick={this.closeUpdateModal}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handlePostUpdate}>
                             <FormGroup>
@@ -55,7 +58,7 @@ export default class PostEdit extends React.Component<Props, State> {
                                 <Label htmlFor="description">Caption:</Label>
                                 <Input value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} />
                             </FormGroup>
-                            <Button type="submit">UPDATE</Button>
+                            <IconButton type="submit"><CreateIcon /></IconButton>
                         </Form>
                     </ModalBody>
                 </Modal>
