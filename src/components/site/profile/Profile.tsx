@@ -8,6 +8,8 @@ import PetIndex from "./pet/PetIndex";
 import PetsIcon from "@material-ui/icons/Pets";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import IconButton from "@material-ui/core/IconButton/IconButton";
+import AddIcon from '@material-ui/icons/Add';
+//Reactstrap
 import { Container } from 'reactstrap'
 
 type Props = {

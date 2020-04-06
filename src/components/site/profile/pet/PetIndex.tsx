@@ -1,8 +1,10 @@
 import React from "react";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import PetCreate from "./PetCreate";
 import PetCards from "./PetCards";
 import PetEdit from './PetEdit';
+//Material UI
+
 
 type Props = {
   token: string;
@@ -13,7 +15,7 @@ type State = {
   petUpdate: any,
   petCreate: any,
   petUpdateActive: boolean
-
+  petCreateActive: boolean
 }
 
 export default class PetIndex extends React.Component<Props, State> {
@@ -23,7 +25,8 @@ export default class PetIndex extends React.Component<Props, State> {
       myPets: [],
       petUpdate: {},
       petCreate: {},
-      petUpdateActive: false
+      petUpdateActive: false,
+      petCreateActive: false
     }
   }
   fetchPets = () => {
@@ -72,22 +75,38 @@ export default class PetIndex extends React.Component<Props, State> {
     })
   }
 
+  createOff = () => {
+    this.setState({
+      petCreateActive: false
+    })
+  }
+
+  createOn = () => {
+    this.setState({
+      petCreateActive: true
+    })
+  }
+
   render() {
     return (
       <Container>
         <Row>
           <Col md="12">
-            <h2>Pets</h2>
+            <Button onClick={() => this.createOn()}>+</Button>
           </Col>
         </Row>
         <br />
         <Row>
           <Col md="12">
+
+            {this.state.petCreateActive ?
             <PetCreate
               petCreate={this.state.petCreate}
               fetchPets={this.fetchPets.bind(this)}
               token={this.props.token}
-            />
+              createOff={this.createOff.bind(this)}
+              createOn={this.createOn.bind(this)}
+            /> : <></>}
           </Col>
           <Col md="12">
             <PetCards

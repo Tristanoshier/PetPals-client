@@ -1,13 +1,17 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import ClearIcon from '@material-ui/icons/Clear';
+
 
 type Props = {
     petCreate: any,
     fetchPets: () => void,
-    token: string
+    token: string,
+    createOff: () => void,
+    createOn: () => void
 }
 
 type State = {
@@ -17,6 +21,7 @@ type State = {
     adoption: boolean,
     petPicUrl: string
 }
+
 export default class PetCreate extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props)
@@ -50,15 +55,23 @@ export default class PetCreate extends React.Component<Props, State> {
                         petPicUrl: ""
                     })
                     this.props.fetchPets();
+                    this.props.createOff()
                 })
         } else {
             alert('Must add the name, bio, adoption status, and a picture of your pet')
         }
     }
 
+    closeCreateModal = () => {
+        this.props.createOff()
+    }
+
     render() {
         return (
-            <Container>
+            <>
+            <Modal isOpen={true}>
+                <ModalHeader>Create Pet<IconButton onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
+                <ModalBody >
                 <Form onSubmit={this.handleSubmit} >
                     <FormGroup>
                         <Label htmlFor="petPicUrl">PetPicUrl:</Label>
@@ -83,7 +96,9 @@ export default class PetCreate extends React.Component<Props, State> {
                     </FormGroup>
                     <IconButton type="submit">Add<AddIcon /></IconButton>
                 </Form>
-            </Container>
+                </ModalBody>
+                </Modal>
+            </>
         )
     }
 }
