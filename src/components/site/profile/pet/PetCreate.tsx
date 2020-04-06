@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+//Material UI
+import AddIcon from '@material-ui/icons/Add';
+import IconButton from '@material-ui/core/IconButton/IconButton'
 
 type Props = {
     petCreate: any,
@@ -78,7 +81,7 @@ export default class PetCreate extends React.Component<Props, State> {
                         <Button color="primary" onClick={() => this.setState({adoption: true})}>Yes</Button>
                         <Button color="secondary" onClick={() => this.setState({adoption: false})}>No</Button>
                     </FormGroup>
-                    <Button type="submit">CREATE PET</Button>
+                    <IconButton type="submit">Add<AddIcon /></IconButton>
                 </Form>
             </Container>
         )
