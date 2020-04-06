@@ -1,5 +1,8 @@
 import React from 'react';
 import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Button } from 'reactstrap';
+import ClearIcon from '@material-ui/icons/Clear';
+import CreateIcon from '@material-ui/icons/Create';
+import IconButton from '@material-ui/core/IconButton/IconButton';
 
 type Props = {
     myPosts: any,
@@ -35,8 +38,8 @@ export default class PostCards extends React.Component<Props> {
                     <CardBody>
                         <CardSubtitle>{post.description}</CardSubtitle>
                         <br />
-                        <Button onClick={() => { this.props.editUpdateMyPosts(post); this.props.updateOn() }}>UPDATE</Button>
-                        <Button onClick={() => { this.postDelete(post) }}>DELETE</Button>
+                        <IconButton onClick={() => { this.props.editUpdateMyPosts(post); this.props.updateOn() }}><CreateIcon /></IconButton>
+                        <IconButton onClick={() => { this.postDelete(post) }}><ClearIcon /></IconButton>
                     </CardBody>
                 </Card>
             )

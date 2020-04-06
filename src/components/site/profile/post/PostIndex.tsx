@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import PostCreate from "./PostCreate";
 import PostCards from './PostCards';
 import PostEdit from './PostEdit';
@@ -14,7 +14,7 @@ type State = {
     postUpdate: any,
     postCreate: any,
     updateActive: boolean
-
+    postCreateActive: boolean
 }
 
 export default class PostIndex extends React.Component<Props, State> {
@@ -24,8 +24,8 @@ export default class PostIndex extends React.Component<Props, State> {
             myPosts: [],
             postUpdate: {},
             postCreate: {},
-            updateActive: false
-
+            updateActive: false,
+            postCreateActive: false
         }
     }
     fetchPosts = () => {
@@ -73,22 +73,37 @@ export default class PostIndex extends React.Component<Props, State> {
         })
     }
 
+    createOff = () => {
+        this.setState({
+            postCreateActive: false
+        })
+    }
+
+    createOn = () => {
+        this.setState({
+            postCreateActive: true
+        })
+    }
+
     render() {
         return (
             <Container>
                 <Row>
                     <Col md="12">
-                        <h2>Posts</h2>
+                        <Button onClick={() => this.createOn()}>+</Button>
                     </Col>
                 </Row>
                 <br />
                 <Row>
                     <Col md="12">
-                        <PostCreate
-                            postCreate={this.state.postCreate}
-                            fetchPosts={this.fetchPosts.bind(this)}
-                            token={this.props.token}
-                        />
+
+                        {this.state.postCreateActive ?
+                            <PostCreate
+                                postCreate={this.state.postCreate}
+                                fetchPosts={this.fetchPosts.bind(this)}
+                                token={this.props.token}
+                                createOff={this.createOff.bind(this)}
+                            /> : <> </>}
                     </Col>
                     <Col md="12">
                         <PostCards
