@@ -70,13 +70,13 @@ export default class PetCreate extends React.Component<Props, State> {
                         <Input value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="bio">Bio:</Label>
+                        <Label htmlFor="posturl">Bio:</Label>
                         <Input value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="adoption">Adoption:</Label>
-                        <Button color="primary" onClick={() => this.setState(true)}>Yes</Button>
-                        <Button color="secondary" onClick={() => this.setState(false)}>No</Button>
+                        <Label htmlFor="description">Adoption:</Label>
+                        <Button color="primary" onClick={() => this.setState({ adoption: true })}>Yes</Button>
+                        <Button color="secondary" onClick={() => this.setState({ adoption: false })}>No</Button>
                     </FormGroup>
                     <Button type="submit">CREATE PET</Button>
                 </Form>

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardTitle, CardText, CardDeck, CardBody, Button } from "reactstrap";
-
+import React from "react";
+import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, Button, CardSubtitle } from "reactstrap";
 
 type Props = {
   myPets: any,
@@ -15,7 +14,7 @@ export default class PetCards extends React.Component<Props> {
     super(props)
   }
 
-  petDelete = (pett: any) => {
+  petDelete = (pet: any) => {
     fetch(`http://localhost:3001/pet/delete/${pet.id}`, {
       method: 'DELETE',
       headers: new Headers({
@@ -24,15 +23,38 @@ export default class PetCards extends React.Component<Props> {
       })
     }).then(() => this.props.fetchPets())
   }
+
   petMapper = () => {
     let pets = this.props.myPets;
 
-    return pets.map((pets: any, index: number) => {
+    return pets.map((pet: any, index: number) => {
       return (
         <Card key={index}>
-
+          <Row>
+            <Col md="4">
+              <CardImg className="card-img" src={pet.petPicUrl} alt="pet pic" />
+            </Col>
+            <Col md="8">
+              <CardBody>
+                <CardTitle>{pet.name}</CardTitle>
+                <CardSubtitle>{pet.animal}</CardSubtitle>
+                <CardSubtitle>{pet.bio}</CardSubtitle>
+                <br />
+                <Button onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}>UPDATE</Button>
+                <Button onClick={() => { this.petDelete(pet) }}>DELETE</Button>
+              </CardBody>
+            </Col>
+          </Row>
         </Card>
       )
     })
+  }
+
+  render() {
+    return (
+      <CardDeck>
+        {this.petMapper()}
+      </CardDeck>
+    )
   }
 }

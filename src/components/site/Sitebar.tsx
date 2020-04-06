@@ -15,19 +15,13 @@ export default class Sitebar extends React.Component<Props> {
       <div>
         <Nav>
           <NavItem>
-            <NavLink href="#">
-              <Link to="/dashboard">Dashboard</Link>
-            </NavLink>
+            <Link to="/dashboard">Dashboard</Link>
           </NavItem>
           <NavItem>
-            <NavLink href="#">
-              <Link to="/search">Search</Link>{" "}
-            </NavLink>
+            <Link to="/search">Search</Link>{" "}
           </NavItem>
           <NavItem>
-            <NavLink href="#">
-              <Link to="/profile">Profile</Link>
-            </NavLink>
+            <Link to="/profile">Profile</Link>
           </NavItem>
           <NavItem>
             <Button onClick={this.props.onClick}>Log out</Button>

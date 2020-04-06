@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
-// import PetCards from "./PetCards";
 import PetCreate from "./PetCreate";
-// import PetEdit from './PetEdit';
+import PetCards from "./PetCards";
+import PetEdit from './PetEdit';
 
 type Props = {
   token: string;
@@ -92,19 +92,21 @@ export default class PetIndex extends React.Component<Props, State> {
           <Col md="12">
             <PetCards
               myPets={this.state.myPets}
-              petCreate={this.state.petCreate}
-              editUpdateMyPets={this.fetchPets.bind(this)}
+              editUpdateMyPets={this.editUpdateMyPets.bind(this)}
+              updateOn={this.updateOn.bind(this)}
               fetchPets={this.fetchPets.bind(this)}
               token={this.props.token}
             />
           </Col>
-          {/* <Col md="12">
+          {this.state.petUpdateActive ?
             <PetEdit
-              petCreate={this.state.petCreate}
-              fetchPets={this.fetchPets.bind(this)}
+              petUpdate={this.state.petUpdate}
+              updateOff={this.updateOff.bind(this)}
               token={this.props.token}
+              fetchPets={this.fetchPets.bind(this)}
             />
-          </Col> */}
+            : <></>
+          }
         </Row>
       </Container>
     )
