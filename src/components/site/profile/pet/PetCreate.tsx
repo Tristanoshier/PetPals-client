@@ -19,7 +19,7 @@ type State = {
     animal: string,
     bio: string,
     adoption: boolean,
-    petPicUrl: string
+    file: string
 }
 
 export default class PetCreate extends React.Component<Props, State> {
@@ -30,18 +30,24 @@ export default class PetCreate extends React.Component<Props, State> {
             animal: "",
             bio: "",
             adoption: false,
-            petPicUrl: ""
+            file: ""
         }
     }
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        if (this.state.name && this.state.bio && this.state.petPicUrl) {
+        const petData = new FormData();
+        petData.append('image', this.state.file)
+        petData.append('name', this.state.name)
+        petData.append('animal', this.state.animal)
+        petData.append('bio', this.state.bio)
+        petData.append('adoption', JSON.stringify(this.state.adoption))
+        
+        if (this.state.name && this.state.bio) {
             fetch(`http://localhost:3001/pet/create`, {
                 method: 'POST',
-                body: JSON.stringify({ name: this.state.name, animal: this.state.animal, bio: this.state.bio, adoption: this.state.adoption, petPicUrl: this.state.petPicUrl }),
+                body: petData,
                 headers: new Headers({
-                    'Content-Type': 'application/json',
                     'Authorization': this.props.token
                 })
             })
@@ -51,16 +57,22 @@ export default class PetCreate extends React.Component<Props, State> {
                         name: "",
                         animal: "",
                         bio: "",
-                        adoption: false,
-                        petPicUrl: ""
+                        adoption: false
                     })
                     this.props.fetchPets();
                     this.props.createOff();
                 })
         } else {
-            alert('Must add the name, bio, adoption status, and a picture of your pet')
+            alert('Must add the name, bio, adoption status')
         }
     }
+
+    singleFileChangedHandler = (e: any) => {
+        this.setState({
+         file: e.target.files[0]
+        });
+    }
+
 
     closeCreateModal = () => {
         this.props.createOff()
@@ -74,8 +86,8 @@ export default class PetCreate extends React.Component<Props, State> {
                     <ModalBody >
                         <Form onSubmit={this.handleSubmit} >
                             <FormGroup>
-                                <Label htmlFor="petPicUrl">PetPicUrl:</Label>
-                                <Input value={this.state.petPicUrl} onChange={e => this.setState({ petPicUrl: e.target.value })} />
+                                <Label htmlFor="file">Please upload an image</Label>
+                                <Input type="file" onChange={this.singleFileChangedHandler} />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="name">Name:</Label>

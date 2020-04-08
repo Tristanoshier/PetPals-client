@@ -15,7 +15,7 @@ type Props = {
 
 type State = {
     description: string,
-    postUrl: string
+    file: string
 }
 
 export default class PostCreate extends React.Component<Props, State> {
@@ -23,26 +23,27 @@ export default class PostCreate extends React.Component<Props, State> {
         super(props)
         this.state = {
             description: "",
-            postUrl: ""
+            file: ""
         }
     }
 
     handleSubmit = (event: any) => {
         event.preventDefault();
+        const postData = new FormData();
+        postData.append('image', this.state.file)
+        postData.append('description', this.state.description)
         if (this.state.description) {
             fetch(`http://localhost:3001/post/create`, {
                 method: 'POST',
-                body: JSON.stringify({ description: this.state.description, postUrl: this.state.postUrl }),
+                body: postData,
                 headers: new Headers({
-                    'Content-Type': 'application/json',
                     'Authorization': this.props.token
                 })
             })
                 .then((res) => res.json())
                 .then(() => {
                     this.setState({
-                        description: '',
-                        postUrl: ''
+                        description: ''
                     })
                     this.props.fetchPosts();
                     this.props.createOff();
@@ -50,6 +51,12 @@ export default class PostCreate extends React.Component<Props, State> {
         } else {
             alert('Must add a caption to post')
         }
+    }
+
+    singleFileChangedHandler = (e: any) => {
+        this.setState({
+         file: e.target.files[0]
+        });
     }
 
     closeCreateModal = () => {
@@ -62,10 +69,10 @@ export default class PostCreate extends React.Component<Props, State> {
                 <Modal isOpen={true}>
                     <ModalHeader>Create Post <IconButton onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.handleSubmit} >
+                        <Form onSubmit={this.handleSubmit}>
                             <FormGroup>
-                                <Label htmlFor="posturl">PostUrl:</Label>
-                                <Input value={this.state.postUrl} onChange={e => this.setState({ postUrl: e.target.value })} />
+                                <Label htmlFor="file">Please upload a image</Label>
+                                <Input type="file" onChange={this.singleFileChangedHandler} />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="description">Caption:</Label>
