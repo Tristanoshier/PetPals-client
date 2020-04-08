@@ -3,7 +3,6 @@ import React from "react";
 import ProfileDisplay from "./ProfileDisplay";
 import PostIndex from "./post/PostIndex";
 import PetIndex from "./pet/PetIndex";
-
 //Material UI
 import PetsIcon from "@material-ui/icons/Pets";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";

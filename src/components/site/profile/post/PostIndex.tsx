@@ -1,8 +1,12 @@
 import React from 'react'
+//Reactstrap
 import { Container, Row, Col, Button } from 'reactstrap';
+//Components
 import PostCreate from "./PostCreate";
 import PostCards from './PostCards';
 import PostEdit from './PostEdit';
+
+
 
 
 type Props = {
@@ -96,13 +100,12 @@ export default class PostIndex extends React.Component<Props, State> {
                 <br />
                 <Row>
                     <Col md="12">
-
                         {this.state.postCreateActive ?
                             <PostCreate
-                                postCreate={this.state.postCreate}
-                                fetchPosts={this.fetchPosts.bind(this)}
-                                token={this.props.token}
-                                createOff={this.createOff.bind(this)}
+                            postCreate={this.state.postCreate}
+                            fetchPosts={this.fetchPosts.bind(this)}
+                            token={this.props.token}
+                            createOff={this.createOff.bind(this)}
                             /> : <> </>}
                     </Col>
                     <Col md="12">

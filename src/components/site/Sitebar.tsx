@@ -1,6 +1,9 @@
 import React from "react";
+//Reactstrap
 import { Nav, NavItem, NavLink, Button } from "reactstrap";
+//React Router
 import { Route, Link, Switch } from "react-router-dom";
+//Components
 import Dashboard from "./dashboard/Dashboard";
 import Search from "./search/Search";
 import Profile from "./profile/Profile";

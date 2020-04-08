@@ -1,8 +1,11 @@
 import React from 'react';
+//Reactstrap
 import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Button } from 'reactstrap';
+//Material UI
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+
 
 type Props = {
     myPosts: any,
