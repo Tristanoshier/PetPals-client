@@ -6,8 +6,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css'
 
 
-
 export default class App extends React.Component {
+
     state = {
       sessionToken: ""
     }
@@ -17,7 +17,6 @@ export default class App extends React.Component {
       this.setState({
         sessionToken: localStorage.getItem('token')
       })
-      console.log(this.state.sessionToken)
     }
   }
   
@@ -26,7 +25,6 @@ export default class App extends React.Component {
     this.setState({
       sessionToken: newToken
     });
-    console.log(this.state.sessionToken)
   }
 
   clearToken(){

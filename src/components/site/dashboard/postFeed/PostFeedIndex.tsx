@@ -38,7 +38,6 @@ export default class PostIndex extends React.Component<Props, State> {
         })
             .then(res => res.json())
             .then(postData => {
-                console.log(postData);
                 this.setState({
                     myFeed: postData
                 });
