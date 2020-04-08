@@ -68,7 +68,9 @@ export default class PostIndex extends React.Component<Props, State> {
         return (
             <Container>
                 <Row>
-                    <Col md="12">{this.feedMapper()}</Col>
+                    <Col md ="3"></Col>
+                    <Col md="6">{this.feedMapper()}</Col>
+                    <Col md ="3"></Col>
                 </Row>
             </Container>
         );

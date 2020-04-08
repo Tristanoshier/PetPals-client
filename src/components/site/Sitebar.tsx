@@ -1,9 +1,8 @@
 import React from "react";
 import { Nav, NavItem, NavLink, Button } from "reactstrap";
 import { Route, Link, Switch } from "react-router-dom";
-import Dashboard from "./dashboard/Dashboard";
-import Search from "./search/Search";
-import Profile from "./profile/Profile";
+import Routes from './Routes';
+
 import EditProfile from "./profile/EditProfile";
 
 type Props = {
@@ -34,17 +33,7 @@ export default class Sitebar extends React.Component<Props> {
           </NavItem>
         </Nav>
         <hr />
-        <Switch>
-          <Route exact path="/dashboard">
-            <Dashboard token={this.props.token} />
-          </Route>
-          <Route exact path="/search">
-            <Search />
-          </Route>
-          <Route exact path="/profile">
-            <Profile token={this.props.token} />
-          </Route> 
-        </Switch>
+        <Routes token={this.props.token}/>
       </div>
     );
   }
