@@ -1,5 +1,7 @@
 import React from "react";
+//Reactstrap
 import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button } from "reactstrap";
+//Components
 import EditProfile from "./EditProfile";
 
 type Props = {

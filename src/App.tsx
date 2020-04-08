@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Auth from './components/auth/Auth';
 import Home from './components/site/Home';
 import { BrowserRouter as Router } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css'
+
 
 
 export default class App extends React.Component {

@@ -1,9 +1,11 @@
 import React from "react";
+//Reactstrap
 import { Container, Row, Col, Button } from 'reactstrap';
+//Components
 import PetCreate from "./PetCreate";
 import PetCards from "./PetCards";
 import PetEdit from './PetEdit';
-//Material UI
+
 
 
 type Props = {
