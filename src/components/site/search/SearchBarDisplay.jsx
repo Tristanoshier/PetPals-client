@@ -39,28 +39,21 @@ export default class SearchBarDisplay extends React.Component {
         }
     }
 
-    mapFilteredUsers = () => {
-        console.log(this.state.filteredUsers)
-        // this.state.filteredUsers.map((user, index) => {
-        //     return (
-        //         <Card key={index}>
-        //         <Row>
-        //           <Col md="4">
-        //             <CardImg className="card-img" src={user.profileImg} alt="profile pic" />
-        //           </Col>
-        //           <Col md="8">
-        //             <CardBody>
-        //               <CardTitle>{user.username}</CardTitle>
-        //             </CardBody>
-        //           </Col>
-        //         </Row>
-        //       </Card>
-        //     )
-        // })
-    }
-
-
     render(){
+            const petMapper = this.state.filteredUsers.map(user => 
+                <Card>
+                    <Row>
+                      <Col md="4">
+                        <CardImg className="card-img" src={user.profileImg} alt="profile pic" />
+                      </Col>
+                      <Col md="8">
+                        <CardBody>
+                          <CardTitle>{user.username}</CardTitle>
+                        </CardBody>
+                      </Col>
+                    </Row>
+                </Card>
+            )
         return (
             <Container>
                 <Row>
@@ -75,7 +68,7 @@ export default class SearchBarDisplay extends React.Component {
                 <Row>
                 <Col md="3"></Col>
                 <Col md="6">
-                  {/* {this.mapFilteredUsers()} */}
+                  {petMapper}
                 </Col>
                 <Col md="3"></Col>
                 </Row>
