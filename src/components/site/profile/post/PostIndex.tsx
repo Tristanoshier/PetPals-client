@@ -6,9 +6,6 @@ import PostCreate from "./PostCreate";
 import PostCards from './PostCards';
 import PostEdit from './PostEdit';
 
-
-
-
 type Props = {
     token: string;
 }
@@ -45,7 +42,6 @@ export default class PostIndex extends React.Component<Props, State> {
                 this.setState({
                     myPosts: postData.posts
                 })
-                console.log(this.state.myPosts)
             })
     }
 
