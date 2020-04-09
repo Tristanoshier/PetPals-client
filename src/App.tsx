@@ -9,7 +9,8 @@ import 'semantic-ui-css/semantic.min.css'
 
 export default class App extends React.Component {
     state = {
-      sessionToken: ""
+      sessionToken: "",
+      active: false
     }
   
   componentWillMount() {
