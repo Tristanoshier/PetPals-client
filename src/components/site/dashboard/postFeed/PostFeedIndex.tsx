@@ -67,7 +67,7 @@ export default class PostIndex extends React.Component<Props, State> {
     };
 
     render() {
-        console.log(this.state.myFeed)
+        console.log(this.state.myFeed.reverse())
         return (
             <Container>
                 <Row>

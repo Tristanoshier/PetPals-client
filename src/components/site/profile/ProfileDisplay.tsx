@@ -78,6 +78,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
 
   
   render() {
+    // console.log(this.state.profileInfo.posts.length)
     return (
       <Container>
         <Card>
@@ -88,6 +89,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
               <Col md="8">
                 <CardBody>
                   <CardTitle>{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
+                  <CardSubtitle>Posts</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
                   <br />
