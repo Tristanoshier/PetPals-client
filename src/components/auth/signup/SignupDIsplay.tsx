@@ -1,8 +1,11 @@
 import React from "react";
+//Reactstrap
 import { Form, FormGroup, Label, Input, ButtonGroup } from "reactstrap";
 //Material UI
 import { createStyles, makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -10,10 +13,21 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       '& > *': {
         margin: theme.spacing(1),
+        width: '25ch',
       },
     },
   }),
 );
+
+const StyledTextField = withStyles({
+    root: {
+        color: 'white',
+        backgroundColor: '#738380'
+    },
+    label: {
+      textTransform: 'capitalize',
+    },
+  })(TextField);
 
 
 const StyledButton = withStyles({
@@ -50,12 +64,26 @@ function SignupDisplay(props: Props) {
         <Form onSubmit={props.onSubmit}>
             <FormGroup>
                 <Label for="username" hidden>Username</Label>
-                <Input onChange={e => props.onUsernameChange(e)} name="username" id="username" placeholder="Username" />
+                <StyledTextField 
+                onChange={e => props.onUsernameChange(e)} 
+                name="username" 
+                // id="username" 
+                id="filled-basic"
+                label="Username"
+                variant="filled"
+                />
             </FormGroup>
             <br />
             <FormGroup>
                 <Label for="password" hidden>Password</Label>
-                <Input onChange={e => props.onPasswordChange(e)} type="password" name="password" id="password" placeholder="Password" />
+                <StyledTextField 
+                onChange={e => props.onPasswordChange(e)} 
+                type="password" 
+                name="password" 
+                id="filled-basic" 
+                // placeholder="Password"
+                label="Password"
+                variant="filled" />
             </FormGroup>
             <br />
             <ButtonGroup>
