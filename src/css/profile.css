@@ -1,5 +1,5 @@
 .profile-img {
-    margin-left: 10px;
+    margin-left: 100px;
     margin-top: 10px;
     margin-bottom: 20px;
     height: 12em;
@@ -15,4 +15,17 @@
 
 .edit-profile-btn{
     margin-left: 10px;
+}
+
+.profile-username {
+    font-size: 30px;
+}
+
+.post-pet-data {
+    display: flex;
+    font-size: 18px;
+}
+
+.pet-data {
+    margin-left: 50px;
 }

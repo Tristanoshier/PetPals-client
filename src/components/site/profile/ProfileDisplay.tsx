@@ -13,7 +13,8 @@ type State = {
   profileInfo: any,
   profileUpdate: any,
   profileUpdateActive: boolean,
-  contactModal: boolean
+  contactModal: boolean,
+  postNum: number
 }
 
 export default class ProfileDisplay extends React.Component<Props, State> {
@@ -23,7 +24,8 @@ export default class ProfileDisplay extends React.Component<Props, State> {
       profileInfo: {},
       profileUpdate: {},
       profileUpdateActive: false,
-      contactModal: false
+      contactModal: false,
+      postNum: 0
     }
   }
 
@@ -39,6 +41,8 @@ export default class ProfileDisplay extends React.Component<Props, State> {
         this.setState({
           profileInfo: profileData
         })
+      }).then(() => {
+        this.findLengthOfPosts()
       }).catch(err => console.log(err))
   }
 
@@ -76,9 +80,13 @@ export default class ProfileDisplay extends React.Component<Props, State> {
     })
   }
 
-  
+  findLengthOfPosts(){
+    this.setState({
+      postNum: this.state.profileInfo.posts.length
+    }) 
+  }
+
   render() {
-    // console.log(this.state.profileInfo.posts.length)
     return (
       <Container>
         <Card>
@@ -88,8 +96,10 @@ export default class ProfileDisplay extends React.Component<Props, State> {
               </Col>
               <Col md="8">
                 <CardBody>
-                  <CardTitle>{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
-                  <CardSubtitle>Posts</CardSubtitle>
+                  <CardTitle className="profile-username">{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
+                  <div className='post-pet-data'>
+                  <p>{this.state.postNum} posts</p>
+                  </div>
                   <CardSubtitle>{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
                   <br />
