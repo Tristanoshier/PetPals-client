@@ -32,18 +32,18 @@ export default class Sitebar extends React.Component<Props> {
   render() {
     return (
       <div>
-        <Nav className="py-md-3 nav-look" sticky="top">
+        <Nav className="py-md-3 nav-look">
           <NavItem className="logo">
             <Link to="/dashboard" className="logo-styled">PetPals<FontAwesomeIcon icon={faDog} /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/dashboard" className="link-styled"><FontAwesomeIcon icon={faHome} /></Link>
+            <Link to="/dashboard" className="link-styled"><FontAwesomeIcon icon={faHome} size="lg" /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/search" className="link-styled"><FontAwesomeIcon icon={faSearch} /></Link>
+            <Link to="/search" className="link-styled"><FontAwesomeIcon icon={faSearch} size="lg" /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/profile" className="link-styled"><FontAwesomeIcon icon={faUser} /></Link>
+            <Link to="/profile" className="link-styled"><FontAwesomeIcon icon={faUser} size="lg" /></Link>
           </NavItem>
           <NavItem className="log-out-bttn">
             <Button className="log-button" onClick={this.props.onClick}>Log out <FontAwesomeIcon icon={faSignOutAlt} /></Button>

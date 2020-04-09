@@ -1,3 +1,7 @@
+body {
+    background-color: #f8f8ff
+}
+
 @import  './auth.css';
 @import './profile.css';
 @import './search.css';

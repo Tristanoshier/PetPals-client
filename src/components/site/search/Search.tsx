@@ -10,7 +10,7 @@ type Props = {
 export default class Search extends React.Component<Props> {
     render() {
         return (
-            <div>
+            <div className="search">
                 <SearchBarDisplay 
                     token={this.props.token} 
                     findAllUsers={this.props.findAllUsers}

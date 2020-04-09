@@ -38,6 +38,7 @@ export default class Profile extends React.Component<Props, State> {
   }
 
 
+<<<<<<< HEAD
   render() {
     return (
       <Container >
@@ -51,6 +52,22 @@ export default class Profile extends React.Component<Props, State> {
           <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
           <Tab onClick={() => this.isToggleHandler()} label="Pets" />
         </Tabs>
+=======
+   
+    render() {
+      return (
+        <Container className="profile" >
+          <ProfileDisplay token={this.props.token} />
+          <Tabs
+            value={this.state.isToggle}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
+            <Tab onClick={() => this.isToggleHandler()}label="Pets" />
+          </Tabs>
+>>>>>>> 7b3a0b8ccbcc3dc7d7c987109d79bada95d40360
 
         {/* <IconButton aria-label="pets">
               <PetsIcon />
