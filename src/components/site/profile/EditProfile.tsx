@@ -25,7 +25,7 @@ export default class EditProfile extends React.Component<Props, State>{
             editAdoptionRecruiter: this.props.profileInfo.adoptionRecruiter,
             editBio: this.props.profileInfo.bio,
             editContact: this.props.profileInfo.contact,
-            file: ""
+            file: this.props.profileInfo.file
         }
     }
 
@@ -42,7 +42,7 @@ export default class EditProfile extends React.Component<Props, State>{
         .catch(err => console.log(err))
     }
 
-    handleProfileUpdate = (e:any) => {
+    handleProfileUpdate = (e: any) => {
         e.preventDefault();
         fetch(`http://localhost:3001/user/update/${this.props.profileInfo.username}`, {
             method: 'PUT',
@@ -57,7 +57,14 @@ export default class EditProfile extends React.Component<Props, State>{
        .then(() => {
             this.props.fetchMyProfile();
             this.props.updateOff();
+            this.makeEditWork();
         })
+    }
+
+    makeEditWork = () => {
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000)
     }
 
     closeUpdateModal = () => {

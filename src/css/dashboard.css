@@ -1,0 +1,14 @@
+.feed-profile {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    margin-right: 10px;
+}
+
+.feed-card {
+    margin-bottom: 20px;
+}
+
+.post-image {
+    border-radius: 0;
+}
