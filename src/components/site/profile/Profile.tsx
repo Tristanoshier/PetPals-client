@@ -14,7 +14,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 //Reactstrap
-import { Container } from 'reactstrap'; 
+import { Container } from 'reactstrap';
 
 type Props = {
   token: string;
@@ -31,26 +31,26 @@ export default class Profile extends React.Component<Props, State> {
       isToggle: true
     };
   }
-    isToggleHandler() {
-      this.setState({
-        isToggle: !this.state.isToggle
-      });
-    }
+  isToggleHandler() {
+    this.setState({
+      isToggle: !this.state.isToggle
+    });
+  }
 
-   
-    render() {
-      return (
-        <Container >
-          <ProfileDisplay token={this.props.token} />
-          <Tabs
-            value={this.state.isToggle}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
-            <Tab onClick={() => this.isToggleHandler()}label="Pets" />
-          </Tabs>
+
+  render() {
+    return (
+      <Container >
+        <ProfileDisplay token={this.props.token} />
+        <Tabs
+          value={this.state.isToggle}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
+          <Tab onClick={() => this.isToggleHandler()} label="Pets" />
+        </Tabs>
 
         {/* <IconButton aria-label="pets">
               <PetsIcon />
@@ -62,9 +62,9 @@ export default class Profile extends React.Component<Props, State> {
         {this.state.isToggle ? (
           <PostIndex token={this.props.token} />
         ) : (
-          <PetIndex token={this.props.token} />
-        )}    
-        </Container>
-      );
-    }
+            <PetIndex token={this.props.token} />
+          )}
+      </Container>
+    );
   }
+}
