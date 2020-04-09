@@ -9,7 +9,8 @@ import {
     CardBody,
     Button,
     CardSubtitle,
-    Container
+    Container,
+    CardHeader
 } from "reactstrap";
 
 type Props = {
@@ -42,6 +43,7 @@ export default class PostIndex extends React.Component<Props, State> {
                     myFeed: postData
                 });
             });
+            console.log(this.state.myFeed)
     };
 
     componentWillMount() {
@@ -53,8 +55,9 @@ export default class PostIndex extends React.Component<Props, State> {
 
         return feed.map((feed: any, index: number) => {
             return (
-                <Card key={index}>
-                    <CardImg top width="100%" src={feed.postUrl} alt="Card image cap" />
+                <Card className="feed-card" key={index}>
+                    <CardHeader><img className="feed-profile" src={feed.userProfile} alt="profile image"/>{feed.username}</CardHeader>
+                    <CardImg className="post-image" top width="100%" src={feed.postUrl} alt="Card image cap" />
                     <CardBody>
                         <CardSubtitle>{feed.description}</CardSubtitle>
                     </CardBody>

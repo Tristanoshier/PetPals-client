@@ -28,7 +28,7 @@ export default class Profile extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      isToggle: false
+      isToggle: true
     };
   }
     isToggleHandler() {
