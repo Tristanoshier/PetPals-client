@@ -43,7 +43,7 @@ export default class SearchBarDisplay extends React.Component {
                 <Card key={index}>
                     <Row>
                       <Col md="4">
-                        <CardImg className="card-img" src={user.ProfileImg} alt="profile pic" />
+                        <CardImg className="search-img" src={user.ProfileImg} alt="profile pic" />
                       </Col>
                       <Col md="8">
                         <CardBody>

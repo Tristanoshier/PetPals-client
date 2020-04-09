@@ -37,7 +37,7 @@ export default class PetCards extends React.Component<Props> {
         <Card key={index}>
           <Row>
             <Col md="4">
-              <CardImg className="card-img" src={pet.petPicUrl} alt="pet pic" />
+              <CardImg className="profile-img" src={pet.petPicUrl} alt="pet pic" />
             </Col>
             <Col md="8">
               <CardBody>
