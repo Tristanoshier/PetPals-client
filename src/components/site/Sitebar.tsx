@@ -15,6 +15,8 @@ import { faDog } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 
 type Props = {
@@ -29,25 +31,25 @@ export default class Sitebar extends React.Component<Props> {
 
   render() {
     return (
-      <div className="mx-md-5">
-        <Nav className="py-md-3 position">
+      <div>
+        <Nav className="py-md-3 nav-look" sticky="top">
           <NavItem className="logo">
-            <Link to="/dashboard">PetPals<FontAwesomeIcon icon={faDog} /></Link>
+            <Link to="/dashboard" className="logo-styled">PetPals<FontAwesomeIcon icon={faDog} /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/dashboard"><FontAwesomeIcon icon={faHome} /></Link>
+            <Link to="/dashboard" className="link-styled"><FontAwesomeIcon icon={faHome} /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/search"><FontAwesomeIcon icon={faSearch} /></Link>
+            <Link to="/search" className="link-styled"><FontAwesomeIcon icon={faSearch} /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/profile"><FontAwesomeIcon icon={faUser} /></Link>
+            <Link to="/profile" className="link-styled"><FontAwesomeIcon icon={faUser} /></Link>
           </NavItem>
           <NavItem className="log-out-bttn">
-            <Button onClick={this.props.onClick}>Log out</Button>
+            <Button className="log-button" onClick={this.props.onClick}>Log out <FontAwesomeIcon icon={faSignOutAlt} /></Button>
           </NavItem>
         </Nav>
-        <hr />
+        <br />
         <Routes token={this.props.token} />
       </div>
     );
