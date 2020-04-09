@@ -9,6 +9,8 @@
     height: 12em;
     width: 12em;
     border-radius: 50%;
+    background-size: initial;
+    object-fit: cover;
 }
 
 .primary-btn{

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const StyledTextField = withStyles({
     root: {
         color: 'white',
-        backgroundColor: '#738380'
+        backgroundColor: '#738380',
     },
     label: {
       textTransform: 'capitalize',
