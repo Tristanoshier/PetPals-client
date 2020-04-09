@@ -40,7 +40,7 @@ export default class Profile extends React.Component<Props, State> {
    
     render() {
       return (
-        <Container >
+        <Container className="profile" >
           <ProfileDisplay token={this.props.token} />
           <Tabs
             value={this.state.isToggle}
