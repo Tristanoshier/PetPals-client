@@ -3,31 +3,31 @@ import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg } 
 
 
 export default class SearchBarDisplay extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.setState({
+        this.state = {
             filteredUsers: []
-        })
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.findAllUsers();
         this.filterUsers();
     }
 
     filterUsers = () => {
         let result = document.getElementById('search').value.toLowerCase();
-        if(result === ''){
+        if (result === '') {
             this.setState({
                 filteredUsers: []
             })
-        }else{
+        } else {
             let filtered = this.props.allUsers.filter((user) => {
-                if(user.username.toLowerCase().includes(result)) {
+                if (user.username.toLowerCase().includes(result)) {
                     return user
                 }
             })
@@ -35,25 +35,25 @@ export default class SearchBarDisplay extends React.Component {
                 filteredUsers: filtered
             })
             console.log(this.state.filteredUsers)
-           
+
         }
     }
 
-    render(){
-            const petMapper = this.state.filteredUsers.map(user => 
-                <Card>
-                    <Row>
-                      <Col md="4">
-                        <CardImg className="card-img" src={user.profileImg} alt="profile pic" />
-                      </Col>
-                      <Col md="8">
+    render() {
+        const petMapper = this.state.filteredUsers.map(user =>
+            <Card>
+                <Row>
+                    <Col md="4">
+                        <CardImg className="card-img" src={user.ProfileImg} alt="profile pic" />
+                    </Col>
+                    <Col md="8">
                         <CardBody>
-                          <CardTitle>{user.username}</CardTitle>
+                            <CardTitle>{user.username}</CardTitle>
                         </CardBody>
-                      </Col>
-                    </Row>
-                </Card>
-            )
+                    </Col>
+                </Row>
+            </Card>
+        )
         return (
             <Container>
                 <Row>
@@ -66,11 +66,11 @@ export default class SearchBarDisplay extends React.Component {
                     <Col md="3"></Col>
                 </Row>
                 <Row>
-                <Col md="3"></Col>
-                <Col md="6">
-                  {petMapper}
-                </Col>
-                <Col md="3"></Col>
+                    <Col md="3"></Col>
+                    <Col md="6">
+                        {petMapper}
+                    </Col>
+                    <Col md="3"></Col>
                 </Row>
             </Container>
         )
