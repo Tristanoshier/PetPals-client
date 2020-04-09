@@ -21,77 +21,49 @@ type Props = {
 };
 
 type State = {
-  isToggle: boolean,
-  // value: boolean
+  isToggle: boolean
 };
 
 export default class Profile extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      isToggle: true,
-      // value: false
+      isToggle: false
     };
   }
-
-    // handleChange(){
-    //   if(this.state.value){
-    //     this.setState({
-    //       value: !this.state.value
-    //     })
-    //     return(
-    //       <PetIndex token={this.props.token} />
-    //       )
-    //   }else{
-    //     this.setState({
-    //       value: !this.state.value
-    //     })
-    //     return (
-    //       <PostIndex token={this.props.token} />
-    //     )
-    //   }
-    // }
     isToggleHandler() {
       this.setState({
         isToggle: !this.state.isToggle
       });
     }
+
+   
     render() {
       return (
         <Container >
           <ProfileDisplay token={this.props.token} />
-          <p
-          className="post-pet-switch"
-          onClick={this.isToggleHandler.bind(this)}
-        >
-          {this.state.isToggle ? (
-            <IconButton aria-label="pets">
+          <Tabs
+            value={this.state.isToggle}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
+            <Tab onClick={() => this.isToggleHandler()}label="Pets" />
+          </Tabs>
+
+        {/* <IconButton aria-label="pets">
               <PetsIcon />
             </IconButton>
-          ) : (
-            <IconButton aria-label="post">
-              <ChatBubbleIcon />
-            </IconButton>
-          )}
-        </p>
 
+         <IconButton aria-label="post">
+              <ChatBubbleIcon />
+            </IconButton> */}
         {this.state.isToggle ? (
           <PostIndex token={this.props.token} />
         ) : (
           <PetIndex token={this.props.token} />
-        )}
-          {/* <Paper>
-            <Tabs
-              value={this.state.value}
-              onChange={this.handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
-              <Tab label="Pets" />
-              <Tab label="Posts" />
-            </Tabs>
-          </Paper> */}
+        )}    
         </Container>
       );
     }

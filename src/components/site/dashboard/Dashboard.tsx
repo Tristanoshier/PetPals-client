@@ -9,7 +9,7 @@ export default class Dashboard extends React.Component<Props> {
 
     render() {
         return (
-            <div>
+            <div className="dashboard">
                 <PostFeedIndex token={this.props.token} />
             </div>
         )

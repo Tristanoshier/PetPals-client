@@ -1,5 +1,6 @@
 import React from 'react';
 import SignupDisplay from './SignupDIsplay'
+import { Container } from 'reactstrap';
 type Props = {
     isLogin: boolean,
     updateToken: (newToken: string) => void,
@@ -67,7 +68,7 @@ export default class Signup extends React.Component<Props, State> {
     }
     render() {
         return (
-            <div>
+            <Container className="signup-display">
                 <h1>Signup</h1>
                 <SignupDisplay
                     passwordRequired={this.state.passwordRequired}
@@ -79,7 +80,7 @@ export default class Signup extends React.Component<Props, State> {
                     onAdoptionChangeTrue={this.onAdoptionChangeTrue.bind(this)}
                     onAdoptionChangeFalse={this.onAdoptionChangeFalse.bind(this)}
                 />
-            </div>
+            </Container>
         )
     }
 }

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg } from 'reactstrap';
+import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
 
 
 export default class SearchBarDisplay extends React.Component {
     constructor(props){
         super(props);
-        this.setState({
+        this.state = {
             filteredUsers: []
-        })
+        }
     }
 
     handleSubmit = (e) => {
@@ -35,32 +35,26 @@ export default class SearchBarDisplay extends React.Component {
                 filteredUsers: filtered
             })
             console.log(this.state.filteredUsers)
-           
         }
     }
 
-    mapFilteredUsers = () => {
-        console.log(this.state.filteredUsers)
-        // this.state.filteredUsers.map((user, index) => {
-        //     return (
-        //         <Card key={index}>
-        //         <Row>
-        //           <Col md="4">
-        //             <CardImg className="card-img" src={user.profileImg} alt="profile pic" />
-        //           </Col>
-        //           <Col md="8">
-        //             <CardBody>
-        //               <CardTitle>{user.username}</CardTitle>
-        //             </CardBody>
-        //           </Col>
-        //         </Row>
-        //       </Card>
-        //     )
-        // })
-    }
-
-
     render(){
+            const petMapper = this.state.filteredUsers.map((user, index) => 
+                <Card key={index}>
+                    <Row>
+                      <Col md="4">
+                        <CardImg className="search-img" src={user.ProfileImg} alt="profile pic" />
+                      </Col>
+                      <Col md="8">
+                        <CardBody>
+                          <CardTitle>{user.username}</CardTitle>
+                          <CardSubtitle>{user.bio}</CardSubtitle>
+                          <CardSubtitle>Contact</CardSubtitle>
+                        </CardBody>
+                      </Col>
+                    </Row>
+                </Card>
+            )
         return (
             <Container>
                 <Row>
@@ -75,7 +69,7 @@ export default class SearchBarDisplay extends React.Component {
                 <Row>
                 <Col md="3"></Col>
                 <Col md="6">
-                  {/* {this.mapFilteredUsers()} */}
+                  {petMapper}
                 </Col>
                 <Col md="3"></Col>
                 </Row>

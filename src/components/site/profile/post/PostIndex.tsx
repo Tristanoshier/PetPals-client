@@ -6,9 +6,6 @@ import PostCreate from "./PostCreate";
 import PostCards from './PostCards';
 import PostEdit from './PostEdit';
 
-
-
-
 type Props = {
     token: string;
 }
@@ -45,7 +42,6 @@ export default class PostIndex extends React.Component<Props, State> {
                 this.setState({
                     myPosts: postData.posts
                 })
-                console.log(this.state.myPosts)
             })
     }
 
@@ -94,7 +90,7 @@ export default class PostIndex extends React.Component<Props, State> {
             <Container>
                 <Row>
                     <Col md="12">
-                        <Button onClick={() => this.createOn()}>+</Button>
+                        <Button className="primary-btn" onClick={() => this.createOn()}>Create a Post +</Button>
                     </Col>
                 </Row>
                 <br />

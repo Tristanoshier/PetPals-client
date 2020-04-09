@@ -1,5 +1,21 @@
 import React from 'react'
-import { Form, FormGroup, Button, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
+
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }),
+);
+
+
 type Props = {
     incorrectPassword: boolean,
     usernameNotExist: boolean,
@@ -10,6 +26,9 @@ type Props = {
     onPasswordChange: (e: any) => void
 }
 function LoginDisplay(props: Props) {
+
+    const classes = useStyles();
+
     return (
         <Form onSubmit={props.onSubmit}>
             <FormGroup>
@@ -22,7 +41,7 @@ function LoginDisplay(props: Props) {
                 <Input onChange={e => props.onPasswordChange(e)} type="password" name="password" id="password" placeholder="Password" />
             </FormGroup>
             <br />
-            <Button type="submit">Login</Button>
+            <Button type="submit" variant="outlined" className="login-buttons">Login</Button>
             <p className="auth-switch" onClick={props.isLoginHandler}>
                 {props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
             </p>

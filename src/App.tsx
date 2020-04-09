@@ -3,22 +3,21 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Auth from './components/auth/Auth';
 import Home from './components/site/Home';
 import { BrowserRouter as Router } from 'react-router-dom';
-import 'semantic-ui-css/semantic.min.css'
-
+import 'semantic-ui-css/semantic.min.css';
+import './css/main.css';
 
 
 export default class App extends React.Component {
+
     state = {
-      sessionToken: "",
-      active: false
-    }
+      sessionToken: ""
+    } 
   
   componentWillMount() {
     if(localStorage.getItem('token')){
       this.setState({
         sessionToken: localStorage.getItem('token')
       })
-      console.log(this.state.sessionToken)
     }
   }
   
@@ -27,7 +26,6 @@ export default class App extends React.Component {
     this.setState({
       sessionToken: newToken
     });
-    console.log(this.state.sessionToken)
   }
 
   clearToken(){

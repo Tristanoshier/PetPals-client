@@ -94,7 +94,7 @@ export default class PetIndex extends React.Component<Props, State> {
       <Container>
         <Row>
           <Col md="12">
-            <Button onClick={() => this.createOn()}>+</Button>
+            <Button className="primary-btn" onClick={() => this.createOn()}>Create a Pet +</Button>
           </Col>
         </Row>
         <br />

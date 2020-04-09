@@ -52,9 +52,6 @@ export default class Routes extends React.Component<Props, State> {
           <Route exact path="/profile">
             <Profile token={this.props.token} />
           </Route>
-          {/* <Route>
-            <AnotherProfile token={this.props.token}/>
-          </Route>  */}
         </Switch>
         )
     }
