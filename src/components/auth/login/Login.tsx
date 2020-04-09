@@ -58,7 +58,7 @@ export default class Login extends React.Component<Props, State> {
     }
     render() {
         return (
-            <Container>
+            <Container className="login-display">
                 <h1>Login</h1>
                 <LoginDisplay
                     incorrectPassword={this.state.incorrectPassword}
