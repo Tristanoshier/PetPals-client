@@ -41,9 +41,7 @@ export default class Login extends React.Component<Props, State> {
                     })
                 }
                 if (data.error === 'failed to authenticate') {
-                    this.setState({
-                        usernameNotExist: true
-                    })
+                   alert('username does not exist')
                 }
                 this.props.updateToken(data.sessionToken);
             })

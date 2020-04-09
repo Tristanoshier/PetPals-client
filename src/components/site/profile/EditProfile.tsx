@@ -14,7 +14,7 @@ type State = {
     editAdoptionRecruiter: boolean,
     editBio: string,
     editContact: string,
-    editProfileImg: string
+    file: string
 }
 
 export default class EditProfile extends React.Component<Props, State>{
@@ -25,19 +25,36 @@ export default class EditProfile extends React.Component<Props, State>{
             editAdoptionRecruiter: this.props.profileInfo.adoptionRecruiter,
             editBio: this.props.profileInfo.bio,
             editContact: this.props.profileInfo.contact,
-            editProfileImg: this.props.profileInfo.ProfileImg
+            file: ""
         }
     }
 
-    handleProfileUpdate = () => {
+    editProfilePhoto = () => {
+        const editProfilePictureData = new FormData()
+        editProfilePictureData.append('image', this.state.file)
+        fetch(`http://localhost:3001/user/update/profile-pic/${this.props.profileInfo.username}`, {
+            method: 'PUT',
+            body: editProfilePictureData,
+            headers: new Headers({
+                'Authorization': this.props.token
+            })
+        }) .then(res => res.json())
+        .catch(err => console.log(err))
+    }
+
+    handleProfileUpdate = (e:any) => {
+        e.preventDefault();
         fetch(`http://localhost:3001/user/update/${this.props.profileInfo.username}`, {
             method: 'PUT',
-            body: JSON.stringify({username: this.state.editUsername, adoptionRecruiter: this.state.editAdoptionRecruiter, bio: this.state.editBio, contact: this.state.editContact, ProfileImg: this.state.editProfileImg}),
+            body: JSON.stringify({username: this.state.editUsername, adoptionRecruiter: this.state.editAdoptionRecruiter, bio: this.state.editBio, contact: this.state.editContact}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
             })
         }).then(() => {
+            this.editProfilePhoto()
+        })
+       .then(() => {
             this.props.fetchMyProfile();
             this.props.updateOff();
         })
@@ -45,6 +62,12 @@ export default class EditProfile extends React.Component<Props, State>{
 
     closeUpdateModal = () => {
         this.props.updateOff();
+    }
+
+    singleFileChangedHandler = (e: any) => {
+        this.setState({
+         file: e.target.files[0]
+        });
     }
 
 
@@ -55,6 +78,11 @@ export default class EditProfile extends React.Component<Props, State>{
             <ModalHeader>Edit Profile<Button onClick={this.closeUpdateModal}>X</Button></ModalHeader>
             <ModalBody>
                 <Form onSubmit={this.handleProfileUpdate}>
+                    <FormGroup>
+                        <Label htmlFor="file">Edit profile picture</Label>
+                        <Input type="file" onChange={this.singleFileChangedHandler} />
+                    </FormGroup>
+                    <br />
                     <FormGroup>
                         <Label for="username">Username:</Label>
                         <Input value={this.state.editUsername} onChange={(e) => this.setState({editUsername: e.target.value})} />
@@ -74,10 +102,6 @@ export default class EditProfile extends React.Component<Props, State>{
                         <Label for="contact">Contact:</Label>
                         <Input value={this.state.editContact} onChange={e => this.setState({
                             editContact: e.target.value})} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="profileImg">Profile Image:</Label>
-                        <Input value={this.state.editProfileImg} onChange={e => this.setState({editProfileImg: e.target.value})} />
                     </FormGroup>
                     <br />
                     <Button type="submit">Update</Button>

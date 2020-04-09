@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg } from 'reactstrap';
+import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
 
 
 export default class SearchBarDisplay extends React.Component {
@@ -35,6 +35,7 @@ export default class SearchBarDisplay extends React.Component {
                 filteredUsers: filtered
             })
             console.log(this.state.filteredUsers)
+<<<<<<< HEAD
 
         }
     }
@@ -49,6 +50,23 @@ export default class SearchBarDisplay extends React.Component {
                     <Col md="8">
                         <CardBody>
                             <CardTitle>{user.username}</CardTitle>
+=======
+        }
+    }
+
+    render(){
+            const petMapper = this.state.filteredUsers.map((user, index) => 
+                <Card key={index}>
+                    <Row>
+                      <Col md="4">
+                        <CardImg className="search-img" src={user.ProfileImg} alt="profile pic" />
+                      </Col>
+                      <Col md="8">
+                        <CardBody>
+                          <CardTitle>{user.username}</CardTitle>
+                          <CardSubtitle>{user.bio}</CardSubtitle>
+                          <CardSubtitle>Contact</CardSubtitle>
+>>>>>>> fc745252890f47b4169238b1ccbe08c05135eb20
                         </CardBody>
                     </Col>
                 </Row>

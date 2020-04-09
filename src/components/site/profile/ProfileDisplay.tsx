@@ -1,8 +1,9 @@
 import React from "react";
 //Reactstrap
-import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button } from "reactstrap";
+import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button, ModalHeader, ModalBody, Modal } from "reactstrap";
 //Components
 import EditProfile from "./EditProfile";
+import ContactUser from './ContactUser';
 
 type Props = {
   token: string
@@ -11,7 +12,8 @@ type Props = {
 type State = {
   profileInfo: any,
   profileUpdate: any,
-  profileUpdateActive: boolean
+  profileUpdateActive: boolean,
+  contactModal: boolean
 }
 
 export default class ProfileDisplay extends React.Component<Props, State> {
@@ -20,7 +22,8 @@ export default class ProfileDisplay extends React.Component<Props, State> {
     this.state = {
       profileInfo: {},
       profileUpdate: {},
-      profileUpdateActive: false
+      profileUpdateActive: false,
+      contactModal: false
     }
   }
 
@@ -33,7 +36,6 @@ export default class ProfileDisplay extends React.Component<Props, State> {
       })
     }).then(res => res.json())
       .then((profileData) => {
-        console.log(profileData)
         this.setState({
           profileInfo: profileData
         })
@@ -62,31 +64,52 @@ export default class ProfileDisplay extends React.Component<Props, State> {
     })
   }
 
+  contactModalOn() {
+    this.setState({
+      contactModal: true
+    })
+  }
+
+  contactModalOff() {
+    this.setState({
+      contactModal: false
+    })
+  }
+
+  
   render() {
     return (
       <Container>
         <Card>
           <Row>
               <Col md="4">
-                <CardImg className="card-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
+                <CardImg className="profile-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
               </Col>
               <Col md="8">
                 <CardBody>
-                  <CardTitle>{this.state.profileInfo.username}</CardTitle>
+                  <CardTitle>{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
                   <CardSubtitle>{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
-                  <CardSubtitle>{this.state.profileInfo.contact}</CardSubtitle>
                   <br />
-                  <Button onClick={() => {this.updateOn()}}>Edit Profile</Button>
+                  <CardSubtitle onClick={() => {this.contactModalOn()}}>Contact</CardSubtitle>
+                  <br />
+                 
                 </CardBody>
                 {this.state.profileUpdateActive ?
                   <EditProfile
                     profileInfo={this.state.profileInfo}
-
                     updateOff={this.updateOff.bind(this)}
                     token={this.props.token}
                     fetchMyProfile={this.fetchMyProfile.bind(this)} />
                     : <></>
+                }
+                {this.state.contactModal ?
+                  <ContactUser 
+                    profileInfo = {this.state.profileInfo}
+                    contactModalOff={this.contactModalOff.bind(this)}
+                    contactModal={this.state.contactModal}
+                  /> : <></>
+
                 }
               </Col>
             </Row>
