@@ -83,11 +83,11 @@ export default class ProfileDisplay extends React.Component<Props, State> {
         <Card>
           <Row>
               <Col md="4">
-                <CardImg className="card-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
+                <CardImg className="profile-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
               </Col>
               <Col md="8">
                 <CardBody>
-                  <CardTitle>{this.state.profileInfo.username}<Button onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
+                  <CardTitle>{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
                   <CardSubtitle>{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
                   <br />
