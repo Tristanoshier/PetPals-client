@@ -1,14 +1,21 @@
 import React from "react";
+
 //Reactstrap
-import { Nav, NavItem, NavLink, Button } from "reactstrap";
+import { Nav, NavItem, Button } from "reactstrap";
+
 //React Router
-import { Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 //Components
-import Dashboard from "./dashboard/Dashboard";
-import Search from "./search/Search";
-import Profile from "./profile/Profile";
 import Routes from './Routes';
-import EditProfile from "./profile/EditProfile";
+
+//Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDog } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+
 
 type Props = {
   onClick: () => void;
@@ -16,29 +23,32 @@ type Props = {
 };
 
 export default class Sitebar extends React.Component<Props> {
-  constructor(props: Props){
+  constructor(props: Props) {
     super(props);
   }
 
   render() {
     return (
-      <div>
-        <Nav>
-          <NavItem>
-            <Link to="/dashboard">Dashboard</Link>
+      <div className="mx-md-5">
+        <Nav className="py-md-3 position">
+          <NavItem className="logo">
+            <Link to="/dashboard">PetPals<FontAwesomeIcon icon={faDog} /></Link>
           </NavItem>
-          <NavItem>
-              <Link to="/search">Search</Link>
+          <NavItem className="spacing">
+            <Link to="/dashboard"><FontAwesomeIcon icon={faHome} /></Link>
           </NavItem>
-          <NavItem>
-            <Link to="/profile">Profile</Link>
+          <NavItem className="spacing">
+            <Link to="/search"><FontAwesomeIcon icon={faSearch} /></Link>
           </NavItem>
-          <NavItem>
+          <NavItem className="spacing">
+            <Link to="/profile"><FontAwesomeIcon icon={faUser} /></Link>
+          </NavItem>
+          <NavItem className="log-out-bttn">
             <Button onClick={this.props.onClick}>Log out</Button>
           </NavItem>
         </Nav>
         <hr />
-        <Routes token={this.props.token}/>
+        <Routes token={this.props.token} />
       </div>
     );
   }
