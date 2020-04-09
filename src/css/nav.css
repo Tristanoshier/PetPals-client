@@ -1,5 +1,8 @@
 .nav-look {
-    background-color: #365874;  
+    background-color: #365874;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .log-out-bttn {
@@ -12,6 +15,7 @@
 }
 
 .logo-styled {
+    font-size: 20px;
     color: white;
 }
 .logo-styled:hover {
@@ -23,7 +27,7 @@
 }
 
 .link-styled:hover {
-    color: #243C4A;
+    color: rgb(212, 211, 211);
 }
 
 
@@ -43,6 +47,7 @@
 }
 
 .log-button:hover {
-    background-color: #243C4A;
-    border: 2px solid #243C4A;
+    color: rgb(212, 211, 211);
+    background-color: #2e4c64;
+    border: 2px solid rgb(212, 211, 211);
 }
