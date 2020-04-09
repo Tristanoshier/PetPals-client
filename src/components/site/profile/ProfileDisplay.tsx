@@ -89,7 +89,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
   render() {
     return (
       <Container>
-        <Card>
+        <Card className="profile-info">
           <Row>
               <Col md="4">
                 <CardImg className="profile-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
@@ -98,14 +98,10 @@ export default class ProfileDisplay extends React.Component<Props, State> {
                 <CardBody>
                   <CardTitle className="profile-username">{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
                   <div className='post-pet-data'>
-                  <p>{this.state.postNum} posts</p>
+                  <p className="post-number">{this.state.postNum}</p><p>posts</p><p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
                   </div>
-                  <CardSubtitle>{this.state.profileInfo.bio}</CardSubtitle>
+                  <CardSubtitle className="profile-bio">{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
-                  <br />
-                  <CardSubtitle onClick={() => {this.contactModalOn()}}>Contact</CardSubtitle>
-                  <br />
-                 
                 </CardBody>
                 {this.state.profileUpdateActive ?
                   <EditProfile

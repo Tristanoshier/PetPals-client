@@ -2,9 +2,17 @@
     margin-top: 100px;
 }
 
+.profile-info {
+    min-height: 230px;
+    background-color: #f8f8ff;
+    border: none;
+    border-bottom: 2px solid rgba(116, 116, 116, 0.54);
+    border-radius: 0;
+
+}
+
 .profile-img {
-    margin-left: 100px;
-    margin-top: 10px;
+    margin-left: 100px;  
     margin-bottom: 20px;
     height: 12em;
     width: 12em;
@@ -14,9 +22,13 @@
 }
 
 .primary-btn{
-    color: gray;
-    background-color: white;
-    border: 2px gray solid
+    color: rgb(0, 0, 0, 0.54);
+    background-color: #f8f8ff;
+    border: 1px solid rgb(0, 0, 0, 0.54);
+}
+.primary-btn:hover{
+    background-color: rgba(116, 116, 116, 0.54);
+    border: 1px solid rgba(116, 116, 116, 0.54);
 }
 
 .edit-profile-btn{
@@ -24,12 +36,32 @@
 }
 
 .profile-username {
+    color: rgb(0, 0, 0, 0.54);
     font-size: 30px;
+}
+
+.profile-bio {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.profile-contact {
+    margin-left: 30px;
+    text-decoration: underline;
+}
+
+.profile-contact:hover{
+    color: rgb(27, 27, 27);
 }
 
 .post-pet-data {
     display: flex;
+    color: rgba(0, 0, 0, 0.54);
     font-size: 18px;
+}
+
+.post-number {
+    font-weight: bold;
+    margin-right: 4px;
 }
 
 .pet-data {
