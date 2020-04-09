@@ -44,6 +44,11 @@
   border-radius: 5px;
 }
 
+.login-button {
+    color: white !important; 
+    border: solid white 1px !important;
+}
+
 /* Signup */
 .signup-display {
   background: rgb(29, 36, 37);
@@ -57,4 +62,18 @@
   width: 400px;
   border-radius: 5px;
   color: whitesmoke;
+}
+
+.adoption-true {
+    border: 1px solid grey !important;
+    margin: 2px;
+}
+
+.signup-button {
+    color: white !important; 
+    border: solid white 1px !important;
+}
+
+.signup-button-group {
+    border: 1px solid white !important;
 }

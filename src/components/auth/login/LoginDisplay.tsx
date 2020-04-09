@@ -41,7 +41,7 @@ function LoginDisplay(props: Props) {
                 <Input onChange={e => props.onPasswordChange(e)} type="password" name="password" id="password" placeholder="Password" />
             </FormGroup>
             <br />
-            <Button type="submit" variant="outlined" className="login-buttons">Login</Button>
+            <Button type="submit" variant="outlined" className="login-button">Login</Button>
             <p className="auth-switch" onClick={props.isLoginHandler}>
                 {props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
             </p>
