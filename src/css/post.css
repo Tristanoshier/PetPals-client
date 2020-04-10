@@ -1,0 +1,17 @@
+.post-card-deck {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-card {
+    min-width: 253px;
+    max-width: 338px;
+    max-height: 368px;
+}
+
+.post-card-image {
+    min-height: 253px;
+    max-height: 253px;
+    background-size: initial;
+    object-fit: cover;
+}

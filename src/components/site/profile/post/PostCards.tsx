@@ -1,6 +1,6 @@
 import React from 'react';
 //Reactstrap
-import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Button } from 'reactstrap';
+import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Col } from 'reactstrap';
 //Material UI
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
@@ -36,8 +36,8 @@ export default class PostCards extends React.Component<Props> {
 
         return posts.map((post: any, index: number) => {
             return (
-                <Card key={index}>
-                    <CardImg top width="100%" src={post.postUrl} alt="Card image cap" />
+                <Card key={index} className="post-card">
+                    <CardImg className="post-card-image" top width="100%" src={post.postUrl} alt="Card image cap" />
                     <CardBody>
                         <CardSubtitle>{post.description}</CardSubtitle>
                         <br />
@@ -51,7 +51,7 @@ export default class PostCards extends React.Component<Props> {
 
     render() {
         return (
-            <CardDeck>
+            <CardDeck className="post-card-deck">
                 {this.postMapper()}
             </CardDeck>
         )
