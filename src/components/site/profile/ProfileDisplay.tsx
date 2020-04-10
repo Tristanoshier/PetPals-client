@@ -13,7 +13,8 @@ type State = {
   profileInfo: any,
   profileUpdate: any,
   profileUpdateActive: boolean,
-  contactModal: boolean
+  contactModal: boolean,
+  postNum: number
 }
 
 export default class ProfileDisplay extends React.Component<Props, State> {
@@ -23,7 +24,8 @@ export default class ProfileDisplay extends React.Component<Props, State> {
       profileInfo: {},
       profileUpdate: {},
       profileUpdateActive: false,
-      contactModal: false
+      contactModal: false,
+      postNum: 0
     }
   }
 
@@ -39,6 +41,8 @@ export default class ProfileDisplay extends React.Component<Props, State> {
         this.setState({
           profileInfo: profileData
         })
+      }).then(() => {
+        this.findLengthOfPosts()
       }).catch(err => console.log(err))
   }
 
@@ -74,6 +78,12 @@ export default class ProfileDisplay extends React.Component<Props, State> {
     this.setState({
       contactModal: false
     })
+  }
+
+  findLengthOfPosts(){
+    this.setState({
+      postNum: this.state.profileInfo.posts.length
+    }) 
   }
 
 
