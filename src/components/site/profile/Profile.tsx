@@ -4,12 +4,6 @@ import ProfileDisplay from "./ProfileDisplay";
 import PostIndex from "./post/PostIndex";
 import PetIndex from "./pet/PetIndex";
 //Material UI
-import PetsIcon from "@material-ui/icons/Pets";
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import AddIcon from '@material-ui/icons/Add';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -38,13 +32,13 @@ export default class Profile extends React.Component<Props, State> {
   }
 
 
-<<<<<<< HEAD
+
   render() {
     return (
-      <Container >
+      <Container className="profile" >
         <ProfileDisplay token={this.props.token} />
         <Tabs
-          value={this.state.isToggle}
+          value="1"
           indicatorColor="primary"
           textColor="primary"
           centered
@@ -52,22 +46,6 @@ export default class Profile extends React.Component<Props, State> {
           <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
           <Tab onClick={() => this.isToggleHandler()} label="Pets" />
         </Tabs>
-=======
-   
-    render() {
-      return (
-        <Container className="profile" >
-          <ProfileDisplay token={this.props.token} />
-          <Tabs
-            value={this.state.isToggle}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab onClick={() => this.isToggleHandler()} label={`Posts`} />
-            <Tab onClick={() => this.isToggleHandler()}label="Pets" />
-          </Tabs>
->>>>>>> 7b3a0b8ccbcc3dc7d7c987109d79bada95d40360
 
         {/* <IconButton aria-label="pets">
               <PetsIcon />

@@ -4,10 +4,7 @@ import {
     Row,
     Card,
     CardImg,
-    CardTitle,
-    CardDeck,
     CardBody,
-    Button,
     CardSubtitle,
     Container,
     CardHeader
@@ -43,7 +40,7 @@ export default class PostIndex extends React.Component<Props, State> {
                     myFeed: postData
                 });
             });
-            console.log(this.state.myFeed)
+        console.log(this.state.myFeed)
     };
 
     componentWillMount() {
@@ -56,7 +53,7 @@ export default class PostIndex extends React.Component<Props, State> {
         return feed.map((feed: any, index: number) => {
             return (
                 <Card className="feed-card" key={index}>
-                    <CardHeader><img className="feed-profile" src={feed.userProfile} alt="profile image"/>{feed.username}</CardHeader>
+                    <CardHeader><img className="feed-profile" src={feed.userProfile} alt="profile image" />{feed.username}</CardHeader>
                     <CardImg className="post-image" top width="100%" src={feed.postUrl} alt="Card image cap" />
                     <CardBody>
                         <CardSubtitle>{feed.description}</CardSubtitle>
@@ -71,9 +68,9 @@ export default class PostIndex extends React.Component<Props, State> {
         return (
             <Container>
                 <Row>
-                    <Col md ="3"></Col>
+                    <Col md="3"></Col>
                     <Col md="6">{this.feedMapper()}</Col>
-                    <Col md ="3"></Col>
+                    <Col md="3"></Col>
                 </Row>
             </Container>
         );

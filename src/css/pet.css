@@ -1,0 +1,19 @@
+.pet-card {
+    max-width: 500px;
+    min-width: 50%;
+}
+
+.pet-profile-img {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 8em;
+    width: 8em;
+    border-radius: 50%;
+    background-size: initial;
+    object-fit: cover;
+}
+
+.card-deck .card {
+    margin-bottom: 2em;
+}

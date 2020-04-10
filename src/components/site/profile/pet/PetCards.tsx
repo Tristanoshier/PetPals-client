@@ -34,10 +34,10 @@ export default class PetCards extends React.Component<Props> {
 
     return pets.map((pet: any, index: number) => {
       return (
-        <Card key={index}>
+        <Card key={index} className="pet-card">
           <Row>
             <Col md="4">
-              <CardImg className="profile-img" src={pet.petPicUrl} alt="pet pic" />
+              <CardImg className="pet-profile-img" src={pet.petPicUrl} alt="pet pic" />
             </Col>
             <Col md="8">
               <CardBody>
@@ -58,7 +58,9 @@ export default class PetCards extends React.Component<Props> {
   render() {
     return (
       <CardDeck>
-        {this.petMapper()}
+        <Col md="3"></Col>
+        <Col md="6">{this.petMapper()}</Col>
+        <Col md="3"></Col>
       </CardDeck>
     )
   }
