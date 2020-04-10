@@ -1,12 +1,15 @@
 import React from 'react';
 import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
+import ClearIcon from '@material-ui/icons/Clear';
+import IconButton from '@material-ui/core/IconButton/IconButton';
 
 
 export default class SearchBarDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filteredUsers: []
+            filteredUsers: [],
+            profileInfo: {}
         }
     }
 
@@ -15,6 +18,7 @@ export default class SearchBarDisplay extends React.Component {
     }
 
     componentDidMount() {
+        this.fetchMyUserData()
         this.props.findAllUsers();
         this.filterUsers();
     }
@@ -35,7 +39,43 @@ export default class SearchBarDisplay extends React.Component {
                 filteredUsers: filtered
             })
             console.log(this.state.filteredUsers)
+            console.log(this.props.allUsers)
         }
+    }
+
+    fetchMyUserData() {
+        fetch('http://localhost:3001/post/find', {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': this.props.token
+        })
+        }).then(res => res.json())
+        .then((profileData) => {
+            this.setState({
+            profileInfo: profileData
+            })
+        }).catch(err => console.log(err))
+    }
+
+
+    deleteUserForAdmin = (user) => {
+        fetch(`http://localhost:3001/user/delete/${user.username}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token
+            })
+        }).then(() => {
+            this.reloadPage();
+            this.filterUsers();
+        })
+    }
+
+    reloadPage(){
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000)
     }
 
     render() {
@@ -50,6 +90,10 @@ export default class SearchBarDisplay extends React.Component {
                             <CardTitle>{user.username}</CardTitle>
                             <CardSubtitle>{user.bio}</CardSubtitle>
                             <CardSubtitle>Contact</CardSubtitle>
+                            {this.state.profileInfo.userType === 'Manager' ?
+                                <IconButton onClick={() => { this.deleteUserForAdmin(user) }}><ClearIcon /></IconButton>
+                                : <></>
+                            }
                         </CardBody>
                     </Col>
                 </Row>
