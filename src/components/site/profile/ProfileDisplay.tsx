@@ -80,36 +80,34 @@ export default class ProfileDisplay extends React.Component<Props, State> {
   render() {
     return (
       <Container>
-        <Card>
+        <Card className="profile-info">
           <Row>
-            <Col md="4">
-              <CardImg className="profile-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
-            </Col>
-            <Col md="8">
-              <CardBody>
-                <CardTitle>{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => { this.updateOn() }}>Edit Profile</Button></CardTitle>
-                <CardSubtitle>{this.state.profileInfo.bio}</CardSubtitle>
-                <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
-                <br />
-                <CardSubtitle onClick={() => { this.contactModalOn() }}>Contact</CardSubtitle>
-                <br />
-
-              </CardBody>
-              {this.state.profileUpdateActive ?
-                <EditProfile
-                  profileInfo={this.state.profileInfo}
-                  updateOff={this.updateOff.bind(this)}
-                  token={this.props.token}
-                  fetchMyProfile={this.fetchMyProfile.bind(this)} />
-                : <></>
-              }
-              {this.state.contactModal ?
-                <ContactUser
-                  profileInfo={this.state.profileInfo}
-                  contactModalOff={this.contactModalOff.bind(this)}
-                  contactModal={this.state.contactModal}
-                /> : <></>
-
+              <Col md="4">
+                <CardImg className="profile-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
+              </Col>
+              <Col md="8">
+                <CardBody className="profile-body">
+                  <CardTitle className="profile-username">{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
+                  <div className='post-pet-data'>
+                  <p className="post-number">{this.state.postNum}</p><p>posts</p><p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
+                  </div>
+                  <CardSubtitle className="profile-bio">{this.state.profileInfo.bio}</CardSubtitle>
+                  <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>
+                </CardBody>
+                {this.state.profileUpdateActive ?
+                  <EditProfile
+                    profileInfo={this.state.profileInfo}
+                    updateOff={this.updateOff.bind(this)}
+                    token={this.props.token}
+                    fetchMyProfile={this.fetchMyProfile.bind(this)} />
+                    : <></>
+                }
+                {this.state.contactModal ?
+                  <ContactUser 
+                    profileInfo = {this.state.profileInfo}
+                    contactModalOff={this.contactModalOff.bind(this)}
+                    contactModal={this.state.contactModal}
+                  /> : <></>
               }
             </Col>
           </Row>

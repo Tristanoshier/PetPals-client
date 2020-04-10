@@ -3,6 +3,8 @@
     width: 2em;
     height: 2em;
     margin-right: 10px;
+    background-size: initial;
+    object-fit: cover;
 }
 
 .feed-card {
