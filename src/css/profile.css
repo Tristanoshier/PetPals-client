@@ -21,6 +21,10 @@
     object-fit: cover;
 }
 
+.profile-body {
+    margin-left: 20px;
+}
+
 .primary-btn{
     color: rgb(0, 0, 0, 0.54);
     background-color: #f8f8ff;

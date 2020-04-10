@@ -95,7 +95,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
                 <CardImg className="profile-img" src={this.state.profileInfo.ProfileImg} alt="pet pic" />
               </Col>
               <Col md="8">
-                <CardBody>
+                <CardBody className="profile-body">
                   <CardTitle className="profile-username">{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
                   <div className='post-pet-data'>
                   <p className="post-number">{this.state.postNum}</p><p>posts</p><p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
