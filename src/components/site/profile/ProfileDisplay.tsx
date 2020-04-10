@@ -1,6 +1,6 @@
 import React from "react";
 //Reactstrap
-import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button, ModalHeader, ModalBody, Modal } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button, ModalHeader, ModalBody, Modal } from "reactstrap";
 //Components
 import EditProfile from "./EditProfile";
 import ContactUser from './ContactUser';
@@ -13,8 +13,7 @@ type State = {
   profileInfo: any,
   profileUpdate: any,
   profileUpdateActive: boolean,
-  contactModal: boolean,
-  postNum: number
+  contactModal: boolean
 }
 
 export default class ProfileDisplay extends React.Component<Props, State> {
@@ -24,8 +23,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
       profileInfo: {},
       profileUpdate: {},
       profileUpdateActive: false,
-      contactModal: false,
-      postNum: 0
+      contactModal: false
     }
   }
 
@@ -41,8 +39,6 @@ export default class ProfileDisplay extends React.Component<Props, State> {
         this.setState({
           profileInfo: profileData
         })
-      }).then(() => {
-        this.findLengthOfPosts()
       }).catch(err => console.log(err))
   }
 
@@ -55,14 +51,14 @@ export default class ProfileDisplay extends React.Component<Props, State> {
       profileInfo: this.state.profileUpdate
     })
   }
-  
-  updateOn(){
+
+  updateOn() {
     this.setState({
       profileUpdateActive: true
     })
   }
 
-  updateOff(){
+  updateOff() {
     this.setState({
       profileUpdateActive: false
     })
@@ -80,11 +76,6 @@ export default class ProfileDisplay extends React.Component<Props, State> {
     })
   }
 
-  findLengthOfPosts(){
-    this.setState({
-      postNum: this.state.profileInfo.posts.length
-    }) 
-  }
 
   render() {
     return (
@@ -117,10 +108,9 @@ export default class ProfileDisplay extends React.Component<Props, State> {
                     contactModalOff={this.contactModalOff.bind(this)}
                     contactModal={this.state.contactModal}
                   /> : <></>
-
-                }
-              </Col>
-            </Row>
+              }
+            </Col>
+          </Row>
         </Card>
       </Container>
     );
