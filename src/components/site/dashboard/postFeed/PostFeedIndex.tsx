@@ -80,17 +80,25 @@ export default class PostIndex extends React.Component<Props, State> {
         })
     }
 
+    createDate(feed: any) {
+        let date = new Date(feed.createdAt)
+        return date.toDateString()
+    }
+
+   
+
 
     feedMapper = () => {
-        let feed = this.state.myFeed;
-
+        let feed = this.state.myFeed.reverse();
+       
         return feed.map((feed: any, index: number) => {
+           
             return (
                 <Card className="feed-card" key={index}>
-                    <CardHeader><img className="feed-profile" src={feed.userProfile} alt="profile image" />{feed.username}</CardHeader>
+                    <CardHeader className="post-feed-header"><img className="feed-profile" src={feed.userProfile} alt="profile image" />{feed.username}<p className="post-date">{this.createDate(feed)}</p></CardHeader>
                     <CardImg className="post-image" top width="100%" src={feed.postUrl} alt="Card image cap" />
-                    <CardBody>
-                        <CardSubtitle>{feed.description}</CardSubtitle>
+                    <CardBody className="post-feed-body">
+                    <CardSubtitle className="post-text"><p className="post-profile-username">{feed.username}</p><p>{feed.description}</p></CardSubtitle>
                         {this.state.profileInfo.userType === 'Manager' ?
                                 <IconButton onClick={() => { this.postDelete(feed) }}><ClearIcon /></IconButton>
                                 : <></>
@@ -103,7 +111,6 @@ export default class PostIndex extends React.Component<Props, State> {
 
 
     render() {
-        console.log(this.state.myFeed.reverse())
         return (
             <Container>
                 <Row>

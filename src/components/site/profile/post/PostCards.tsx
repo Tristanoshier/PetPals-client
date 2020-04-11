@@ -38,11 +38,13 @@ export default class PostCards extends React.Component<Props> {
             return (
                 <Card key={index} className="post-card">
                     <CardImg className="post-card-image" top width="100%" src={post.postUrl} alt="Card image cap" />
-                    <CardBody>
-                        <CardSubtitle>{post.description}</CardSubtitle>
+                    <CardBody className="post-body">
+                        <CardSubtitle className="post-text">
+                            <p className="post-profile-username">{post.username}</p><p>{post.description}</p>
+                        </CardSubtitle>
                         <br />
                         <IconButton onClick={() => { this.props.editUpdateMyPosts(post); this.props.updateOn() }}><CreateIcon /></IconButton>
-                        <IconButton onClick={() => { this.postDelete(post) }}><ClearIcon /></IconButton>
+                        <IconButton className="delete-btn" onClick={() => { this.postDelete(post) }}><ClearIcon /></IconButton>
                     </CardBody>
                 </Card>
             )

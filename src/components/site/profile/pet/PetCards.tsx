@@ -1,6 +1,6 @@
 import React from "react";
 //Reactstrap
-import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, Button, CardSubtitle } from "reactstrap";
+import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, CardSubtitle } from "reactstrap";
 //Material UI
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
@@ -40,13 +40,22 @@ export default class PetCards extends React.Component<Props> {
               <CardImg className="pet-profile-img" src={pet.petPicUrl} alt="pet pic" />
             </Col>
             <Col md="8">
-              <CardBody>
-                <CardTitle>{pet.name}</CardTitle>
-                <CardSubtitle>{pet.animal}</CardSubtitle>
-                <CardSubtitle>{pet.bio}</CardSubtitle>
-                <br />
-                <IconButton onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}><CreateIcon /></IconButton>
-                <IconButton onClick={() => { this.petDelete(pet) }}><ClearIcon /></IconButton>
+              <CardBody className="pet-card-body">
+                <Row>
+                  <Col className="pet-info" md="9">
+                  <CardTitle className="pet-title">{pet.name}{pet.adoption ? 
+                      <p className="adoption-label">up for adoption</p>
+                      : <p className="adoption-label">happily owned</p>
+                    }
+                  </CardTitle>
+    
+                  <CardSubtitle>{pet.bio}</CardSubtitle>
+                  </Col>
+                  <Col className="pet-btn" md="3">
+                    <IconButton onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}><CreateIcon /></IconButton>
+                    <IconButton onClick={() => { this.petDelete(pet) }}><ClearIcon /></IconButton>
+                  </Col>
+                </Row>
               </CardBody>
             </Col>
           </Row>
