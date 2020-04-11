@@ -1,6 +1,6 @@
 import React from "react";
 //Reactstrap
-import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, Button, CardSubtitle } from "reactstrap";
+import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, CardSubtitle } from "reactstrap";
 //Material UI
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
@@ -43,7 +43,12 @@ export default class PetCards extends React.Component<Props> {
               <CardBody className="pet-card-body">
                 <Row>
                   <Col className="pet-info" md="9">
-                  <CardTitle className="pet-title">{pet.name}</CardTitle>
+                  <CardTitle className="pet-title">{pet.name}{pet.adoption ? 
+                      <p className="adoption-label">up for adoption</p>
+                      : <p className="adoption-label">happily owned</p>
+                    }
+                  </CardTitle>
+    
                   <CardSubtitle>{pet.bio}</CardSubtitle>
                   </Col>
                   <Col className="pet-btn" md="3">

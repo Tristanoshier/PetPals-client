@@ -99,7 +99,12 @@ export default class ProfileDisplay extends React.Component<Props, State> {
                 <CardBody className="profile-body">
                   <CardTitle className="profile-username">{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
                   <div className='post-pet-data'>
-                  <p className="post-number">{this.state.postNum}</p><p>posts</p><p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
+                  <p className="post-number">{this.state.postNum}</p><p>posts</p>
+                  {this.state.profileInfo.adoptionRecruiter ? 
+                      <p className="adoption-recruiter-label">adoption specialist</p>
+                      : <p className="adoption-recruiter-label">pet enthusiast</p>
+                    }
+                    <p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
                   </div>
                   <CardSubtitle className="profile-bio">{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>

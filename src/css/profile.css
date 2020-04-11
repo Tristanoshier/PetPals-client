@@ -31,7 +31,7 @@
     border: 1px solid rgb(0, 0, 0, 0.54);
 }
 .primary-btn:hover{
-    background-color: rgba(116, 116, 116, 0.54);
+    background-color: rgb(189, 188, 188);
     border: 1px solid #f8f8ff;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .profile-contact {
-    margin-left: 30px;
+    margin-left: 20px;
     text-decoration: underline;
 }
 
@@ -70,4 +70,17 @@
 
 .pet-data {
     margin-left: 50px;
+}
+
+.adoption-recruiter-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: #365874;
+    padding: 4px;
+    border: 1px solid #365874;
+    border-radius: .25rem;
+    width: 115px; 
+    margin-left: 20px;
 }

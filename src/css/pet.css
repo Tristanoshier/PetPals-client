@@ -29,6 +29,20 @@
 }
 
 .pet-title {
+    display: flex;
     font-size: 16px; 
     font-weight: bolder;
+}
+
+.adoption-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: #365874;
+    padding: 4px;
+    border: 1px solid #365874;
+    border-radius: .25rem;
+    width: 105px; 
+    margin-left: 20px;
 }
