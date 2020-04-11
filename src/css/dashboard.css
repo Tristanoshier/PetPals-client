@@ -21,8 +21,16 @@
 }
 
 .post-feed-header {
+    position: relative;
     background-color: white;
     color: rgba(0, 0, 0, 0.54);
     font-weight: bolder;
+}
+
+.post-date {
+    color: rgb(189, 188, 188);
+    margin-top: 3px;
+    float: right;
+    font-size: 12px;
 }
 
