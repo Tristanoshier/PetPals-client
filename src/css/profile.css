@@ -32,7 +32,7 @@
 }
 .primary-btn:hover{
     background-color: rgba(116, 116, 116, 0.54);
-    border: 1px solid rgba(116, 116, 116, 0.54);
+    border: 1px solid #f8f8ff;
 }
 
 .edit-profile-btn{

@@ -87,10 +87,10 @@ export default class PostIndex extends React.Component<Props, State> {
         return feed.map((feed: any, index: number) => {
             return (
                 <Card className="feed-card" key={index}>
-                    <CardHeader><img className="feed-profile" src={feed.userProfile} alt="profile image" />{feed.username}</CardHeader>
+                    <CardHeader className="post-feed-header"><img className="feed-profile" src={feed.userProfile} alt="profile image" />{feed.username}</CardHeader>
                     <CardImg className="post-image" top width="100%" src={feed.postUrl} alt="Card image cap" />
-                    <CardBody>
-                        <CardSubtitle>{feed.description}</CardSubtitle>
+                    <CardBody className="post-feed-body">
+                    <CardSubtitle className="post-text"><p className="post-profile-username">{feed.username}</p><p>{feed.description}</p></CardSubtitle>
                         {this.state.profileInfo.userType === 'Manager' ?
                                 <IconButton onClick={() => { this.postDelete(feed) }}><ClearIcon /></IconButton>
                                 : <></>
