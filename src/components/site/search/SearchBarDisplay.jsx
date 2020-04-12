@@ -79,21 +79,31 @@ export default class SearchBarDisplay extends React.Component {
     }
 
     render() {
-        const petMapper = this.state.filteredUsers.map((user, index) =>
-            <Card key={index}>
+        const searchUserMapper = this.state.filteredUsers.map((user, index) =>
+            <Card className="search-card" key={index}>
                 <Row>
                     <Col md="4">
                         <CardImg className="search-img" src={user.ProfileImg} alt="profile pic" />
                     </Col>
                     <Col md="8">
                         <CardBody>
-                            <CardTitle>{user.username}</CardTitle>
-                            <CardSubtitle>{user.bio}</CardSubtitle>
-                            <CardSubtitle>Contact</CardSubtitle>
-                            {this.state.profileInfo.userType === 'Manager' ?
-                                <IconButton onClick={() => { this.deleteUserForAdmin(user) }}><ClearIcon /></IconButton>
-                                : <></>
-                            }
+                            <Row>
+                                <Col md="6">
+                                    <CardTitle className="search-username">{user.username}</CardTitle>
+                                    <CardSubtitle>{user.bio}</CardSubtitle>
+                                </Col>
+                                <Col className= "search-user-body" md="6">
+                                    {user.adoptionRecruiter ? 
+                                    <p className="adoption-recruiter-search">adoption specialist</p>
+                                    : <p className="adoption-recruiter-search">pet enthusiast</p>
+                                    }
+                                     <CardSubtitle>{user.contact}</CardSubtitle>
+                                    {this.state.profileInfo.userType === 'Manager' ?
+                                    <IconButton onClick={() => { this.deleteUserForAdmin(user) }}><ClearIcon /></IconButton>
+                                    : <></>
+                                    }
+                                </Col>
+                            </Row>
                         </CardBody>
                     </Col>
                 </Row>
@@ -113,7 +123,7 @@ export default class SearchBarDisplay extends React.Component {
                 <Row>
                     <Col md="3"></Col>
                     <Col md="6">
-                        {petMapper}
+                        {searchUserMapper}
                     </Col>
                     <Col md="3"></Col>
                 </Row>

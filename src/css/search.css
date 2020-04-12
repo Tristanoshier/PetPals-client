@@ -2,12 +2,35 @@
     margin-top: 100px;
 }
 
+.search-card {
+    color: rgb(0, 0, 0, 0.54);
+}
+
+.search-username {
+    font-weight: bolder;
+}
+
 .search-img {
-    margin-left: 10px;
+    margin-left: 30px;
     margin-top: 10px;
     height: 5em;
     width: 5em;
     border-radius: 50%;
     background-size: initial;
     object-fit: cover;
+    padding: 0;
 }
+
+.adoption-recruiter-search {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: #365874;
+    padding: 4px;
+    border: 1px solid #365874;
+    border-radius: .25rem;
+    width: 115px; 
+   
+}
+
