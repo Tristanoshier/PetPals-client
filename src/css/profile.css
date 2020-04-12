@@ -8,7 +8,6 @@
     border: none;
     border-bottom: 2px solid rgba(116, 116, 116, 0.54);
     border-radius: 0;
-
 }
 
 .profile-img {
@@ -36,7 +35,7 @@
 }
 
 .edit-profile-btn{
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .profile-username {

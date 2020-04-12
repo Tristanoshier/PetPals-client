@@ -115,7 +115,7 @@ export default class SearchBarDisplay extends React.Component {
                     <Col md="3"></Col>
                     <Col md="6">
                         <Form onSubmit={this.handleSubmit} id="form" autoComplete="off">
-                            <Input onChange={this.filterUsers} id='search' type="text" placeholder="Search" />
+                            <Input className="search-form" onChange={this.filterUsers} id='search' type="text" placeholder="Search for a user..." />
                         </Form>
                     </Col>
                     <Col md="3"></Col>
@@ -123,7 +123,9 @@ export default class SearchBarDisplay extends React.Component {
                 <Row>
                     <Col md="3"></Col>
                     <Col md="6">
-                        {searchUserMapper}
+                        <div className="search-box">
+                            {searchUserMapper}
+                        </div>
                     </Col>
                     <Col md="3"></Col>
                 </Row>

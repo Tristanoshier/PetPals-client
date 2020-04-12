@@ -4,6 +4,8 @@
 
 .search-card {
     color: rgb(0, 0, 0, 0.54);
+    background-color: white;
+    border-radius: 0;
 }
 
 .search-username {
@@ -30,7 +32,21 @@
     padding: 4px;
     border: 1px solid #365874;
     border-radius: .25rem;
-    width: 115px; 
-   
+    width: 115px;
+}
+
+.search-form {
+    color: rgb(0, 0, 0, 0.54);
+    background-color: #f8f8ff !important;
+    border: none;
+    border-bottom: 2px solid rgba(116, 116, 116, 0.54);
+    border-radius: 0;
+}
+
+.search-box {
+    height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
