@@ -15,7 +15,6 @@ type Props = {
 }
 
 type State = {
-    editPostUrl: string,
     editDescription: string
 }
 
@@ -23,7 +22,6 @@ export default class PostEdit extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            editPostUrl: this.props.postUpdate.postUrl,
             editDescription: this.props.postUpdate.description
         }
     }
@@ -31,7 +29,7 @@ export default class PostEdit extends React.Component<Props, State> {
     handlePostUpdate = () => {
         fetch(`${APIURL}/post/edit/${this.props.postUpdate.id}`, {
             method: 'PUT',
-            body: JSON.stringify({ postUrl: this.state.editPostUrl, description: this.state.editDescription }),
+            body: JSON.stringify({ description: this.state.editDescription }),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
@@ -53,10 +51,6 @@ export default class PostEdit extends React.Component<Props, State> {
                     <ModalHeader>Edit Post<IconButton onClick={this.closeUpdateModal}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handlePostUpdate}>
-                            <FormGroup>
-                                <Label htmlFor="postUrl">PostUrl:</Label>
-                                <Input value={this.state.editPostUrl} onChange={e => this.setState({ editPostUrl: e.target.value })} />
-                            </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="description">Caption:</Label>
                                 <Input value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} />
