@@ -6,6 +6,7 @@
     color: rgb(0, 0, 0, 0.54);
     background-color: white;
     border-radius: 0;
+    min-height: 88px;
 }
 
 .search-username {
