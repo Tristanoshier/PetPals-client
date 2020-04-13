@@ -59,7 +59,6 @@ function SignupDisplay(props: Props) {
 
     const classes = useStyles();
 
-
     return (
         <Form onSubmit={props.onSubmit}>
             <FormGroup>
