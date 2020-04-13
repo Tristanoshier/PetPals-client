@@ -1,10 +1,11 @@
 import React from 'react';
 //Reactstrap
-import { Button, Form, FormGroup, Label, Input, Container, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     postCreate: any,
@@ -33,7 +34,7 @@ export default class PostCreate extends React.Component<Props, State> {
         postData.append('image', this.state.file)
         postData.append('description', this.state.description)
         if (this.state.description) {
-            fetch(`http://localhost:3001/post/create`, {
+            fetch(`${APIURL}/post/create`, {
                 method: 'POST',
                 body: postData,
                 headers: new Headers({

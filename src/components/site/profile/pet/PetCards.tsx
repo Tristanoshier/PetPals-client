@@ -5,6 +5,7 @@ import { Col, Row, Card, CardImg, CardTitle, CardDeck, CardBody, CardSubtitle } 
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
   myPets: any,
@@ -20,7 +21,7 @@ export default class PetCards extends React.Component<Props> {
   }
 
   petDelete = (pet: any) => {
-    fetch(`http://localhost:3001/pet/delete/${pet.id}`, {
+    fetch(`${APIURL}/pet/delete/${pet.id}`, {
       method: 'DELETE',
       headers: new Headers({
         'Content-Type': 'application/json',

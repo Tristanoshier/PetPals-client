@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
 import ClearIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../helpers/environment';
 
 
 export default class SearchBarDisplay extends React.Component {
@@ -44,7 +45,7 @@ export default class SearchBarDisplay extends React.Component {
     }
 
     fetchMyUserData() {
-        fetch('http://localhost:3001/post/find', {
+        fetch(`${APIURL}/post/find`, {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ export default class SearchBarDisplay extends React.Component {
 
 
     deleteUserForAdmin = (user) => {
-        fetch(`http://localhost:3001/user/delete/${user.username}`, {
+        fetch(`${APIURL}/user/delete/${user.username}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

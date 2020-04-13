@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import PostCreate from "./PostCreate";
 import PostCards from './PostCards';
 import PostEdit from './PostEdit';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     token: string;
@@ -30,7 +31,7 @@ export default class PostIndex extends React.Component<Props, State> {
         }
     }
     fetchPosts = () => {
-        fetch(`http://localhost:3001/post/find`, {
+        fetch(`${APIURL}/post/find`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

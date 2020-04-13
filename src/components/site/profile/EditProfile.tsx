@@ -1,6 +1,7 @@
 import React from 'react';
 //Reactstrap
 import { Modal, ModalHeader, ModalBody, Form, Label, Input, FormGroup, Button } from 'reactstrap';
+import APIURL from '../../../helpers/environment';
 
 type Props = {
     profileInfo: any,
@@ -32,7 +33,7 @@ export default class EditProfile extends React.Component<Props, State>{
     editProfilePhoto = () => {
         const editProfilePictureData = new FormData()
         editProfilePictureData.append('image', this.state.file)
-        fetch(`http://localhost:3001/user/update/profile-pic/${this.props.profileInfo.username}`, {
+        fetch(`${APIURL}/user/update/profile-pic/${this.props.profileInfo.username}`, {
             method: 'PUT',
             body: editProfilePictureData,
             headers: new Headers({
@@ -44,7 +45,7 @@ export default class EditProfile extends React.Component<Props, State>{
 
     handleProfileUpdate = (e: any) => {
         e.preventDefault();
-        fetch(`http://localhost:3001/user/update/${this.props.profileInfo.username}`, {
+        fetch(`${APIURL}/user/update/${this.props.profileInfo.username}`, {
             method: 'PUT',
             body: JSON.stringify({username: this.state.editUsername, adoptionRecruiter: this.state.editAdoptionRecruiter, bio: this.state.editBio, contact: this.state.editContact}),
             headers: new Headers({

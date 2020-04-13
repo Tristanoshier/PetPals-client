@@ -5,8 +5,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import PetCreate from "./PetCreate";
 import PetCards from "./PetCards";
 import PetEdit from './PetEdit';
-
-
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
   token: string;
@@ -32,7 +31,7 @@ export default class PetIndex extends React.Component<Props, State> {
     }
   }
   fetchPets = () => {
-    fetch(`http://localhost:3001/pet/find`, {
+    fetch(`${APIURL}/pet/find`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

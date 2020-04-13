@@ -1,9 +1,10 @@
 import React from "react";
 //Reactstrap
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button, ModalHeader, ModalBody, Modal } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button } from "reactstrap";
 //Components
 import EditProfile from "./EditProfile";
 import ContactUser from './ContactUser';
+import APIURL from '../../../helpers/environment'
 
 type Props = {
   token: string
@@ -30,7 +31,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
   }
 
   fetchMyProfile() {
-    fetch('http://localhost:3001/post/find', {
+    fetch(`${APIURL}/post/find`, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',

@@ -5,6 +5,7 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     postUpdate: any,
@@ -28,7 +29,7 @@ export default class PostEdit extends React.Component<Props, State> {
     }
 
     handlePostUpdate = () => {
-        fetch(`http://localhost:3001/post/edit/${this.props.postUpdate.id}`, {
+        fetch(`${APIURL}/post/edit/${this.props.postUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({ postUrl: this.state.editPostUrl, description: this.state.editDescription }),
             headers: new Headers({
