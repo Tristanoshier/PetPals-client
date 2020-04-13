@@ -1,16 +1,60 @@
 import React from 'react';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import Auth from './components/auth/Auth';
+import Home from './components/site/Home';
+import { BrowserRouter as Router } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
+import './css/main.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>lets begin</h1>
-      <h2>develop</h2>
-      <h3>tristan</h3>
-      <h3>taebae was here</h3>
-      <h3>adam</h3>
+
+export default class App extends React.Component {
+
+    state = {
+      sessionToken: ""
+    } 
+  
+  componentWillMount() {
+    if(localStorage.getItem('token')){
+      this.setState({
+        sessionToken: localStorage.getItem('token')
+      })
+    }
+  }
+  
+  updateToken(newToken: string){
+    localStorage.setItem('token', newToken);
+    this.setState({
+      sessionToken: newToken
+    });
+  }
+
+  clearToken(){
+    localStorage.clear();
+    this.setState({
+      sessionToken: ""
+    })
+  }
+
+  protectedViews = () => {
+    return(this.state.sessionToken === localStorage.getItem('token') ? 
+    <div>
+        <Router>
+          <Home clickLogout={this.clearToken.bind(this)} token={this.state.sessionToken}  />
+        </Router>
     </div>
-  );
+    : <Auth updateToken={this.updateToken.bind(this)} />)
+  }
+
+  render(){
+    return (
+      <div className="App">
+        {this.protectedViews()}
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossOrigin="anonymous">
+        </script>
+      </div>
+    );
+  }
 }
 
-export default App;
+

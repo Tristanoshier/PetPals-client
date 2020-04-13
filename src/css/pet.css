@@ -1,0 +1,48 @@
+.pet-card {
+    max-width: 500px;
+    min-width: 50%;
+    min-height: 150px;
+    border: none;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.pet-profile-img {
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 8em;
+    width: 8em;
+    border-radius: 50%;
+    background-size: initial;
+    object-fit: cover;
+}
+
+.card-deck .card {
+    margin-bottom: 2em;
+}
+
+.pet-btn {
+    margin-top: 10px;
+}
+
+.pet-info {
+    margin-top: 25px;
+}
+
+.pet-title {
+    display: flex;
+    font-size: 16px; 
+    font-weight: bolder;
+}
+
+.adoption-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    background-color: #365874;
+    padding: 4px;
+    border: 1px solid #365874;
+    border-radius: .25rem;
+    width: 105px; 
+    margin-left: 20px;
+}

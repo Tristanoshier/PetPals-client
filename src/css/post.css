@@ -1,0 +1,37 @@
+.post-card-deck {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-card {
+    min-width: 253px;
+    max-width: 338px;
+    max-height: 368px;
+    border: none;
+}
+
+.post-card-image {
+    min-height: 253px;
+    max-height: 253px;
+    background-size: initial;
+    object-fit: cover;
+}
+
+.post-body {
+  background-color: white;
+
+}
+
+.post-text {
+  display: flex;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.post-profile-username {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.delete-btn {
+  margin-left: 210px !important;
+}
