@@ -77,7 +77,7 @@ export default class PostCreate extends React.Component<Props, State> {
                                 <Input type="file" onChange={this.singleFileChangedHandler} />
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.description} onChange={e => this.setState({ description: e.target.value })} label="caption"/>
+                                <TextField className="modal-text-field" value={this.state.description} onChange={e => this.setState({ description: e.target.value })} label="caption"/>
                             </FormGroup>
                             <br />
                             <Button className="create-btn" type="submit">Post</Button>

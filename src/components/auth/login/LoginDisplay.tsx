@@ -54,10 +54,12 @@ function LoginDisplay(props: Props) {
           <Col className="login-container" md="5">
               <h1 className="jumbo-login">PetPals<FontAwesomeIcon icon={faDog} /></h1>
               <p className="about-login">PetPals is an alternative to mainstream social media. It was designed for people to take a break from the comments and likes. Now users can just watch pets all day while showing off their's. PetPals presents a welcoming and wholesome platform for people to admire pets and maybe adopt a fur-baby of their own! Experience a different way of social media. </p>
+              <p className="mobile-description-login">-social media to share and view pets-</p>
             <Form className="login-form" onSubmit={props.onSubmit}>
                 <FormGroup>
                     <Label for="username" hidden>Username</Label>
                     <StyledTextField 
+                    className="mobile-width"
                     onChange={e => props.onUsernameChange(e)} 
                     name="username" 
                     id="filled-basic" 
@@ -68,6 +70,7 @@ function LoginDisplay(props: Props) {
                 <FormGroup>
                     <Label for="password" hidden>Password</Label>
                     <StyledTextField 
+                    className="mobile-width"
                     onChange={e => props.onPasswordChange(e)} 
                     type="password" 
                     name="password" 
