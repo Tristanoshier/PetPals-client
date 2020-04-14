@@ -62,7 +62,7 @@
   }
 
   /* phones */
-@media (max-width: 576px) {
+@media (max-width: 414px) {
     .spacing {
         display: none;
     }
