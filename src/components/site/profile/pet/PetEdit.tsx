@@ -2,9 +2,11 @@ import React from 'react';
 //Reactstrap
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
+import TextField from "@material-ui/core/TextField";
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     petUpdate: any,
@@ -36,7 +38,7 @@ export default class PetEdit extends React.Component<Props, State> {
     editPetPhoto = () => {
         const editPetPictureData = new FormData()
         editPetPictureData.append('image', this.state.file)
-        fetch(`http://localhost:3001/pet/update/pet-pic/${this.props.petUpdate.id}`, {
+        fetch(`${APIURL}/pet/update/pet-pic/${this.props.petUpdate.id}`, {
             method: 'PUT',
             body: editPetPictureData,
             headers: new Headers({
@@ -48,7 +50,7 @@ export default class PetEdit extends React.Component<Props, State> {
 
     handlePetUpdate = (e: any) => {
         e.preventDefault();
-        fetch(`http://localhost:3001/pet/update/${this.props.petUpdate.id}`, {
+        fetch(`${APIURL}/pet/update/${this.props.petUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({ name: this.state.editName, animal: this.state.editAnimal, bio: this.state.editBio, adoption: this.state.editAdoption}),
             headers: new Headers({
@@ -83,32 +85,31 @@ export default class PetEdit extends React.Component<Props, State> {
     render() {
         return (
             <>
-                <Modal isOpen={true}>
-                    <ModalHeader>Edit Pet<IconButton onClick={this.closeUpdateModal}><ClearIcon /></IconButton></ModalHeader>
+                <Modal className="create-pet-modal" isOpen={true}>
+                    <ModalHeader>Edit Pet<IconButton className="exit-btn" onClick={this.closeUpdateModal}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handlePetUpdate}>
                             <FormGroup>
-                                <Label htmlFor="file">Edit pet picture:</Label>
+                                <Label className="choose-file" htmlFor="file">Edit pet profile picture:</Label>
                                 <Input type="file" onChange={this.singleFileChangedHandler}/>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="name">Name:</Label>
-                                <Input value={this.state.editName} onChange={e => this.setState({ editName: e.target.value })} />
+                                <Label className ="caption" htmlFor="description">Is this pet up for adoption?</Label>
+                                <br />
+                                <Button className="yes-btn" color="primary" onClick={() => this.setState({ editAdoption: true })}>Yes</Button>
+                                <Button className="no-btn" color="secondary" onClick={() => this.setState({ editAdoption: false })}>No</Button>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="animal">Animal:</Label>
-                                <Input value={this.state.editAnimal} onChange={e => this.setState({ editAnimal: e.target.value })} />
+                                <TextField value={this.state.editName} onChange={e => this.setState({ editName: e.target.value })} label="edit name"/>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="posturl">Bio:</Label>
-                                <Input value={this.state.editBio} onChange={e => this.setState({ editBio: e.target.value })} />
+                                <TextField value={this.state.editAnimal} onChange={e => this.setState({ editAnimal: e.target.value })} label="edit animal"/>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="description">Adoption:</Label>
-                                <Button color="primary" onClick={() => this.setState({ editAdoption: true })}>Yes</Button>
-                                <Button color="secondary" onClick={() => this.setState({ editAdoption: false })}>No</Button>
+                                <TextField value={this.state.editBio} onChange={e => this.setState({ editBio: e.target.value })} label="edit bio"/>
                             </FormGroup>
-                            <IconButton type="submit"><CreateIcon /></IconButton>
+                            <br />
+                            <Button className="create-btn" type="submit">Make Changes</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

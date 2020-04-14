@@ -1,10 +1,11 @@
 import React from 'react';
 //Reactstrap
-import { Button, Form, FormGroup, Label, Input, Container, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
-import AddIcon from '@material-ui/icons/Add';
+import TextField from "@material-ui/core/TextField";
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
+import APIURL from '../../../../helpers/environment';
 
 
 type Props = {
@@ -44,7 +45,7 @@ export default class PetCreate extends React.Component<Props, State> {
         petData.append('adoption', JSON.stringify(this.state.adoption))
         
         if (this.state.name && this.state.bio) {
-            fetch(`http://localhost:3001/pet/create`, {
+            fetch(`${APIURL}/pet/create`, {
                 method: 'POST',
                 body: petData,
                 headers: new Headers({
@@ -81,32 +82,31 @@ export default class PetCreate extends React.Component<Props, State> {
     render() {
         return (
             <>
-                <Modal isOpen={true}>
-                    <ModalHeader>Create Pet<IconButton onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
+                <Modal className="edit-post-modal" isOpen={true}>
+                    <ModalHeader>Add Pet<IconButton className="exit-btn" onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody >
                         <Form onSubmit={this.handleSubmit} >
                             <FormGroup>
-                                <Label htmlFor="file">Please upload an image</Label>
+                                <Label className="choose-file" htmlFor="file">Choose a profile picture for your pet.</Label>
                                 <Input type="file" onChange={this.singleFileChangedHandler} />
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="name">Name:</Label>
-                                <Input value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
+                                <Label className= "caption" htmlFor="description">Is this pet up for adoption?</Label>
+                                <br />
+                                <Button className="yes-btn" color="primary" onClick={() => this.setState({ adoption: true })}>Yes</Button>
+                                <Button className="no-btn" color="secondary" onClick={() => this.setState({ adoption: false })}>No</Button>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="animal">Animal:</Label>
-                                <Input value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} />
+                                <TextField value={this.state.name} onChange={e => this.setState({ name: e.target.value })} label="name" />
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="posturl">Bio:</Label>
-                                <Input value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} />
+                                <TextField value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} label="animal" />
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="description">Adoption:</Label>
-                                <Button color="primary" onClick={() => this.setState({ adoption: true })}>Yes</Button>
-                                <Button color="secondary" onClick={() => this.setState({ adoption: false })}>No</Button>
+                                <TextField value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} label="bio"/>
                             </FormGroup>
-                            <IconButton type="submit">Add<AddIcon /></IconButton>
+                            <br />
+                            <Button className="create-btn" type="submit">Add Pet +</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

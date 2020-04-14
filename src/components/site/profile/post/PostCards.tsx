@@ -5,6 +5,7 @@ import { Card, CardImg, CardBody, CardSubtitle, CardDeck, Col } from 'reactstrap
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 
 type Props = {
@@ -22,7 +23,7 @@ export default class PostCards extends React.Component<Props> {
     }
 
     postDelete = (post: any) => {
-        fetch(`http://localhost:3001/post/delete/${post.id}`, {
+        fetch(`${APIURL}/post/delete/${post.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

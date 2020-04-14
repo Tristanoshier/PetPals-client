@@ -2,9 +2,11 @@ import React from 'react';
 //Reactstrap
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
+import TextField from "@material-ui/core/TextField";
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     postUpdate: any,
@@ -26,7 +28,7 @@ export default class PostEdit extends React.Component<Props, State> {
     }
 
     handlePostUpdate = () => {
-        fetch(`http://localhost:3001/post/edit/${this.props.postUpdate.id}`, {
+        fetch(`${APIURL}/post/edit/${this.props.postUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({ description: this.state.editDescription }),
             headers: new Headers({
@@ -46,15 +48,15 @@ export default class PostEdit extends React.Component<Props, State> {
     render() {
         return (
             <>
-                <Modal isOpen={true}>
-                    <ModalHeader>Edit Post<IconButton onClick={this.closeUpdateModal}><ClearIcon /></IconButton></ModalHeader>
+                <Modal className="create-pet-modal" isOpen={true}>
+                    <ModalHeader>Edit Post<IconButton className="exit-btn-post-edit" onClick={this.closeUpdateModal}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handlePostUpdate}>
                             <FormGroup>
-                                <Label htmlFor="description">Caption:</Label>
-                                <Input value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} />
+                                <TextField value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} label="edit caption"/>
                             </FormGroup>
-                            <IconButton type="submit"><CreateIcon /></IconButton>
+                            <br />
+                            <Button className="create-btn" type="submit">Make Changes</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

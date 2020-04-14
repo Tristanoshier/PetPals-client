@@ -1,10 +1,12 @@
 import React from 'react';
 //Reactstrap
-import { Button, Form, FormGroup, Label, Input, Container, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
+import TextField from "@material-ui/core/TextField";
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     postCreate: any,
@@ -33,7 +35,7 @@ export default class PostCreate extends React.Component<Props, State> {
         postData.append('image', this.state.file)
         postData.append('description', this.state.description)
         if (this.state.description) {
-            fetch(`http://localhost:3001/post/create`, {
+            fetch(`${APIURL}/post/create`, {
                 method: 'POST',
                 body: postData,
                 headers: new Headers({
@@ -66,19 +68,19 @@ export default class PostCreate extends React.Component<Props, State> {
     render() {
         return (
             <>
-                <Modal isOpen={true}>
-                    <ModalHeader>Create Post <IconButton onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
+                <Modal className="edit-post-modal" isOpen={true}>
+                    <ModalHeader>Create Post <IconButton className="exit-btn-post" onClick={this.closeCreateModal.bind(this)}><ClearIcon /></IconButton></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup>
-                                <Label htmlFor="file">Please upload a image</Label>
+                                <Label htmlFor="file">Choose an image for your post</Label>
                                 <Input type="file" onChange={this.singleFileChangedHandler} />
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="description">Caption:</Label>
-                                <Input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} />
+                                <TextField value={this.state.description} onChange={e => this.setState({ description: e.target.value })} label="caption"/>
                             </FormGroup>
-                            <IconButton type="submit">Add<AddIcon /></IconButton>
+                            <br />
+                            <Button className="create-btn" type="submit">Post</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

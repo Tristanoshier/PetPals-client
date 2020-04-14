@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import ClearIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 
 type Props = {
@@ -32,7 +33,7 @@ export default class PostIndex extends React.Component<Props, State> {
     }
 
     fetchPosts = () => {
-        fetch(`http://localhost:3001/post/find/feed`, {
+        fetch(`${APIURL}/post/find/feed`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -49,7 +50,7 @@ export default class PostIndex extends React.Component<Props, State> {
     };
 
     fetchMyUserData() {
-        fetch('http://localhost:3001/post/find', {
+        fetch(`${APIURL}/post/find`, {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ export default class PostIndex extends React.Component<Props, State> {
     }
 
     postDelete = (feed: any) => {
-        fetch(`http://localhost:3001/post/delete/${feed.id}`, {
+        fetch(`${APIURL}/post/delete/${feed.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
