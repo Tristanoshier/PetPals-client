@@ -1,9 +1,10 @@
 import React from "react";
 //Reactstrap
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button, ModalHeader, ModalBody, Modal } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Container, Row, Col, Button } from "reactstrap";
 //Components
 import EditProfile from "./EditProfile";
 import ContactUser from './ContactUser';
+import APIURL from '../../../helpers/environment'
 
 type Props = {
   token: string
@@ -30,7 +31,7 @@ export default class ProfileDisplay extends React.Component<Props, State> {
   }
 
   fetchMyProfile() {
-    fetch('http://localhost:3001/post/find', {
+    fetch(`${APIURL}/post/find`, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -99,7 +100,12 @@ export default class ProfileDisplay extends React.Component<Props, State> {
                 <CardBody className="profile-body">
                   <CardTitle className="profile-username">{this.state.profileInfo.username}<Button className='primary-btn edit-profile-btn' onClick={() => {this.updateOn()}}>Edit Profile</Button></CardTitle>
                   <div className='post-pet-data'>
-                  <p className="post-number">{this.state.postNum}</p><p>posts</p><p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
+                  <p className="post-number">{this.state.postNum}</p><p>posts</p>
+                  {this.state.profileInfo.adoptionRecruiter ? 
+                      <p className="adoption-recruiter-label">adoption specialist</p>
+                      : <p className="adoption-recruiter-label">pet enthusiast</p>
+                    }
+                    <p className="profile-contact" onClick={() => {this.contactModalOn()}}>contact</p>
                   </div>
                   <CardSubtitle className="profile-bio">{this.state.profileInfo.bio}</CardSubtitle>
                   <CardSubtitle>{this.state.profileInfo.adoptionRecruiter}</CardSubtitle>

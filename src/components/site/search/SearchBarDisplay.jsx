@@ -1,12 +1,16 @@
 import React from 'react';
 import { Container, Row, Col, Input, Form, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
+import ClearIcon from '@material-ui/icons/Clear';
+import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../helpers/environment';
 
 
 export default class SearchBarDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filteredUsers: []
+            filteredUsers: [],
+            profileInfo: {}
         }
     }
 
@@ -15,6 +19,7 @@ export default class SearchBarDisplay extends React.Component {
     }
 
     componentDidMount() {
+        this.fetchMyUserData()
         this.props.findAllUsers();
         this.filterUsers();
     }
@@ -35,33 +40,83 @@ export default class SearchBarDisplay extends React.Component {
                 filteredUsers: filtered
             })
             console.log(this.state.filteredUsers)
+            console.log(this.props.allUsers)
         }
     }
 
+    fetchMyUserData() {
+        fetch(`${APIURL}/post/find`, {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': this.props.token
+        })
+        }).then(res => res.json())
+        .then((profileData) => {
+            this.setState({
+            profileInfo: profileData
+            })
+        }).catch(err => console.log(err))
+    }
+
+
+    deleteUserForAdmin = (user) => {
+        fetch(`${APIURL}/user/delete/${user.username}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token
+            })
+        }).then(() => {
+            this.reloadPage();
+            this.filterUsers();
+        })
+    }
+
+    reloadPage(){
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000)
+    }
+
     render() {
-        const petMapper = this.state.filteredUsers.map((user, index) =>
-            <Card key={index}>
+        const searchUserMapper = this.state.filteredUsers.map((user, index) =>
+            <Card className="search-card" key={index}>
                 <Row>
                     <Col md="4">
                         <CardImg className="search-img" src={user.ProfileImg} alt="profile pic" />
                     </Col>
                     <Col md="8">
                         <CardBody>
-                            <CardTitle>{user.username}</CardTitle>
-                            <CardSubtitle>{user.bio}</CardSubtitle>
-                            <CardSubtitle>Contact</CardSubtitle>
+                            <Row>
+                                <Col md="6">
+                                    <CardTitle className="search-username">{user.username}</CardTitle>
+                                    <CardSubtitle>{user.bio}</CardSubtitle>
+                                </Col>
+                                <Col className= "search-user-body" md="6">
+                                    {user.adoptionRecruiter ? 
+                                    <p className="adoption-recruiter-search">adoption specialist</p>
+                                    : <p className="adoption-recruiter-search">pet enthusiast</p>
+                                    }
+                                     <CardSubtitle>{user.contact}</CardSubtitle>
+                                    {this.state.profileInfo.userType === 'Manager' ?
+                                    <IconButton onClick={() => { this.deleteUserForAdmin(user) }}><ClearIcon /></IconButton>
+                                    : <></>
+                                    }
+                                </Col>
+                            </Row>
                         </CardBody>
                     </Col>
                 </Row>
             </Card>
         )
         return (
-            <Container>
+            <Container className="search-container">
                 <Row>
                     <Col md="3"></Col>
                     <Col md="6">
                         <Form onSubmit={this.handleSubmit} id="form" autoComplete="off">
-                            <Input onChange={this.filterUsers} id='search' type="text" placeholder="Search" />
+                            <Input className="search-form" onChange={this.filterUsers} id='search' type="text" placeholder="Search for a user..." />
                         </Form>
                     </Col>
                     <Col md="3"></Col>
@@ -69,7 +124,9 @@ export default class SearchBarDisplay extends React.Component {
                 <Row>
                     <Col md="3"></Col>
                     <Col md="6">
-                        {petMapper}
+                        <div className="search-box">
+                            {searchUserMapper}
+                        </div>
                     </Col>
                     <Col md="3"></Col>
                 </Row>

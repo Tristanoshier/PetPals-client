@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Dashboard from "./dashboard/Dashboard";
 import Search from "./search/Search";
 import Profile from "./profile/Profile";
+import APIURL from '../../helpers/environment';
 
 type Props = {
     token: string
@@ -21,7 +22,7 @@ export default class Routes extends React.Component<Props, State> {
     }
     
     findAllUsers =() => {
-        fetch('http://localhost:3001/user/find-all', {
+        fetch(`${APIURL}/user/find-all`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

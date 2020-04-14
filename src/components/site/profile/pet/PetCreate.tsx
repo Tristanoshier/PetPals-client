@@ -1,10 +1,11 @@
 import React from 'react';
 //Reactstrap
-import { Button, Form, FormGroup, Label, Input, Container, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 //Material UI
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
+import APIURL from '../../../../helpers/environment';
 
 
 type Props = {
@@ -44,7 +45,7 @@ export default class PetCreate extends React.Component<Props, State> {
         petData.append('adoption', JSON.stringify(this.state.adoption))
         
         if (this.state.name && this.state.bio) {
-            fetch(`http://localhost:3001/pet/create`, {
+            fetch(`${APIURL}/pet/create`, {
                 method: 'POST',
                 body: petData,
                 headers: new Headers({

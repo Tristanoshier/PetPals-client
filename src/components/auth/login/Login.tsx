@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginDisplay from './LoginDisplay';
 import { Container } from 'reactstrap';
+import APIURL from '../../../helpers/environment';
 type Props = {
     isLogin: boolean,
     updateToken: (newToken: string) => void,
@@ -25,7 +26,7 @@ export default class Login extends React.Component<Props, State> {
     }
     handleSubmit = (event: any) => {
         event.preventDefault();
-        fetch(`http://localhost:3001/user/login`, {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({ username: this.state.username, password: this.state.password }),
             headers: new Headers({

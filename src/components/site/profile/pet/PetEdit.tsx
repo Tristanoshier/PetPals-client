@@ -5,6 +5,7 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 import ClearIcon from '@material-ui/icons/Clear';
 import CreateIcon from '@material-ui/icons/Create';
 import IconButton from '@material-ui/core/IconButton/IconButton';
+import APIURL from '../../../../helpers/environment';
 
 type Props = {
     petUpdate: any,
@@ -18,7 +19,7 @@ type State = {
     editAnimal: string,
     editBio: string,
     editAdoption: boolean,
-    editPetPicUrl: string
+    file: string
 }
 
 export default class PetEdit extends React.Component<Props, State> {
@@ -29,26 +30,55 @@ export default class PetEdit extends React.Component<Props, State> {
             editAnimal: this.props.petUpdate.animal,
             editBio: this.props.petUpdate.bio,
             editAdoption: this.props.petUpdate.adoption,
-            editPetPicUrl: this.props.petUpdate.petPicUrl
+            file: ""
         }
     }
 
-    handlePetUpdate = () => {
-        fetch(`http://localhost:3001/pet/update/${this.props.petUpdate.id}`, {
+    editPetPhoto = () => {
+        const editPetPictureData = new FormData()
+        editPetPictureData.append('image', this.state.file)
+        fetch(`${APIURL}/pet/update/pet-pic/${this.props.petUpdate.id}`, {
             method: 'PUT',
-            body: JSON.stringify({ name: this.state.editName, animal: this.state.editAnimal, bio: this.state.editBio, adoption: this.state.editAdoption, petPicUrl: this.state.editPetPicUrl }),
+            body: editPetPictureData,
+            headers: new Headers({
+                'Authorization': this.props.token
+            })
+        }) .then(res => res.json())
+        .catch(err => console.log(err))
+    }
+
+    handlePetUpdate = (e: any) => {
+        e.preventDefault();
+        fetch(`${APIURL}/pet/update/${this.props.petUpdate.id}`, {
+            method: 'PUT',
+            body: JSON.stringify({ name: this.state.editName, animal: this.state.editAnimal, bio: this.state.editBio, adoption: this.state.editAdoption}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
             })
         }).then(() => {
+            this.editPetPhoto();
+        }).then(() => {
             this.props.fetchPets();
             this.props.updateOff();
+            this.makeEditWork();
         })
+    }
+
+    makeEditWork = () => {
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000)
     }
 
     closeUpdateModal = () => {
         this.props.updateOff();
+    }
+
+    singleFileChangedHandler = (e: any) => {
+        this.setState({
+         file: e.target.files[0]
+        });
     }
 
     render() {
@@ -59,8 +89,8 @@ export default class PetEdit extends React.Component<Props, State> {
                     <ModalBody>
                         <Form onSubmit={this.handlePetUpdate}>
                             <FormGroup>
-                                <Label htmlFor="petPicUrl">PetPicUrl:</Label>
-                                <Input value={this.state.editPetPicUrl} onChange={e => this.setState({ editPetPicUrl: e.target.value })} />
+                                <Label htmlFor="file">Edit pet picture:</Label>
+                                <Input type="file" onChange={this.singleFileChangedHandler}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="name">Name:</Label>

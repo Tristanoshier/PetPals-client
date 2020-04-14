@@ -1,6 +1,8 @@
 import React from 'react';
 import SignupDisplay from './SignupDIsplay'
 import { Container } from 'reactstrap';
+import APIURL from '../../../helpers/environment';
+
 type Props = {
     isLogin: boolean,
     updateToken: (newToken: string) => void,
@@ -29,7 +31,7 @@ export default class Signup extends React.Component<Props, State> {
         if (this.state.password.length < 5) {
             alert('password must be at least 5 characters')
         } else {
-            fetch(`http://localhost:3001/user/signup`, {
+            fetch(`${APIURL}/user/signup`, {
                 method: 'POST',
                 body: JSON.stringify({ username: this.state.username, password: this.state.password, adoptionRecruiter: this.state.adoptionRecruiter }),
                 headers: new Headers({
