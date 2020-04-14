@@ -41,7 +41,6 @@
 .about-login {
   margin-bottom: 15em;
   padding: 0 25px 0 25px;
-  
 }
 
 .login-switch {
@@ -65,7 +64,7 @@
 }
 
 .about-signup {
-  margin-bottom: 12em;
+  margin-bottom: 10em;
   padding: 0 25px 0 25px;
 }
 
@@ -83,3 +82,94 @@
   color: white !important; 
   border: solid white 1px !important;
 }
+
+/* desktop */
+@media (max-width: 1920px){
+    .mobile-description-login {
+      visibility: hidden;
+    }
+    .mobile-description-signup {
+      visibility: hidden;
+    }
+
+    .desktop-btn {
+      visibility: visible;
+    }
+    .mobile-btn {
+      visibility: hidden;
+    }
+}
+
+/* iPhone X */
+@media (max-width: 375px){
+  .bg-image {
+    display: none;
+  }
+  .jumbo-login {
+    font-size: 60px;
+  }
+  .mobile-description-login {
+    visibility: visible;
+    margin-bottom: 17em;
+  }
+
+  .mobile-description-signup {
+    visibility: visible;
+    margin-bottom: 7em;
+  }
+  .mobile-adoption-input {
+    margin-bottom: 3em;
+  }
+
+
+  .about-login {
+    display: none;
+  }
+
+  .about-signup {
+    display: none;
+  }
+
+  .login-container {
+    height: 100vh ;
+  }
+
+  .mobile-width {
+    width: 250px !important;
+  }
+  
+  .desktop-btn {
+    visibility: hidden;
+  }
+  .mobile-btn {
+    visibility: visible;
+  }
+  .adoption-specialist-label {
+    margin: 0;
+    margin-left: 64px;
+  }
+
+}
+
+/* galaxy S5 */
+@media (max-width: 360px){
+  .bg-image {
+    display: none;
+  }
+  .mobile-description {
+    visibility: visible;
+  }
+
+}
+
+/* iPhone 6/7/8 plus */
+@media (max-width: 414px){
+  .bg-image {
+    display: none;
+  }
+  .mobile-description {
+    visibility: visible;
+  }
+
+}
+

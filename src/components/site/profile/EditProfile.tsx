@@ -14,6 +14,7 @@ import {
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import SaveIcon from "@material-ui/icons/Save";
+import ClearIcon from '@material-ui/icons/Clear';
 
 type Props = {
   profileInfo: any;
@@ -106,15 +107,25 @@ export default class EditProfile extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <Modal isOpen={true}>
+        <Modal className="edit-post-modal" isOpen={true}>
           <ModalHeader className="edit-modal">
-            Edit Profile<Button onClick={this.closeUpdateModal}>X</Button>
+            Edit Profile<IconButton className="exit-btn-post" onClick={this.closeUpdateModal.bind(this)}><ClearIcon /></IconButton>
           </ModalHeader>
-          <ModalBody className="edit-modal">
+          <ModalBody>
             <Form onSubmit={this.handleProfileUpdate}>
               <FormGroup>
-                <Label htmlFor="file">Edit profile picture</Label>
+                <Label className="choose-file" htmlFor="file">Edit profile picture</Label>
                 <Input type="file" onChange={this.singleFileChangedHandler} />
+              </FormGroup>
+              <FormGroup>
+                <Label className= "caption" for="adoption recruiter">Are you an Adoption Specialist?</Label>
+                <br />
+                <Button className="yes-btn" onClick={() => this.setState({ editAdoptionRecruiter: true })}>
+                  Yes
+                </Button>
+                <Button className="no-btn" onClick={() => this.setState({ editAdoptionRecruiter: false })}>
+                  No
+                </Button>
               </FormGroup>
               <br />
               <FormGroup>
@@ -128,47 +139,24 @@ export default class EditProfile extends React.Component<Props, State> {
                   className="modal-text-field"
                 />
               </FormGroup>
-              <br />
               <FormGroup>
-                <Label for="adoption recruiter">Adoption Recruiter:</Label>
-                <Button
-                  color="primary"
-                  onClick={() => this.setState({ editAdoptionRecruiter: true })}
-                >
-                  Yes
-                </Button>
-                <Button
-                  color="secondary"
-                  onClick={() =>
-                    this.setState({ editAdoptionRecruiter: false })
-                  }
-                >
-                  No
-                </Button>
-              </FormGroup>
-              <FormGroup>
-                <Label for="bio"></Label>
                 <TextField
                   value={this.state.editBio}
                   onChange={(e) => this.setState({ editBio: e.target.value })}
-                  label="Bio"
+                  label="bio"
+                  className="modal-text-field"
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="contact"></Label>
                 <TextField
                   value={this.state.editContact}
-                  onChange={(e) =>
-                    this.setState({
-                      editContact: e.target.value,
-                    })
-                  }
-                />
+                  onChange={(e) => this.setState({editContact: e.target.value })}
+                  label="contact"
+                  className="modal-text-field"
+                  />
               </FormGroup>
               <br />
-              <IconButton type="submit">
-                <SaveIcon />
-              </IconButton>
+              <Button className="create-btn" type="submit">Make Changes</Button>
             </Form>
           </ModalBody>
         </Modal>

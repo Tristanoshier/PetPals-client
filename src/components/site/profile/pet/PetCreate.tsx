@@ -97,13 +97,13 @@ export default class PetCreate extends React.Component<Props, State> {
                                 <Button className="no-btn" color="secondary" onClick={() => this.setState({ adoption: false })}>No</Button>
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.name} onChange={e => this.setState({ name: e.target.value })} label="name" />
+                                <TextField className="modal-text-field" value={this.state.name} onChange={e => this.setState({ name: e.target.value })} label="name" />
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} label="animal" />
+                                <TextField className="modal-text-field" value={this.state.animal} onChange={e => this.setState({ animal: e.target.value })} label="animal" />
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} label="bio"/>
+                                <TextField className="modal-text-field" value={this.state.bio} onChange={e => this.setState({ bio: e.target.value })} label="bio"/>
                             </FormGroup>
                             <br />
                             <Button className="create-btn" type="submit">Add Pet +</Button>

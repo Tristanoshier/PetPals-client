@@ -56,18 +56,22 @@ function SignupDisplay(props: Props) {
         <Col className="login-container" md="5">
           <h1 className="jumbo-login">PetPals<FontAwesomeIcon icon={faDog} /></h1>
           <p className="about-signup">PetPals is an alternative to mainstream social media. It was designed for people to take a break from the comments and likes. Now users can just watch pets all day while showing off their's. PetPals presents a welcoming and wholesome platform for people to admire pets and maybe adopt a fur-baby of their own! Experience a different way of social media. </p>
+          <p className="mobile-description-signup">-social media to share and view pets-</p>
           <Form className="login-form" onSubmit={props.onSubmit}>
-            <FormGroup>
+            <FormGroup className="mobile-adoption-input">
             <Label className="adoption-specialist-label">Are you an Adoption Specialist?</Label>
-              <Button className= "signup-yes-btn" onClick={() => props.onAdoptionChangeTrue()}>Yes</Button>
-              <Button className= "signup-no-btn" onClick={() => props.onAdoptionChangeFalse()}>No</Button>
+              <Button className= "signup-yes-btn desktop-btn" onClick={() => props.onAdoptionChangeTrue()}>Yes</Button>
+              <Button className= "signup-no-btn desktop-btn" onClick={() => props.onAdoptionChangeFalse()}>No</Button>
               <br />
-              <br />
+              <Button className= "signup-yes-btn mobile-btn" onClick={() => props.onAdoptionChangeTrue()}>Yes</Button>
+              <Button className= "signup-no-btn mobile-btn" onClick={() => props.onAdoptionChangeFalse()}>No</Button>
+              </FormGroup>
+              <FormGroup>
               <Label for="username" hidden>Username</Label>
               <StyledTextField
+                className="mobile-width"
                 onChange={e => props.onUsernameChange(e)}
                 name="username"
-                // id="username" 
                 id="filled-basic"
                 label="username"
                 variant="filled"
@@ -77,11 +81,11 @@ function SignupDisplay(props: Props) {
             <FormGroup>
               <Label for="password" hidden>Password</Label>
               <StyledTextField
+                className="mobile-width"
                 onChange={e => props.onPasswordChange(e)}
                 type="password"
                 name="password"
                 id="filled-basic"
-                // placeholder="Password"
                 label="password"
                 variant="filled" />
             </FormGroup>
