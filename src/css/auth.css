@@ -101,7 +101,7 @@
 }
 
 /* iPhone X */
-@media (max-width: 375px){
+@media (max-width: 414px){
   .bg-image {
     display: none;
   }
