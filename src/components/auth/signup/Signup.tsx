@@ -70,8 +70,7 @@ export default class Signup extends React.Component<Props, State> {
     }
     render() {
         return (
-            <Container className="signup-display">
-                <h1>Signup</h1>
+            <Container className="auth-container">
                 <SignupDisplay
                     passwordRequired={this.state.passwordRequired}
                     onSubmit={this.handleSubmit.bind(this)}

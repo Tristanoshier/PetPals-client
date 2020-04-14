@@ -59,8 +59,7 @@ export default class Login extends React.Component<Props, State> {
     }
     render() {
         return (
-            <Container className="login-display">
-                <h1>Login</h1>
+            <Container className="auth-container">
                 <LoginDisplay
                     incorrectPassword={this.state.incorrectPassword}
                     usernameNotExist={this.state.usernameNotExist}

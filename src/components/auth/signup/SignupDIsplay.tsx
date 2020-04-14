@@ -1,12 +1,16 @@
 import React from "react";
+
 //Reactstrap
-import { Form, FormGroup, Label, Input, ButtonGroup } from "reactstrap";
+import { Form, FormGroup, Label, Input, ButtonGroup, Row, Container, Col } from "reactstrap";
+
 //Material UI
 import { createStyles, makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-
+//Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDog } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,83 +24,82 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const StyledTextField = withStyles({
-    root: {
-        color: 'white',
-        backgroundColor: '#738380',
-    },
-    label: {
-      textTransform: 'capitalize',
-    },
-  })(TextField);
-
-
-const StyledButton = withStyles({
-    root: {
-      borderRadius: 3,
-      border: 0,
-      color: 'white',
-      height: 48,
-      padding: '0 30px',
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    },
-    label: {
-      textTransform: 'capitalize',
-    },
-  })(Button);
+  root: {
+    color: 'white',
+    backgroundColor: 'white',
+    width: 400,
+    borderRadius: 5
+  },
+  label: {
+    textTransform: 'capitalize',
+  },
+})(TextField);
 
 type Props = {
-    passwordRequired: boolean,
-    onSubmit: (event: any) => void,
-    isLogin: boolean,
-    isLoginHandler: (e: any) => void,
-    onUsernameChange: (e: any) => void,
-    onPasswordChange: (e: any) => void,
-    onAdoptionChangeTrue: () => void,
-    onAdoptionChangeFalse: () => void
+  passwordRequired: boolean,
+  onSubmit: (event: any) => void,
+  isLogin: boolean,
+  isLoginHandler: (e: any) => void,
+  onUsernameChange: (e: any) => void,
+  onPasswordChange: (e: any) => void,
+  onAdoptionChangeTrue: () => void,
+  onAdoptionChangeFalse: () => void
 }
 
 function SignupDisplay(props: Props) {
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <Form onSubmit={props.onSubmit}>
+  return (
+    <Container className="auth-container">
+      <Row>
+        <Col className="login-container" md="5">
+          <h1 className="jumbo-login">PetPals<FontAwesomeIcon icon={faDog} /></h1>
+          <p className="about-signup">PetPals is an alternative to mainstream social media. It was designed for people to take a break from the comments and likes. Now users can just watch pets all day while showing off their's. PetPals presents a welcoming and wholesome platform for people to admire pets and maybe adopt a fur-baby of their own! Experience a different way of social media. </p>
+          <Form className="login-form" onSubmit={props.onSubmit}>
             <FormGroup>
-                <Label for="username" hidden>Username</Label>
-                <StyledTextField 
-                onChange={e => props.onUsernameChange(e)} 
-                name="username" 
+            <Label className="adoption-specialist-label">Are you an Adoption Specialist?</Label>
+              <Button className= "signup-yes-btn" onClick={() => props.onAdoptionChangeTrue()}>Yes</Button>
+              <Button className= "signup-no-btn" onClick={() => props.onAdoptionChangeFalse()}>No</Button>
+              <br />
+              <br />
+              <Label for="username" hidden>Username</Label>
+              <StyledTextField
+                onChange={e => props.onUsernameChange(e)}
+                name="username"
                 // id="username" 
                 id="filled-basic"
-                label="Username"
+                label="username"
                 variant="filled"
-                />
+              />
             </FormGroup>
             <br />
             <FormGroup>
-                <Label for="password" hidden>Password</Label>
-                <StyledTextField 
-                onChange={e => props.onPasswordChange(e)} 
-                type="password" 
-                name="password" 
-                id="filled-basic" 
+              <Label for="password" hidden>Password</Label>
+              <StyledTextField
+                onChange={e => props.onPasswordChange(e)}
+                type="password"
+                name="password"
+                id="filled-basic"
                 // placeholder="Password"
-                label="Password"
+                label="password"
                 variant="filled" />
             </FormGroup>
             <br />
-            <ButtonGroup>
-                <Label>Are you an adoption recruiter?</Label>
-                <StyledButton color="inherit" onClick={() => props.onAdoptionChangeTrue()} >Yes</StyledButton>
-                <Button color="secondary" onClick={() => props.onAdoptionChangeFalse()} className="adoption-false">No</Button>
-            </ButtonGroup>
-            <br />
-            <Button type="submit" className="signup-button">Signup</Button>
-            <p className="auth-switch" onClick={props.isLoginHandler}>
-                {props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
-            </p>
-        </Form>
-    )
+            <div className="login-switch">
+              <Button type="submit" className="signup-button">Signup</Button>
+              <br />
+              <br />
+              <p className="auth-switch" onClick={props.isLoginHandler}>
+                {props.isLogin ? "Don't have an account? Sign up here!" : "Already have an account? Login here!"}
+              </p>
+            </div>
+          </Form>
+        </Col>
+        <Col className="bg-image" md="7"></Col>
+      </Row>
+    </Container>
+  )
 }
 
 export default SignupDisplay;
