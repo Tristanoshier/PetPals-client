@@ -58,7 +58,7 @@
 }
 
 .profile-contact {
-    margin-left: 20px;
+    margin-left: 25px;
     text-decoration: underline;
 }
 
@@ -90,6 +90,6 @@
     padding: 4px;
     border: 1px solid #365874;
     border-radius: .25rem;
-    width: 115px; 
+    width: 120px; 
     margin-left: 20px;
 }
