@@ -50,6 +50,26 @@ export default class Sitebar extends React.Component<Props> {
           </NavItem>
         </Nav>
         <br />
+         {/*MOBILE NAVBAR */}
+         <div className="mobile-navbar">
+            <ul className="mobile-navbar-list">
+                <li className="mobile-item">
+                    <Link className="mobile-link" to="/dashboard">
+                        <FontAwesomeIcon className="mobile-icon" size="2x" icon={faHome} />
+                    </Link>
+                </li>
+                <li className="mobile-item">
+                    <Link className="mobile-link" to="/search">
+                        <FontAwesomeIcon className="mobile-icon icon-two" size="2x" icon={faSearch} />
+                    </Link>
+                </li>
+                <li className="mobile-item">
+                    <Link className="mobile-link" to="/profile">
+                      <FontAwesomeIcon className="mobile-icon icon-three" size="2x" icon={faUser} />
+                    </Link>
+                </li>
+            </ul>
+        </div>
         <Routes token={this.props.token} />
       </div>
     );

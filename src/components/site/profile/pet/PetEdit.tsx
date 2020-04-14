@@ -100,13 +100,13 @@ export default class PetEdit extends React.Component<Props, State> {
                                 <Button className="no-btn" color="secondary" onClick={() => this.setState({ editAdoption: false })}>No</Button>
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.editName} onChange={e => this.setState({ editName: e.target.value })} label="edit name"/>
+                                <TextField className="modal-text-field" value={this.state.editName} onChange={e => this.setState({ editName: e.target.value })} label="edit name"/>
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.editAnimal} onChange={e => this.setState({ editAnimal: e.target.value })} label="edit animal"/>
+                                <TextField className="modal-text-field" value={this.state.editAnimal} onChange={e => this.setState({ editAnimal: e.target.value })} label="edit animal"/>
                             </FormGroup>
                             <FormGroup>
-                                <TextField value={this.state.editBio} onChange={e => this.setState({ editBio: e.target.value })} label="edit bio"/>
+                                <TextField className="modal-text-field" value={this.state.editBio} onChange={e => this.setState({ editBio: e.target.value })} label="edit bio"/>
                             </FormGroup>
                             <br />
                             <Button className="create-btn" type="submit">Make Changes</Button>

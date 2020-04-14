@@ -54,7 +54,7 @@ export default class PostEdit extends React.Component<Props, State> {
                     <ModalBody>
                         <Form onSubmit={this.handlePostUpdate}>
                             <FormGroup>
-                                <TextField value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} label="edit caption"/>
+                                <TextField className="modal-text-field" value={this.state.editDescription} onChange={e => this.setState({ editDescription: e.target.value })} label="edit caption"/>
                             </FormGroup>
                             <br />
                             <Button className="create-btn" type="submit">Make Changes</Button>
