@@ -93,3 +93,35 @@
     width: 120px; 
     margin-left: 20px;
 }
+
+@media (max-width: 576px) {
+    .profile-img{
+            margin-left: 80px;
+            margin-bottom: 20px;
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: initial;
+            object-fit: cover;
+    }
+    .edit-profile-btn{
+        margin-left: 102px;
+    }
+    .profile-username {
+        color: rgb(0, 0, 0, 0.54);
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    .adoption-recruiter-label {
+        text-align: center;
+        font-size: 10px;
+        font-weight: bolder;
+        color: white;
+        background-color: #365874;
+        padding: 4px 2px 4px 2px;
+        border: 1px solid #365874;
+        border-radius: .25rem;
+        width: 120px; 
+        margin-left: 20px;
+    }
+}
