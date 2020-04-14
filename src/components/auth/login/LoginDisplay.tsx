@@ -1,8 +1,14 @@
 import React from 'react'
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Row, Col, Container } from 'reactstrap';
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+//Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDog } from '@fortawesome/free-solid-svg-icons';
+
+//Material UI
+import { createStyles, makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -14,6 +20,19 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
+const StyledTextField = withStyles({
+  root: {
+      color: 'white',
+      backgroundColor: 'white',
+      width: 400,
+      borderRadius: 5
+  },
+  label: {
+    textTransform: 'capitalize',
+  },
+})(TextField);
+
 
 
 type Props = {
@@ -30,22 +49,46 @@ function LoginDisplay(props: Props) {
     const classes = useStyles();
 
     return (
-        <Form onSubmit={props.onSubmit}>
-            <FormGroup>
-                <Label for="username" hidden>Username</Label>
-                <Input onChange={e => props.onUsernameChange(e)} name="username" placeholder="Username" />
-            </FormGroup>
-            <br />
-            <FormGroup>
-                <Label for="password" hidden>Password</Label>
-                <Input onChange={e => props.onPasswordChange(e)} type="password" name="password" id="password" placeholder="Password" />
-            </FormGroup>
-            <br />
-            <Button type="submit" variant="outlined" className="login-button">Login</Button>
-            <p className="auth-switch" onClick={props.isLoginHandler}>
-                {props.isLogin ? "Don't have an account? Sign up here." : "Already have an account? Login here."}
-            </p>
-        </Form>
+      <Container className="auth-container">
+        <Row>
+          <Col className="login-container" md="5">
+              <h1 className="jumbo-login">PetPals<FontAwesomeIcon icon={faDog} /></h1>
+              <p className="about-login">PetPals is an alternative to mainstream social media. It was designed for people to take a break from the comments and likes. Now users can just watch pets all day while showing off their's. PetPals presents a welcoming and wholesome platform for people to admire pets and maybe adopt a fur-baby of their own! Experience a different way of social media. </p>
+            <Form className="login-form" onSubmit={props.onSubmit}>
+                <FormGroup>
+                    <Label for="username" hidden>Username</Label>
+                    <StyledTextField 
+                    onChange={e => props.onUsernameChange(e)} 
+                    name="username" 
+                    id="filled-basic" 
+                    label="username" 
+                    variant="filled" />
+                </FormGroup>
+                <br />
+                <FormGroup>
+                    <Label for="password" hidden>Password</Label>
+                    <StyledTextField 
+                    onChange={e => props.onPasswordChange(e)} 
+                    type="password" 
+                    name="password" 
+                    id="filled-basic" 
+                    label="password" 
+                    variant="filled" />
+                </FormGroup>
+                <br />
+                <div className="login-switch">
+                  <Button type="submit" variant="outlined" className="login-button">Login</Button>
+                  <br />
+                  <br />
+                  <p className="auth-switch" onClick={props.isLoginHandler}>
+                      {props.isLogin ? "Don't have an account? Sign up here!" : "Already have an account? Login here!"}
+                  </p>
+                </div>
+            </Form>
+          </Col>
+          <Col className="bg-image" md="7"></Col>
+        </Row>
+      </Container>
     )
 }
 export default LoginDisplay;
