@@ -23,7 +23,7 @@ export default class Auth extends React.Component<Props, State> {
   render() {
     return (
       <Container className="auth-container">
-                  <h2>About</h2>
+        <h2>About</h2>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -48,7 +48,6 @@ export default class Auth extends React.Component<Props, State> {
             updateToken={this.props.updateToken}
           />
         )}
-
       </Container>
     );
   }

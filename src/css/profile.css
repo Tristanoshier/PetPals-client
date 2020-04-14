@@ -34,6 +34,16 @@
     border: 1px solid #f8f8ff;
 }
 
+/* Edit */
+
+.modal-text-field {
+    width: 300px !important;
+}
+
+.edit-modal {
+    background-color: #f8f8ff;
+}
+
 .edit-profile-btn{
     margin-left: 20px;
 }

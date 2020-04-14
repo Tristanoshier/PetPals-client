@@ -111,7 +111,7 @@ export default class SearchBarDisplay extends React.Component {
             </Card>
         )
         return (
-            <Container>
+            <Container className="search-container">
                 <Row>
                     <Col md="3"></Col>
                     <Col md="6">

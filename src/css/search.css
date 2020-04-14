@@ -50,3 +50,10 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+.search-container {
+    background-image: url(./assets/PetPalsPictureWall.jpg);
+    background-size: cover;
+    z-index: -4;
+    height: 700px;
+}
