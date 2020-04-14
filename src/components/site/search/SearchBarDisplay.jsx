@@ -83,13 +83,13 @@ export default class SearchBarDisplay extends React.Component {
         const searchUserMapper = this.state.filteredUsers.map((user, index) =>
             <Card className="search-card" key={index}>
                 <Row>
-                    <Col md="4">
+                    <Col className="mobile-search-img" md="4">
                         <CardImg className="search-img" src={user.ProfileImg} alt="profile pic" />
                     </Col>
-                    <Col md="8">
-                        <CardBody>
+                    <Col className="mobile-search-body" md="8">
+                        <CardBody className="mobile-search-body">
                             <Row>
-                                <Col md="6">
+                                <Col className="mobile-search-info" md="6">
                                     <CardTitle className="search-username">{user.username}</CardTitle>
                                     <CardSubtitle>{user.bio}</CardSubtitle>
                                 </Col>
@@ -111,7 +111,7 @@ export default class SearchBarDisplay extends React.Component {
             </Card>
         )
         return (
-            <Container>
+            <Container className="search-container">
                 <Row>
                     <Col md="3"></Col>
                     <Col md="6">

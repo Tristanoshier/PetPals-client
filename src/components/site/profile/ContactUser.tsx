@@ -12,8 +12,8 @@ type Props = {
 const ContactUser = (props: Props) => {
     return (
         <>
-            <Modal isOpen={true}>
-                <ModalHeader>Contact Info<IconButton onClick={props.contactModalOff}><ClearIcon /></IconButton></ModalHeader>
+            <Modal className="create-pet-modal" isOpen={true}>
+                <ModalHeader>Contact Info<IconButton className="exit-btn-contact" onClick={props.contactModalOff}><ClearIcon /></IconButton></ModalHeader>
                 <ModalBody>
                     <h4>
                         {props.profileInfo.contact}

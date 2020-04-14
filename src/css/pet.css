@@ -46,3 +46,65 @@
     width: 105px; 
     margin-left: 20px;
 }
+
+.modal-header { 
+    margin-right: 20px;
+}
+
+.yes-btn {
+    font-weight: bolder;
+    color: rgb(56, 189, 56);
+    background-color: rgb(241, 255, 241);
+    border: 1px solid rgb(56, 189, 56);
+}
+
+.yes-btn:hover{
+    background-color: rgb(56, 189, 56);
+    border: 1px solid white;
+}
+
+.no-btn {
+    font-weight: bolder;
+    color: rgb(248, 27, 27);
+    background-color: rgb(252, 223, 223);
+    border: 1px solid rgb(248, 27, 27);
+    margin-left: 10px;
+}
+
+.no-btn:hover {
+    background-color: rgb(248, 27, 27);
+    border: 1px solid white;
+}
+
+.create-pet-modal {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.modal-title {
+    font-size: 18px;
+}
+
+.exit-btn {
+    margin-left: 340px !important;
+}
+
+.create-btn {
+    color: rgb(0, 0, 0, 0.54);
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0, 0.54);
+}
+.create-btn:hover {
+    background-color: rgb(189, 188, 188);
+    border: 1px solid white;
+} 
+
+.caption {
+    font-weight: bold;
+}
+
+.choose-file {
+    font-weight: bold;
+}
+
+
+

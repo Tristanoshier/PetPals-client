@@ -35,3 +35,15 @@
 .delete-btn {
   margin-left: 210px !important;
 }
+
+.exit-btn-post-edit {
+  margin-left: 330px !important;
+}
+
+.edit-post-modal {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.exit-btn-post {
+  margin-left: 300px !important;
+}
