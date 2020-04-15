@@ -131,12 +131,20 @@
     .pet-clear-buttn {
         margin-left: 200px;
     }
+
+    .exit-btn {
+        margin-left: 260px !important;
+    }
   }
 
   @media (max-width: 375px) {
       .pet-profile-img {
           margin-left: 85px;
       }
+
+      .exit-btn {
+        margin-left: 220px !important;
+    }
   }
 
 

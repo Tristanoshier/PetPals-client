@@ -30,6 +30,10 @@
     font-size: 12px;
 }
 
+.personal-components {
+    display: inline;
+}
+
 @media (max-width: 414px) {
     .dashboard {
         margin-top: 75px;
