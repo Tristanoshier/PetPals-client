@@ -46,7 +46,6 @@ export default class PostIndex extends React.Component<Props, State> {
                     myFeed: postData
                 });
             });
-        console.log(this.state.myFeed)
     };
 
     fetchMyUserData() {
