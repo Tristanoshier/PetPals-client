@@ -148,10 +148,6 @@
         display: none;
     }
 
-    .adoption-recruiter-search {
-       
-    }
-
     .search-card {
         min-width:  337px;
     }
@@ -169,3 +165,11 @@
 
 
 }
+
+@media (max-width: 576px) {
+    .search {
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+}
+

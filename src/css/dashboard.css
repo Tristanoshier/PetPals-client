@@ -41,3 +41,10 @@
     }
 }
 
+@media (max-width: 576px) {
+    .dashboard {
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+}
+
