@@ -1,4 +1,5 @@
 import React from "react";
+import APIURL from '../../../helpers/environment';
 //Reactstrap
 import {
   Modal,
@@ -10,6 +11,7 @@ import {
   FormGroup,
   Button,
 } from "reactstrap";
+
 //Material UI
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton/IconButton";
@@ -47,7 +49,7 @@ export default class EditProfile extends React.Component<Props, State> {
     const editProfilePictureData = new FormData();
     editProfilePictureData.append("image", this.state.file);
     fetch(
-      `http://localhost:3001/user/update/profile-pic/${this.props.profileInfo.username}`,
+      `${APIURL}/user/update/profile-pic/${this.props.profileInfo.username}`,
       {
         method: "PUT",
         body: editProfilePictureData,
@@ -63,7 +65,7 @@ export default class EditProfile extends React.Component<Props, State> {
   handleProfileUpdate = (e: any) => {
     e.preventDefault();
     fetch(
-      `http://localhost:3001/user/update/${this.props.profileInfo.username}`,
+      `${APIURL}/user/update/${this.props.profileInfo.username}`,
       {
         method: "PUT",
         body: JSON.stringify({
