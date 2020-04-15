@@ -107,12 +107,13 @@
 }
 
 @media (max-width: 414px) {
+
     .pet-clear-buttn {
         display: inline;
         flex-wrap: wrap;
     }
     .pet-profile-img {
-        margin-left: 90px;
+        margin-left: 100px;
         margin-top: 20px;
         height: 8em;
         width: 8em;
@@ -124,8 +125,18 @@
         text-align: center;
     }
     .pet-title {
-        text-align: center !important;
+        margin-left: 50px;
     }
+
+    .pet-clear-buttn {
+        margin-left: 200px;
+    }
+  }
+
+  @media (max-width: 375px) {
+      .pet-profile-img {
+          margin-left: 85px;
+      }
   }
 
 
