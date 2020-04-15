@@ -76,7 +76,6 @@ export default class Joke extends React.Component<any, State> {
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
                 >
-                    <p>THIS API WAS HARD AND GAVE ME A HEADACHE FOR 3 DAYS. MAY THIS API AND TYPESCRIPT BURN IN THE FIERY PITS OF HELL!!!</p>
                     <p>{this.state.joke}</p>
                     <p>{this.state.setup}</p>
                     <p>{this.state.delivery}</p>
