@@ -106,5 +106,26 @@
     font-weight: bold;
 }
 
+@media (max-width: 414px) {
+    .pet-clear-buttn {
+        display: inline;
+        flex-wrap: wrap;
+    }
+    .pet-profile-img {
+        margin-left: 90px;
+        margin-top: 20px;
+        height: 8em;
+        width: 8em;
+        border-radius: 50%;
+        background-size: initial;
+        object-fit: cover;
+    }
+    .pet-card-body{
+        text-align: center;
+    }
+    .pet-title {
+        text-align: center !important;
+    }
+  }
 
 
