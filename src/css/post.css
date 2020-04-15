@@ -47,3 +47,12 @@
 .exit-btn-post {
   margin-left: 300px !important;
 }
+
+@media (max-width: 768px) {
+  .MuiIconButton-root {
+    padding: 0px !important;
+  }
+  .delete-btn {
+    margin-left: 230px !important;
+  }
+}

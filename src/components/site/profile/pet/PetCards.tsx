@@ -44,17 +44,17 @@ export default class PetCards extends React.Component<Props> {
               <CardBody className="pet-card-body">
                 <Row>
                   <Col className="pet-info" md="9">
-                  <CardTitle className="pet-title">{pet.name}{pet.adoption ? 
+                    <CardTitle className="pet-title">{pet.name}{pet.adoption ?
                       <p className="adoption-label">up for adoption</p>
                       : <p className="adoption-label">happily owned</p>
                     }
-                  </CardTitle>
-    
-                  <CardSubtitle>{pet.bio}</CardSubtitle>
+                    </CardTitle>
+
+                    <CardSubtitle>{pet.bio}</CardSubtitle>
                   </Col>
                   <Col className="pet-btn" md="3">
-                    <IconButton onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}><CreateIcon /></IconButton>
-                    <IconButton onClick={() => { this.petDelete(pet) }}><ClearIcon /></IconButton>
+                    <IconButton className="pet-create-buttn" onClick={() => { this.props.editUpdateMyPets(pet); this.props.updateOn() }}><CreateIcon /></IconButton>
+                    <IconButton className="pet-clear-buttn" onClick={() => { this.petDelete(pet) }}><ClearIcon className="pet-clear-buttn" /></IconButton>
                   </Col>
                 </Row>
               </CardBody>
