@@ -115,8 +115,12 @@
     .profile-username {
         color: rgb(0, 0, 0, 0.54);
         font-size: 20px;
-        margin-top: 10px;
+        margin-top: 0;
     }
+    .edit-profile-btn {
+        margin-left: 10px; 
+    }
+
     .adoption-recruiter-label {
         text-align: center;
         font-size: 10px;

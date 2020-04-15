@@ -48,10 +48,24 @@
   margin-left: 300px !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 414px) {
   .MuiIconButton-root {
     padding: 0px !important;
   }
+  .delete-btn {
+    margin-left: 270px !important;
+  }
+
+  .post-card {
+    min-width: 353px;
+  }
+}
+
+@media (max-width: 375px) {
+  .post-card {
+    min-width: 315px;
+  }
+
   .delete-btn {
     margin-left: 230px !important;
   }

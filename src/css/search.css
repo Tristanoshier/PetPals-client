@@ -156,3 +156,16 @@
         min-width:  337px;
     }
 }
+
+@media (max-width: 375px) {
+
+    .search-box {
+        width: 325px;
+    }
+
+    .search-form {
+        width: 325px;
+    }
+
+
+}
