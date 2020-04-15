@@ -59,6 +59,14 @@
   .post-card {
     min-width: 353px;
   }
+
+  .exit-btn-post {
+    margin-left: 220px !important;
+  }
+
+  .exit-btn-post-edit {
+    margin-left: 255px !important;
+  }
 }
 
 @media (max-width: 375px) {
@@ -68,5 +76,12 @@
 
   .delete-btn {
     margin-left: 230px !important;
+  }
+  .exit-btn-post {
+    margin-left: 185px !important;
+  }
+
+  .exit-btn-post-edit {
+    margin-left: 210px !important;
   }
 }

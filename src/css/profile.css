@@ -133,4 +133,14 @@
         width: 120px; 
         margin-left: 20px;
     }
+
+    .exit-btn-contact {
+        margin-left: 220px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .exit-btn-contact {
+        margin-left: 180px !important;
+    }
 }

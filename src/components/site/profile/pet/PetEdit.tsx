@@ -90,10 +90,6 @@ export default class PetEdit extends React.Component<Props, State> {
                     <ModalBody>
                         <Form onSubmit={this.handlePetUpdate}>
                             <FormGroup>
-                                <Label className="choose-file" htmlFor="file">Edit pet profile picture:</Label>
-                                <Input type="file" onChange={this.singleFileChangedHandler}/>
-                            </FormGroup>
-                            <FormGroup>
                                 <Label className ="caption" htmlFor="description">Is this pet up for adoption?</Label>
                                 <br />
                                 <Button className="yes-btn" color="primary" onClick={() => this.setState({ editAdoption: true })}>Yes</Button>
