@@ -14,7 +14,7 @@ export default class Jeopardy extends React.Component {
     }
 
     getRandomJeopardyQuestion(){
-        fetch('http://jservice.io/api/random')
+        fetch('https://cors-anywhere.herokuapp.com/http://jservice.io/api/random')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
