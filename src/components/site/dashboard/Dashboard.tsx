@@ -14,11 +14,11 @@ export default class Dashboard extends React.Component<Props> {
         return (
             <div className="dashboard">
                 <PostFeedIndex token={this.props.token} />
-                <div className="personal-components">
+                {/* <div className="personal-components">
                     <Jeopardy />
                     <BoredApiDisplay />
                     <Joke />
-                </div>
+                </div> */}
 
             </div>
         )
