@@ -40,7 +40,7 @@ export default class Routes extends React.Component<Props, State> {
     render(){
         return (
         <Switch>
-          <Route exact path="/dashboard">
+          <Route exact path="/">
             <Dashboard token={this.props.token} />
           </Route>
           <Route exact path="/search">

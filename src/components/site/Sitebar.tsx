@@ -34,10 +34,10 @@ export default class Sitebar extends React.Component<Props> {
       <div>
         <Nav className="py-md-3 nav-look">
           <NavItem className="logo">
-            <Link to="/dashboard" className="logo-styled">PetPals<FontAwesomeIcon icon={faDog} /></Link>
+            <Link to="/" className="logo-styled">PetPals<FontAwesomeIcon icon={faDog} /></Link>
           </NavItem>
           <NavItem className="spacing">
-            <Link to="/dashboard" className="link-styled"><FontAwesomeIcon icon={faHome} size="lg" /></Link>
+            <Link to="/" className="link-styled"><FontAwesomeIcon icon={faHome} size="lg" /></Link>
           </NavItem>
           <NavItem className="spacing">
             <Link to="/search" className="link-styled"><FontAwesomeIcon icon={faSearch} size="lg" /></Link>
@@ -54,7 +54,7 @@ export default class Sitebar extends React.Component<Props> {
          <div className="mobile-navbar">
             <ul className="mobile-navbar-list">
                 <li className="mobile-item">
-                    <Link className="mobile-link" to="/dashboard">
+                    <Link className="mobile-link" to="/">
                         <FontAwesomeIcon className="mobile-icon" size="2x" icon={faHome} />
                     </Link>
                 </li>
